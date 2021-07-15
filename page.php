@@ -21,7 +21,9 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			
+			if (condition) {
+				// code...
+			}
 
 		endwhile; // End of the loop.
 		?>
