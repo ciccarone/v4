@@ -495,3 +495,23 @@ function fmg_retrieve_color($field)
     return $color['color_selector'];
   }
 }
+
+function fmg_retrieve_color_name($field)
+{
+  if ($color = get_field($field, 'option')) {
+    return $color['color_names'];
+  }
+}
+
+add_action('wp_head', 'my_custom_css');
+
+function my_custom_css() {
+echo '<style>
+:root {
+--color-dark: '.fmg_retrieve_color('color_map_dark').';
+--color-light: '.fmg_retrieve_color('color_map_light').';
+--color-primary: '.fmg_retrieve_color('color_map_primary').';
+--color-secondary: '.fmg_retrieve_color('color_map_secondary').';
+}
+</style>';
+}
