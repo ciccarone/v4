@@ -24,7 +24,7 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'fmg' ); ?></a>
-	<header id="masthead" class="site-header" style="background-color: <?php echo fmg_retrieve_color('header_background_color') ?>">
+	<header id="masthead" class="site-header bg-color__<?php echo fmg_retrieve_color_name('header_background_color') ?>">
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
