@@ -849,6 +849,12 @@ textarea {
 	display: block;
 }
 
+/* Header
+--------------------------------------------- */
+.site-header {
+	display: flex;
+}
+
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
@@ -933,6 +939,24 @@ textarea {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 1.5em;
+}
+
+/* General
+--------------------------------------------- */
+.bg-color__dark {
+	background-color: var(--color-dark);
+}
+
+.bg-color__light {
+	background-color: var(--color-light);
+}
+
+.bg-color__primary {
+	background-color: var(--color-primary);
+}
+
+.bg-color__secondary {
+	background-color: var(--color-secondary);
 }
 
 /*# sourceMappingURL=style.css.map */
