@@ -348,36 +348,40 @@ function featured_services_rows( $atts, $content = null )
 {
   $a = shortcode_atts( array(
     'service_type' => true,
+    'bucket_type' => true,
   ), $atts );
   global $post;
 
   if ($page_content = get_field('service', 'option')) {
-    $ret = '<div class="featured-rows">';
+    $ret = '<div class="container g-0">';
+    $ret = '<div class="row">';
     foreach ($page_content as $pc) {
       if (($pc['service_type'] == $a['service_type']) && ($pc['featured_service'])) {
-        $ret .= '<div class="featured-rows__container">';
-        $ret .= '<div class="featured-rows__item">';
-        $ret .= '<div class="featured-rows__image">';
-          $ret .= '<a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'"><div class="featured-rows__frame" style="background-image: url('.$pc['service_image']['sizes']['large'].')">';
+        $ret .= '<div class="col-md">';
 
-          $ret .= '</div></a>';
-        $ret .= '</div>';
-        $ret .= '<div class="featured-rows__content">';
-        $ret .= '<h4>'.$pc['service_reference'][$a['service_type']]['label'].'</h4>';
-
-        if (get_field('show_excerpts', 'option')) {
-          $ret .= '<p>'.$pc['service_excerpt'].'</p>';
-        }
-                $ret .= '<a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'" class="btn">Learn More</a>';
-        $ret .= '</div>';
+				$ret .= '<div class="card">';
+					$ret .= '<a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'" class="card-header">';
+						if ($a['bucket_type'] == 'icon') {
+							$ret .= $pc['service_icon'];
+						}
+						if ($a['bucket_type'] == 'image') {
+							$ret .= '<div class="frame " style="background-image: url('.$pc['service_image']['sizes']['large'].')"></div>';
+						}
+					$ret .= '</a>';
 
 
-
-
-        $ret .= '</div>';
-        $ret .= '</div>';
+				  $ret .= '<div class="card-body">';
+				    $ret .= '<h5 class="card-title">'.$pc['service_reference'][$a['service_type']]['label'].'</h5>';
+						if (get_field('show_excerpts', 'option')) {
+							$ret .= '<p class="card-text">'.$pc['service_excerpt'].'</p>';
+						}
+				    $ret .= '<a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'" class="btn btn-primary">Learn More</a>';
+				  $ret .= '</div>';
+				$ret .= '</div>';
+				$ret .= '</div>';
       }
     }
+    $ret .= '</div>';
     $ret .= '</div>';
     // $ret .= '<a href="/financial-service" class="btn btn--center">See All Services</a>';
 
