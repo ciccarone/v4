@@ -11121,8 +11121,20 @@ textarea {
 
 /* Header
 --------------------------------------------- */
-.site-header {
-	display: flex;
+.site-header.text-color__dark ul:not(.dropdown-menu) a {
+	color: var(--color-dark) !important;
+}
+
+.site-header.text-color__light ul:not(.dropdown-menu) a {
+	color: var(--color-light) !important;
+}
+
+.site-header.text-color__primary ul:not(.dropdown-menu) a {
+	color: var(--color-primary) !important;
+}
+
+.site-header.text-color__secondary ul:not(.dropdown-menu) a {
+	color: var(--color-secondary) !important;
 }
 
 .site-branding img {
@@ -11189,6 +11201,28 @@ textarea {
 	outline: 0;
 }
 
+:focus,
+:active,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+	border-color: transparent !important;
+	box-shadow: none;
+	outline: 0 !important;
+}
+
 /* Alignments
 --------------------------------------------- */
 .alignleft {
@@ -11217,19 +11251,19 @@ textarea {
 
 /* General
 --------------------------------------------- */
-.bg-color__dark {
+.bg-color__dark, .bg-color__dark .dropdown-menu, .bg-color__dark .dropdown-menu a:hover {
 	background-color: var(--color-dark);
 }
 
-.bg-color__light {
+.bg-color__light, .bg-color__light .dropdown-menu, .bg-color__light .dropdown-menu a:hover {
 	background-color: var(--color-light);
 }
 
-.bg-color__primary {
+.bg-color__primary, .bg-color__primary .dropdown-menu, .bg-color__primary .dropdown-menu a:hover {
 	background-color: var(--color-primary);
 }
 
-.bg-color__secondary {
+.bg-color__secondary, .bg-color__secondary .dropdown-menu, .bg-color__secondary .dropdown-menu a:hover {
 	background-color: var(--color-secondary);
 }
 
