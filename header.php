@@ -24,24 +24,35 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'fmg' ); ?></a>
+
 	<header id="masthead" class="site-header bg-color__<?php echo fmg_retrieve_color_name('header_background_color') ?>">
 		<div class="container">
-			<div class="site-branding">
-				<?php
-				the_custom_logo();
-				?>
-			</div><!-- .site-branding -->
+			<nav class="navbar navbar-expand-lg navbar-light">
+			  <div class="container-fluid">
+					<div class="site-branding">
+						<?php
+						the_custom_logo();
+						?>
+					</div><!-- .site-branding -->
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
+						<?php
+						wp_nav_menu(array(
+								'theme_location' => 'main-menu',
+								'container' => false,
+								'menu_class' => '',
+								'fallback_cb' => '__return_false',
+								'items_wrap' => '<ul id="%1$s" class="navbar-nav  ms-auto flex-nowrap %2$s">%3$s</ul>',
+								'depth' => 2,
+								'walker' => new bootstrap_5_wp_nav_menu_walker()
+						));
+						?>
+				</div>
+			  </div>
+			</nav>
 
-			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'fmg' ); ?></button>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					)
-				);
-				?>
-			</nav><!-- #site-navigation -->
+
 		</div>
 	</header><!-- #masthead -->
