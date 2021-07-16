@@ -1,14 +1,14 @@
 .bg-color {
-  &__dark {
+  &__dark, &__dark .dropdown-menu, &__dark .dropdown-menu a:hover {
     background-color: var(--color-dark)
   }
-  &__light {
+  &__light, &__light .dropdown-menu, &__light .dropdown-menu a:hover {
     background-color: var(--color-light)
   }
-  &__primary {
+  &__primary, &__primary .dropdown-menu, &__primary .dropdown-menu a:hover {
     background-color: var(--color-primary)
   }
-  &__secondary {
+  &__secondary, &__secondary .dropdown-menu, &__secondary .dropdown-menu a:hover {
     background-color: var(--color-secondary)
   }
 }
