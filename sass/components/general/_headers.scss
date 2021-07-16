@@ -1,5 +1,22 @@
 .site-header {
-  display: flex;
+  // display: flex;
+
+  &.text-color {
+    &__dark ul:not(.dropdown-menu) a {
+      color: var(--color-dark) !important
+    }
+    &__light ul:not(.dropdown-menu) a {
+      color: var(--color-light) !important
+    }
+    &__primary ul:not(.dropdown-menu) a {
+      color: var(--color-primary) !important
+    }
+    &__secondary ul:not(.dropdown-menu) a {
+      color: var(--color-secondary) !important
+    }
+  }
+
+
 }
 
 .site-branding {
