@@ -180,6 +180,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
+ * Custom Navwalker functionality
+ */
+	require get_template_directory() . '/inc/navwalker.php';
+
+/**
  * Custom FMG functionality
  */
 	require get_template_directory() . '/inc/fmg.php';
