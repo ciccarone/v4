@@ -19,3 +19,17 @@ input[type="submit"] {
 		border-color: $color__border-button-focus;
 	}
 }
+
+a.btn {
+
+	&-primary {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+		color: var(--color-light);
+
+		&:hover {
+			background-color: var(--color-dark);
+			border-color: var(--color-dark);
+		}
+	}
+}
