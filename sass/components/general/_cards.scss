@@ -1,4 +1,25 @@
-.card-header {
-    background-color: transparent;
-    border-bottom: none;
+.card-header, .card-footer {
+  background-color: transparent;
+  border-bottom: none;
+  border-top: none !important;
+
+  i {
+    font-size: 4em;
+    padding-top: .1em;
+    color: var(--color-primary) !important;
+  }
+}
+
+.card-body {
+  a {
+    color: var(--color-primary) !important;
+  }
+}
+
+.card {
+  @media (max-width: 768px) {
+    margin-bottom: 2em;
+  }
+  border: none;
+  background-color: var(--color-light);
 }
