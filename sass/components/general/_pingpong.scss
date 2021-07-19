@@ -1,0 +1,29 @@
+.page-section--featured_services_ping_pong {
+  .frame {
+    padding-bottom: 50%;
+    background-position: center;
+  }
+
+  .row {
+    &:nth-child(even) {
+      @media (min-width: 768px) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &.bg-color__dark
+  {
+    .ping-pong-title a,
+    .ping-pong-text {
+      color: var(--color-light);
+    }
+  }
+
+  &.bg-color__light {
+    .ping-pong-title a,
+    .ping-pong-text {
+      color: var(--color-dark);
+    }
+  }
+}
