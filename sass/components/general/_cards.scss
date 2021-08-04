@@ -10,6 +10,14 @@
   }
 }
 
+.card-header {
+  .frame {
+    padding-bottom: 50%;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
 .card-body {
   a {
     color: var(--color-primary) !important;
