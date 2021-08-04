@@ -11190,6 +11190,12 @@ textarea {
 	color: var(--color-primary) !important;
 }
 
+.card-header .frame {
+	padding-bottom: 50%;
+	background-position: center;
+	background-size: cover;
+}
+
 .card-body a {
 	color: var(--color-primary) !important;
 }
@@ -11208,14 +11214,36 @@ textarea {
 /* Ping Pong
 --------------------------------------------- */
 .page-section--featured_services_ping_pong .frame {
-	padding-bottom: 50%;
+	padding-bottom: 40%;
 	background-position: center;
 }
 
+.page-section--featured_services_ping_pong .ping-pong {
+	position: relative;
+	padding: 4em 0;
+}
+
+.page-section--featured_services_ping_pong .ping-pong .container {
+	position: relative;
+}
+
+.page-section--featured_services_ping_pong .ping-pong:before {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	content: '';
+}
+
 @media (min-width: 768px) {
-	.page-section--featured_services_ping_pong .row:nth-child(even) {
+	.page-section--featured_services_ping_pong .ping-pong:nth-child(even) .row {
 		flex-direction: row-reverse;
 	}
+}
+
+.page-section--featured_services_ping_pong.bg-color__dark .ping-pong:nth-child(even):before {
+	background: rgba(255, 255, 255, 0.05);
 }
 
 .page-section--featured_services_ping_pong.bg-color__dark .ping-pong-title a,
@@ -11223,11 +11251,23 @@ textarea {
 	color: var(--color-light);
 }
 
+.page-section--featured_services_ping_pong.bg-color__dark .btn {
+	background-color: var(--color-light);
+	border-color: var(--color-light);
+	color: var(--color-dark);
+}
+
+.page-section--featured_services_ping_pong.bg-color__light .ping-pong:nth-child(even):before {
+	background: rgba(0, 0, 0, 0.05);
+}
+
 .page-section--featured_services_ping_pong.bg-color__light .ping-pong-title a,
 .page-section--featured_services_ping_pong.bg-color__light .ping-pong-text {
 	color: var(--color-dark);
 }
 
+/* CTA
+--------------------------------------------- */
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
@@ -11352,6 +11392,31 @@ input[type="color"]:focus,
 
 .bg-color__secondary, .bg-color__secondary .dropdown-menu, .bg-color__secondary .dropdown-menu a:hover {
 	background-color: var(--color-secondary);
+}
+
+.bg-color__white, .bg-color__white .dropdown-menu, .bg-color__white .dropdown-menu a:hover {
+	background-color: #ffffff;
+}
+
+.bg-color__black, .bg-color__black .dropdown-menu, .bg-color__black .dropdown-menu a:hover {
+	background-color: #000000;
+}
+
+a {
+	text-decoration: none;
+}
+
+.py-xl {
+	padding: 6em 0;
+}
+
+.py-xxl {
+	padding: 10em 0;
+}
+
+.page-section {
+	background-size: cover;
+	background-position: center;
 }
 
 /*# sourceMappingURL=style.css.map */
