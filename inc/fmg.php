@@ -151,9 +151,11 @@ function featured_services_ping_pong( $atts, $content = null )
 
   if ($page_content = get_field('service', 'option')) {
 
-    $ret = '<div class="container g-0">';
+
 
     foreach ($page_content as $pc) {
+			$ret .= '<div class="ping-pong">';
+			$ret .= '<div class="container g-0">';
 			if (($pc['service_type'] == $a['service_type']) && ($pc['featured_service'])) {
 				$ret .= '<div class="row">';
 					$ret .= '<div class="col-md">';
@@ -175,10 +177,10 @@ function featured_services_ping_pong( $atts, $content = null )
 					$ret .= '</div>';
 				$ret .= '</div>';
 			}
-
+			$ret .= '</div>';
+			$ret .= '</div>';
     }
-    $ret .= '</div>';
-    $ret .= '</div>';
+
     // $ret .= '<a href="/financial-service" class="btn btn--center">See All Services</a>';
 
     return $ret;
