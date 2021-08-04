@@ -102,10 +102,11 @@ function featured_services_rows( $atts, $content = null )
     $ret .= '<div class="row">';
     foreach ($page_content as $pc) {
       if (($pc['service_type'] == $a['service_type']) && ($pc['featured_service'])) {
+				$padding_class = ($a['bucket_type'] == 'image') ? 'p-0' : '';
         $ret .= '<div class="col-md">';
 
 				$ret .= '<div class="card '.$card_center_class.'">';
-					$ret .= '<a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'" class="card-header">';
+					$ret .= '<a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'" class="card-header ' . $padding_class . '">';
 						if ($a['bucket_type'] == 'icon') {
 							$ret .= $pc['service_icon'];
 						}
