@@ -25,8 +25,9 @@ get_header();
 				// var_dump($page_sections);
 				foreach ($page_sections as $page_section) {
 					$section_bg = isset($page_section['section_background_color_color_names']) ? 'bg-color__'.$page_section['section_background_color_color_names'] : '';
+					$section_bg_image = isset($page_section['section_background_image']) ? 'style="background-image:url('.$page_section['section_background_image']['sizes']['large'].')"' : false;
 					$section_padding = isset($page_section['section_padding']) ? $page_section['section_padding'] : '';
-					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '. $section_padding . '">';
+					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '. $section_padding . '" ' . $section_bg_image.'>';
 					include( locate_template( 'template-parts/fmg-'.$page_section['acf_fc_layout'].'.php', false, false ) );
 
 					echo '</section>';
