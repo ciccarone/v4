@@ -11,4 +11,14 @@
   &__secondary, &__secondary .dropdown-menu, &__secondary .dropdown-menu a:hover {
     background-color: var(--color-secondary)
   }
+  &__white, &__white .dropdown-menu, &__white .dropdown-menu a:hover {
+    background-color: #ffffff;
+  }
+  &__black, &__black .dropdown-menu, &__black .dropdown-menu a:hover {
+    background-color: #000000;
+  }
+}
+
+a {
+  text-decoration: none;
 }
