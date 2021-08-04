@@ -6,6 +6,7 @@
 
   .ping-pong {
     position: relative;
+    padding: 4em 0;
     .container {
       position: relative;
     }
@@ -31,7 +32,7 @@
     .ping-pong {
       &:nth-child(even) {
         &:before {
-          background:rgba(255,255,255,0.05) /* black mask with 5% opacity */
+          background:rgba(255,255,255,0.05);
         }
       }
     }
@@ -39,13 +40,19 @@
     .ping-pong-text {
       color: var(--color-light);
     }
+
+    .btn {
+      background-color: var(--color-light);
+      border-color: var(--color-light);
+      color: var(--color-dark);
+    }
   }
 
   &.bg-color__light {
     .ping-pong {
       &:nth-child(even) {
         &:before {
-          background:rgba(0,0,0,0.05) /* black mask with 5% opacity */
+          background:rgba(0,0,0,0.05);
         }
       }
     }
