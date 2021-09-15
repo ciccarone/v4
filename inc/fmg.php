@@ -318,3 +318,16 @@ echo '<style>
 }
 </style>';
 }
+
+
+function fmg_button_generator($buttons)
+{
+	if ($buttons) {
+		$ret = '';
+		foreach ($buttons as $button) {
+			$ret .= '<a class="btn btn-fmg-'.$button['button_design'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
+		}
+		return $ret;
+	}
+	return false;
+}

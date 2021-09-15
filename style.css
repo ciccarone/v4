@@ -10850,6 +10850,52 @@ a.btn-primary:hover {
 	border-color: var(--color-dark);
 }
 
+a.btn-fmg-light {
+	background-color: var(--color-light);
+	border-color: var(--color-light);
+	color: var(--color-dark);
+}
+
+a.btn-fmg-light:hover {
+	background-color: var(--color-dark);
+	border-color: var(--color-dark);
+	color: var(--color-light);
+}
+
+a.btn-fmg-dark {
+	background-color: var(--color-dark);
+	border-color: var(--color-dark);
+	color: var(--color-light);
+}
+
+a.btn-fmg-dark:hover {
+	background-color: var(--color-light);
+	border-color: var(--color-light);
+	color: var(--color-dark);
+}
+
+a.btn-fmg-outline-dark {
+	border-color: var(--color-dark);
+	color: var(--color-dark);
+}
+
+a.btn-fmg-outline-dark:hover {
+	background-color: var(--color-light);
+	border-color: var(--color-light);
+	color: var(--color-dark);
+}
+
+a.btn-fmg-outline-light {
+	border-color: var(--color-light);
+	color: var(--color-light);
+}
+
+a.btn-fmg-outline-light:hover {
+	background-color: var(--color-dark);
+	border-color: var(--color-dark);
+	color: var(--color-light);
+}
+
 input[type="text"],
 input[type="email"],
 input[type="url"],
