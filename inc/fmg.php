@@ -142,6 +142,56 @@ add_shortcode('featured_services_rows', 'featured_services_rows');
 
 
 
+
+
+function featured_services_slider( $atts, $content = null )
+{
+  $a = shortcode_atts( array(
+    'service_type' => true,
+    'bucket_type' => true,
+    'center_card_content' => true,
+  ), $atts );
+  global $post;
+
+  if ($page_content = get_field('service', 'option')) {
+
+		$card_center_class = $a['center_card_content'] ? 'text-center' : '';
+
+    // $ret .= '<div class="container g-0">';
+    // $ret .= '<div class="row">';
+    $ret .= '<div class="slide">';
+    foreach ($page_content as $pc) {
+      if (($pc['service_type'] == $a['service_type']) && ($pc['featured_service'])) {
+				$padding_class = ($a['bucket_type'] == 'image') ? 'p-0' : '';
+
+				$ret .= '<a class="slide__item" href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'">';
+				if ($a['bucket_type'] == 'icon') {
+					$ret .= $pc['service_icon'];
+				}
+				if ($a['bucket_type'] == 'image') {
+					$ret .= '<div class="frame " style="background-image: url('.$pc['service_image']['sizes']['large'].')"></div>';
+				}
+				$ret .= '<h5>'.$pc['service_reference'][$a['service_type']]['label'].'</h5>';
+				if (get_field('show_excerpts', 'option')) {
+					$ret .= '<p class="slide__text">'.$pc['service_excerpt'].'</p>';
+				}
+				$ret .= '</a>';
+
+      }
+    }
+    $ret .= '</div>';
+    // $ret .= '</div>';
+    // $ret .= '</div>';
+    // $ret .= '<a href="/financial-service" class="btn btn--center">See All Services</a>';
+
+    return $ret;
+  }
+
+}
+
+add_shortcode('featured_services_slider', 'featured_services_slider');
+
+
 function featured_services_ping_pong( $atts, $content = null )
 {
   $a = shortcode_atts( array(
