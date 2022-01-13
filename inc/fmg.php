@@ -150,6 +150,7 @@ function featured_services_slider( $atts, $content = null )
     'service_type' => true,
     'bucket_type' => true,
     'center_card_content' => true,
+    'slide_count' => true,
   ), $atts );
   global $post;
 
@@ -157,9 +158,10 @@ function featured_services_slider( $atts, $content = null )
 
 		$card_center_class = $a['center_card_content'] ? 'text-center' : '';
 
+
     // $ret .= '<div class="container g-0">';
     // $ret .= '<div class="row">';
-    $ret .= '<div class="slide">';
+    $ret .= '<div class="slide has-slick-slider" data-slick=\'{"slidesToShow": '.$a['slide_count'].', "dots": true, "arrows": false}\'>';
     foreach ($page_content as $pc) {
       if (($pc['service_type'] == $a['service_type']) && ($pc['featured_service'])) {
 				$padding_class = ($a['bucket_type'] == 'image') ? 'p-0' : '';
@@ -171,10 +173,12 @@ function featured_services_slider( $atts, $content = null )
 				if ($a['bucket_type'] == 'image') {
 					$ret .= '<div class="frame " style="background-image: url('.$pc['service_image']['sizes']['large'].')"></div>';
 				}
+				$ret .= '<div class="slide__content">';
 				$ret .= '<h5>'.$pc['service_reference'][$a['service_type']]['label'].'</h5>';
 				if (get_field('show_excerpts', 'option')) {
 					$ret .= '<p class="slide__text">'.$pc['service_excerpt'].'</p>';
 				}
+				$ret .= '</div>';
 				$ret .= '</a>';
 
       }

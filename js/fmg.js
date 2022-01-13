@@ -2,7 +2,10 @@ jQuery(document).ready(function( $ ) {
 
   $(document).ready(function(){
     if ($('.slide').length > 0) {
-      $('.slide').slick();
+      $('.slide').slick({
+        // dots: true,
+        // arrows: false,
+      });
     }
   })
 
