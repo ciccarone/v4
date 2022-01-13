@@ -11242,8 +11242,12 @@ textarea {
 	background-size: cover;
 }
 
+.card-body {
+	color: var(--color-dark) !important;
+}
+
 .card-body a {
-	color: var(--color-primary) !important;
+	color: var(--color-dark) !important;
 }
 
 .card {

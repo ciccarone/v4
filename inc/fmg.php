@@ -304,6 +304,26 @@ function service_list( $atts, $content = null )
 add_shortcode('service_list', 'service_list');
 
 
+function fmg_form_section( $atts, $content = null )
+{
+	$a = shortcode_atts( array(
+    'service_type' => true,
+  ), $atts );
+  global $post;
+
+
+  if ($page_content = get_field('service', 'option')) {
+    foreach ($page_content as $pc) {
+      if ($pc['service_type'] == $a['service_type']) {
+        $ret .= '<li class="col-lg-12 col-md-6 col-sm-6"><a href="/'.str_replace('_', '-', $a['service_type']).'/'.$pc['service_reference'][$a['service_type']]['value'].'">'.$pc['service_reference'][$a['service_type']]['label'].'</a></li>';
+      }
+    }
+
+    return $ret;
+  }
+}
+
+
 function company_name()
 {
   if ($data = get_field('company_name', 'option')) {
