@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main <?php echo fmg_retrieve_overlay_header_boolean() ?>">
 
 		<?php
 		while ( have_posts() ) :

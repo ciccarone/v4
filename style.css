@@ -11178,6 +11178,10 @@ textarea {
 
 /* Header
 --------------------------------------------- */
+.site-header {
+	min-height: 115px;
+}
+
 .site-header.text-color__dark ul:not(.dropdown-menu) a,
 .site-header.text-color__dark .custom-toggler.navbar-toggler {
 	color: var(--color-dark) !important;
@@ -11220,6 +11224,14 @@ textarea {
 
 .site-branding img {
 	max-width: 200px;
+}
+
+.bg-header-overlay--true:not(.fixed) {
+	background-color: transparent;
+}
+
+.header-overlay--true {
+	margin-top: -115px;
 }
 
 /* Cards

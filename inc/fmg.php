@@ -405,3 +405,9 @@ function fmg_button_generator($buttons)
 	}
 	return false;
 }
+
+
+function fmg_retrieve_overlay_header_boolean()
+{
+	return get_field('header_overlay_on_homepage', 'option') ? 'header-overlay--true' : '';
+}

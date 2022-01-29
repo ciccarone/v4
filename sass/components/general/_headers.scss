@@ -1,5 +1,6 @@
 .site-header {
   // display: flex;
+  min-height: 115px;
 
   &.text-color {
     &__dark ul:not(.dropdown-menu) a,
@@ -50,5 +51,17 @@
 .site-branding {
   img {
     max-width: 200px;
+  }
+}
+
+.bg-header-overlay {
+  &--true:not(.fixed) {
+    background-color: transparent;
+  }
+}
+
+.header-overlay {
+  &--true {
+    margin-top: -115px;
   }
 }

@@ -26,7 +26,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'fmg' ); ?></a>
 
-	<header id="masthead" class="sticky-top site-header bg-color__<?php echo fmg_retrieve_color_name('header_background_color') ?> text-color__<?php echo fmg_retrieve_color_name('header_text_color') ?>">
+	<header id="masthead" class="sticky-top site-header bg-color__<?php echo fmg_retrieve_color_name('header_background_color') ?> text-color__<?php echo fmg_retrieve_color_name('header_text_color') ?> bg-<?php echo fmg_retrieve_overlay_header_boolean() ?>">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg py-4">
 			  <div class="container-fluid">
