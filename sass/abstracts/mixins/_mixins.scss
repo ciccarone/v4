@@ -9,3 +9,12 @@
 @mixin column-width($numberColumns: 3) {
 	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
 }
+
+@mixin submit_button($bg-color, $color) {
+  input {
+    &[type="submit"] {
+      background-color: $bg-color;
+      color: $color;
+    }
+  }
+}

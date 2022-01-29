@@ -11471,24 +11471,58 @@ input[type="color"]:focus,
 	background-color: var(--color-dark);
 }
 
+.bg-color__dark input[type="submit"], .bg-color__dark .dropdown-menu input[type="submit"], .bg-color__dark .dropdown-menu a:hover input[type="submit"] {
+	background-color: var(--color-light);
+	color: var(--color-dark);
+}
+
 .bg-color__light, .bg-color__light .dropdown-menu, .bg-color__light .dropdown-menu a:hover {
 	background-color: var(--color-light);
+}
+
+.bg-color__light input[type="submit"], .bg-color__light .dropdown-menu input[type="submit"], .bg-color__light .dropdown-menu a:hover input[type="submit"] {
+	background-color: var(--color-dark);
+	color: var(--color-light);
 }
 
 .bg-color__primary, .bg-color__primary .dropdown-menu, .bg-color__primary .dropdown-menu a:hover {
 	background-color: var(--color-primary);
 }
 
+.bg-color__primary input[type="submit"], .bg-color__primary .dropdown-menu input[type="submit"], .bg-color__primary .dropdown-menu a:hover input[type="submit"] {
+	background-color: var(--color-light);
+	color: var(--color-dark);
+}
+
 .bg-color__secondary, .bg-color__secondary .dropdown-menu, .bg-color__secondary .dropdown-menu a:hover {
 	background-color: var(--color-secondary);
+}
+
+.bg-color__secondary input[type="submit"], .bg-color__secondary .dropdown-menu input[type="submit"], .bg-color__secondary .dropdown-menu a:hover input[type="submit"] {
+	background-color: var(--color-light);
+	color: var(--color-dark);
 }
 
 .bg-color__white, .bg-color__white .dropdown-menu, .bg-color__white .dropdown-menu a:hover {
 	background-color: #ffffff;
 }
 
+.bg-color__white input[type="submit"], .bg-color__white .dropdown-menu input[type="submit"], .bg-color__white .dropdown-menu a:hover input[type="submit"] {
+	background-color: var(--color-dark);
+	color: var(--color-light);
+}
+
 .bg-color__black, .bg-color__black .dropdown-menu, .bg-color__black .dropdown-menu a:hover {
 	background-color: #000000;
+}
+
+.bg-color__black input[type="submit"], .bg-color__black .dropdown-menu input[type="submit"], .bg-color__black .dropdown-menu a:hover input[type="submit"] {
+	background-color: var(--color-light);
+	color: var(--color-dark);
+}
+
+input[type="submit"] {
+	padding: 1em 2em;
 }
 
 a {
