@@ -409,5 +409,16 @@ function fmg_button_generator($buttons)
 
 function fmg_retrieve_overlay_header_boolean()
 {
-	return get_field('header_overlay_on_homepage', 'option') ? 'header-overlay--true' : '';
+	if (is_front_page()) {
+		return get_field('header_overlay_on_homepage', 'option') ? 'header-overlay--true' : '';
+	}
 }
+
+
+function fmg_retrieve_page_header( $title_override )
+{
+	return $title_override ? $title_override : get_the_title();
+
+}
+
+add_filter('the_content','do_shortcode');

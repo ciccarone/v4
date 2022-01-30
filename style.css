@@ -11234,6 +11234,23 @@ textarea {
 	margin-top: -115px;
 }
 
+.frame {
+	background-size: cover;
+}
+
+.page-title-container .frame {
+	padding-bottom: 50%;
+	border-radius: .1em;
+	margin-bottom: 1em;
+}
+
+/* Footer
+--------------------------------------------- */
+.footer-widget-area {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
 /* Cards
 --------------------------------------------- */
 .card-header, .card-footer {
@@ -11533,7 +11550,7 @@ input[type="color"]:focus,
 	color: var(--color-dark);
 }
 
-input[type="submit"] {
+.gform_footer input[type="submit"] {
 	padding: 1em 2em;
 }
 
@@ -11565,6 +11582,10 @@ a {
 	top: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.main-container {
+	display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */

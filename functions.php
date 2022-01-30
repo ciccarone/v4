@@ -133,6 +133,16 @@ function fmg_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar( array(
+			'name'          => 'Footer Widgets',
+			'id'            => 'footer-widget',
+			'before_widget' => '<div class="footer-widget">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="footer-title">',
+			'after_title'   => '</h2>',
+	) );
+
 }
 add_action( 'widgets_init', 'fmg_widgets_init' );
 

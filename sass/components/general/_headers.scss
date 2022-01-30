@@ -65,3 +65,15 @@
     margin-top: -115px;
   }
 }
+
+.frame {
+  background-size: cover;
+}
+
+.page-title-container {
+  .frame {
+    padding-bottom: 50%;
+    border-radius: .1em;
+    margin-bottom: 1em;
+  }
+}

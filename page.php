@@ -35,6 +35,11 @@ get_header();
 						$color_div = '<div class="color_overlay" style="background-color: rgba('.$r.','.$g.','.$b.','.$page_section['section_background_color_overlay_opacity'].')"></div>';
 					}
 					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '. $section_padding . ' ' .$section_text_color .'" ' . $section_bg_image.'>';
+
+					if ($page_section['section_title']) {
+						echo '<div class="container"><h3 class="mb-4">'.$page_section['section_title'].'</h3></div>';
+
+					}
 					include( locate_template( 'template-parts/fmg-'.$page_section['acf_fc_layout'].'.php', false, false ) );
 					echo $color_div;
 					echo '</section>';
@@ -48,5 +53,7 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
+
+// echo the_content();
+// get_sidebar();
 get_footer();
