@@ -9,13 +9,13 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package FMG
+ * @package V4
  */
 
 get_header();
 ?>
 
-	<main id="primary" class="site-main <?php echo fmg_retrieve_overlay_header_boolean() ?>">
+	<main id="primary" class="site-main <?php echo v4_retrieve_overlay_header_boolean() ?>">
 
 		<?php
 		while ( have_posts() ) :
@@ -25,22 +25,26 @@ get_header();
 				// var_dump($page_sections);
 				foreach ($page_sections as $page_section) {
 					$color_div = false;
-					$section_buttons = $page_section['button_repeater'] ? fmg_button_generator($page_section['button_repeater']) : false;
+
+					if (isset($page_section['button_repeater'])) {
+						$section_buttons = $page_section['button_repeater'] ? v4_button_generator($page_section['button_repeater']) : false;
+					}
+
 					$section_bg = isset($page_section['section_background_color_color_names']) ? 'bg-color__'.$page_section['section_background_color_color_names'] : '';
 					$section_text_color = isset($page_section['section_text_color']) ? $page_section['section_text_color'] : '';
-					$section_bg_image = isset($page_section['section_background_image']) ? 'style="background-image:url('.$page_section['section_background_image']['sizes']['large'].')"' : false;
+					$section_bg_image = (isset($page_section['section_background_image']) && ($page_section['section_background_image'])) ? 'style="background-image:url('.$page_section['section_background_image']['sizes']['large'].')"' : false;
 					$section_padding = isset($page_section['section_padding']) ? $page_section['section_padding'] : '';
-					if ($overlay_color = $page_section['section_background_color_overlay']) {
-						list($r, $g, $b) = sscanf($overlay_color, "#%02x%02x%02x");
+					if ($overlay_color = isset($page_section['color_names'])) {
+						list($r, $g, $b) = sscanf(get_field('color_map_'.$page_section['color_names'], 'option')['color_selector'], "#%02x%02x%02x");
 						$color_div = '<div class="color_overlay" style="background-color: rgba('.$r.','.$g.','.$b.','.$page_section['section_background_color_overlay_opacity'].')"></div>';
 					}
 					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '. $section_padding . ' ' .$section_text_color .'" ' . $section_bg_image.'>';
 
-					if ($page_section['section_title']) {
+					if ((isset($page_section['section_title'])) && ($page_section['section_title'])) {
 						echo '<div class="container"><h3 class="mb-4">'.$page_section['section_title'].'</h3></div>';
 
 					}
-					include( locate_template( 'template-parts/fmg-'.$page_section['acf_fc_layout'].'.php', false, false ) );
+					include( locate_template( 'template-parts/v4-'.$page_section['acf_fc_layout'].'.php', false, false ) );
 					echo $color_div;
 					echo '</section>';
 

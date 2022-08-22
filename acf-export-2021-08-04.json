@@ -622,7 +622,7 @@
                                     "id": ""
                                 },
                                 "default_value": "",
-                                "placeholder": "e.g. [rev_slider alias=\"fmg-homepage-slider\"][\/rev_slider]",
+                                "placeholder": "e.g. [rev_slider alias=\"v4-homepage-slider\"][\/rev_slider]",
                                 "prepend": "",
                                 "append": "",
                                 "maxlength": ""

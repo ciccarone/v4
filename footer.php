@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package FMG
+ * @package V4
  */
 
 ?>
@@ -16,7 +16,7 @@
 			grid-template-columns: <?php echo get_field('footer_column_count', 'option') ?>
 		}
 	</style>
-	<div class="fmg-footer">
+	<div class="v4-footer bg-color__<?php echo get_field('footer_background_color', 'option')['color_names'] ?> py-5 <?php echo get_field('footer_text_color', 'option') ?>">
 		<div class="container">
 			<?php
 
@@ -30,18 +30,8 @@
 	</div>
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info container">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'fmg' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'fmg' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'fmg' ), 'fmg', '<a href="http://underscores.me/">Tony Ciccarone</a>' );
-				?>
+		<div class="site-info container py-2">
+			<?php echo get_field('copyright_content', 'option') ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

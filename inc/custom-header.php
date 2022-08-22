@@ -8,39 +8,39 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package FMG
+ * @package V4
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses fmg_header_style()
+ * @uses v4_header_style()
  */
-function fmg_custom_header_setup() {
+function v4_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'fmg_custom_header_args',
+			'v4_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'fmg_header_style',
+				'wp-head-callback'   => 'v4_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'fmg_custom_header_setup' );
+add_action( 'after_setup_theme', 'v4_custom_header_setup' );
 
-if ( ! function_exists( 'fmg_header_style' ) ) :
+if ( ! function_exists( 'v4_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see fmg_custom_header_setup().
+	 * @see v4_custom_header_setup().
 	 */
-	function fmg_header_style() {
+	function v4_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

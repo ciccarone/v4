@@ -1,21 +1,21 @@
 /*!
-Theme Name: FMG
+Theme Name: V4
 Theme URI: http://underscores.me/
 Author: Tony Ciccarone
 Author URI: http://underscores.me/
-Description: Base theme for FMG
+Description: Base theme for V4
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: fmg
+Text Domain: v4
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.
 
-FMG is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+V4 is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
@@ -10850,47 +10850,47 @@ a.btn-primary:hover {
 	border-color: var(--color-dark);
 }
 
-a.btn-fmg-light {
+a.btn-v4-light {
 	background-color: var(--color-light);
 	border-color: var(--color-light);
 	color: var(--color-dark);
 }
 
-a.btn-fmg-light:hover {
+a.btn-v4-light:hover {
 	background-color: var(--color-dark);
 	border-color: var(--color-dark);
 	color: var(--color-light);
 }
 
-a.btn-fmg-dark {
+a.btn-v4-dark {
 	background-color: var(--color-dark);
 	border-color: var(--color-dark);
 	color: var(--color-light);
 }
 
-a.btn-fmg-dark:hover {
+a.btn-v4-dark:hover {
 	background-color: var(--color-light);
 	border-color: var(--color-light);
 	color: var(--color-dark);
 }
 
-a.btn-fmg-outline-dark {
+a.btn-v4-outline-dark {
 	border-color: var(--color-dark);
 	color: var(--color-dark);
 }
 
-a.btn-fmg-outline-dark:hover {
+a.btn-v4-outline-dark:hover {
 	background-color: var(--color-light);
 	border-color: var(--color-light);
 	color: var(--color-dark);
 }
 
-a.btn-fmg-outline-light {
+a.btn-v4-outline-light {
 	border-color: var(--color-light);
 	color: var(--color-light);
 }
 
-a.btn-fmg-outline-light:hover {
+a.btn-v4-outline-light:hover {
 	background-color: var(--color-dark);
 	border-color: var(--color-dark);
 	color: var(--color-light);
@@ -11043,6 +11043,10 @@ textarea {
 	flex: 1 0 50%;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+	background-color: transparent;
+}
+
 /* Posts and pages
 --------------------------------------------- */
 .sticky {
@@ -11051,7 +11055,7 @@ textarea {
 
 .post,
 .page {
-	margin: 0 0 1.5em;
+	margin: 0;
 }
 
 .updated:not(.published) {
@@ -11244,11 +11248,70 @@ textarea {
 	margin-bottom: 1em;
 }
 
+.top-bar__data ul {
+	display: flex;
+	margin-bottom: 0;
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+@media (max-width: 768px) {
+	.top-bar__data ul {
+		flex-direction: column;
+		text-align: center;
+	}
+}
+
+.top-bar__data li i {
+	margin-right: .5em;
+}
+
+@media (min-width: 767px) {
+	.top-bar__data li:not(:last-child) {
+		border-right: 1px solid #eee;
+		padding-right: 1em;
+		margin-right: 1em;
+	}
+}
+
 /* Footer
 --------------------------------------------- */
 .footer-widget-area {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-gap: 3em;
+}
+
+.v4-footer.text-light a {
+	color: var(--color-light);
+}
+
+.v4-footer.text-dark a {
+	color: var(--color-dark);
+}
+
+.footer-widget .menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.footer-widget .menu li:before {
+	content: '\f054';
+	font-family: "Font Awesome 5 Pro";
+	font-size: .6em;
+	margin-right: 1em;
+	position: relative;
+	top: -1px;
+}
+
+.site-info p {
+	margin-bottom: 0;
+}
+
+.footer-title {
+	font-size: 1.3em;
 }
 
 /* Cards
@@ -11586,6 +11649,10 @@ a {
 
 .main-container {
 	display: flex;
+}
+
+.hidden-acf {
+	display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

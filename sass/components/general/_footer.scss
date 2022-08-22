@@ -1,4 +1,46 @@
 .footer-widget-area {
   display: grid;
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3em;
+}
+
+.v4-footer {
+  &.text-light {
+    a {
+      color: var(--color-light);
+    }
+  }
+  &.text-dark {
+    a {
+      color: var(--color-dark);
+    }
+  }
+}
+
+.footer-widget .menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    &:before {
+      content: '\f054';
+      font-family: "Font Awesome 5 Pro";
+      font-size: .6em;
+      margin-right: 1em;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+.site-info {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+.footer-title {
+  font-size: 1.3em;
 }

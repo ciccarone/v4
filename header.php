@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package FMG
+ * @package V4
  */
 
 ?>
@@ -24,9 +24,29 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'fmg' ); ?></a>
+	<div class="top-bar py-2">
+		<div class="container">
+			<div class="top-bar__data"><ul>
+				<?php
+					$topbar = [];
+					if ($company_phone = get_field('company_phone', 'option')) {
+						array_push($topbar, '<li><i class="fas fa-phone"></i>' . '<a href="tel:+1'.$company_phone.'">'.$company_phone.'</a></li>');
+					}
+					if ($company_email_address = get_field('company_email_address', 'option')) {
+						array_push($topbar, '<li><i class="fas fa-envelope"></i><a href="mailto:'.$company_phone.'">' . $company_email_address.'</a></li>');
+					}
+					if ($company_address = get_field('company_address', 'option')) {
+						array_push($topbar, '<li><i class="fas fa-envelope-open-text"></i>' . $company_address.'</li>');
+					}
+					echo join($topbar);
 
-	<header id="masthead" class="sticky-top site-header bg-color__<?php echo fmg_retrieve_color_name('header_background_color') ?> text-color__<?php echo fmg_retrieve_color_name('header_text_color') ?> bg-<?php echo fmg_retrieve_overlay_header_boolean() ?>">
+				?>
+			</ul></div>
+
+		</div>
+	</div>
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'v4' ); ?></a>
+	<header id="masthead" class="sticky-top site-header bg-color__<?php echo v4_retrieve_color_name('header_background_color') ?> text-color__<?php echo v4_retrieve_color_name('header_text_color') ?> bg-<?php echo v4_retrieve_overlay_header_boolean() ?>">
 		<div class="container">
 			<nav class="navbar navbar-expand-lg py-4">
 			  <div class="container-fluid">
