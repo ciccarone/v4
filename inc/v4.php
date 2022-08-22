@@ -448,7 +448,22 @@ function v4_button_generator($buttons)
 	if ($buttons) {
 		$ret = '';
 		foreach ($buttons as $button) {
-			$ret .= '<a class="btn btn-v4-'.$button['button_design'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
+			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
+		}
+		return $ret;
+	}
+	return false;
+}
+
+function v4_heading_generator($headings)
+{
+	$title_override = true;
+	if ($headings) {
+
+		$ret = '';
+		foreach ($headings as $heading) {
+			$title_override = $heading['heading_text'] !== '' ? $heading['heading_text'] : get_the_title();
+			$ret .= '<'.$heading['element_options'].' class="p-0 v4-heading text-'.$heading['position_options'].' text-'.$heading['color_names'].'">'.$title_override.'</'.$heading['element_options'].'>';
 		}
 		return $ret;
 	}

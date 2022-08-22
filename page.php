@@ -30,6 +30,11 @@ get_header();
 						$section_buttons = $page_section['button_repeater'] ? v4_button_generator($page_section['button_repeater']) : false;
 					}
 
+					if (isset($page_section['heading_repeater'])) {
+						$section_headings = $page_section['heading_repeater'] ? v4_heading_generator($page_section['heading_repeater']) : false;
+					}
+
+
 					$section_bg = isset($page_section['section_background_color_color_names']) ? 'bg-color__'.$page_section['section_background_color_color_names'] : '';
 					$section_text_color = isset($page_section['section_text_color']) ? $page_section['section_text_color'] : '';
 					$section_bg_image = (isset($page_section['section_background_image']) && ($page_section['section_background_image'])) ? 'style="background-image:url('.$page_section['section_background_image']['sizes']['large'].')"' : false;

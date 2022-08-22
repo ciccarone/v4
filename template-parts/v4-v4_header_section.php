@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1><?php echo v4_retrieve_page_header($page_section['title_override']) ?></h1>
+      <?php // var_dump($page_section['heading_repeater']); ?>
+      <?php echo $section_headings; ?>
+      <?php echo $section_buttons; ?>
     </div>
+
   </div>
 </div>
