@@ -12460,6 +12460,15 @@ input[type="color"]:focus,
 	color: var(--color-dark);
 }
 
+.section-width--boxed {
+	width: var(--width-boxed);
+	margin: 0 auto;
+}
+
+.bg-attachment--parallax {
+	background-attachment: fixed;
+}
+
 .gform_footer input[type="submit"] {
 	padding: 1em 2em;
 }
@@ -12474,6 +12483,14 @@ a {
 
 .py-xxl {
 	padding: 10em 0;
+}
+
+.my-xl {
+	margin: 6em auto;
+}
+
+.my-xxl {
+	margin: 10em auto;
 }
 
 .page-section {

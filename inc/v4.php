@@ -432,12 +432,92 @@ function v4_retrieve_color_name($field)
 add_action('wp_head', 'my_custom_css');
 
 function my_custom_css() {
+
+$h1 = get_field('h1_settings', 'option');
+$h2 = get_field('h2_settings', 'option');
+$h3 = get_field('h3_settings', 'option');
+$h4 = get_field('h4_settings', 'option');
+$h5 = get_field('h5_settings', 'option');
+$h6 = get_field('h6_settings', 'option');
+$p = get_field('p_settings', 'option');
+
 echo '<style>
 :root {
 --color-dark: '.v4_retrieve_color('color_map_dark').';
 --color-light: '.v4_retrieve_color('color_map_light').';
 --color-primary: '.v4_retrieve_color('color_map_primary').';
 --color-secondary: '.v4_retrieve_color('color_map_secondary').';
+--width-boxed: '.get_field('site_width', 'option').'px;
+}
+
+h1 {
+  font-size: '.$h1['font_size'].'px;
+  font-family: '.$h1['font_family'].';
+  font-style: '.$h1['font_style'].';
+  font-weight: '.$h1['font_weight'].';
+  letter-spacing: '.$h1['letter_spacing'].'px;
+  line-height: '.$h1['line_height'].'px;
+  text-transform: '.$h1['text_transform'].';
+}
+
+h2 {
+  font-size: '.$h2['font_size'].'px;
+  font-family: '.$h2['font_family'].';
+  font-style: '.$h2['font_style'].';
+  font-weight: '.$h2['font_weight'].';
+  letter-spacing: '.$h2['letter_spacing'].'px;
+  line-height: '.$h2['line_height'].'px;
+  text-transform: '.$h2['text_transform'].';
+}
+
+h3 {
+  font-size: '.$h3['font_size'].'px;
+  font-family: '.$h3['font_family'].';
+  font-style: '.$h3['font_style'].';
+  font-weight: '.$h3['font_weight'].';
+  letter-spacing: '.$h3['letter_spacing'].'px;
+  line-height: '.$h3['line_height'].'px;
+  text-transform: '.$h3['text_transform'].';
+}
+
+h4 {
+  font-size: '.$h4['font_size'].'px;
+  font-family: '.$h4['font_family'].';
+  font-style: '.$h4['font_style'].';
+  font-weight: '.$h4['font_weight'].';
+  letter-spacing: '.$h4['letter_spacing'].'px;
+  line-height: '.$h4['line_height'].'px;
+  text-transform: '.$h4['text_transform'].';
+}
+
+h5 {
+  font-size: '.$h5['font_size'].'px;
+  font-family: '.$h5['font_family'].';
+  font-style: '.$h5['font_style'].';
+  font-weight: '.$h5['font_weight'].';
+  letter-spacing: '.$h5['letter_spacing'].'px;
+  line-height: '.$h5['line_height'].'px;
+  text-transform: '.$h5['text_transform'].';
+}
+
+h6 {
+  font-size: '.$h6['font_size'].'px;
+  font-family: '.$h6['font_family'].';
+  font-style: '.$h6['font_style'].';
+  font-weight: '.$h6['font_weight'].';
+  letter-spacing: '.$h6['letter_spacing'].'px;
+  line-height: '.$h6['line_height'].'px;
+  text-transform: '.$h6['text_transform'].';
+}
+
+p {
+  font-size: '.$h6['font_size'].'px;
+  font-family: '.$h6['font_family'].';
+  font-style: '.$h6['font_style'].';
+  font-weight: '.$h6['font_weight'].';
+  letter-spacing: '.$h6['letter_spacing'].'px;
+  line-height: '.$h6['line_height'].'px;
+  text-transform: '.$h6['text_transform'].';
 }
 </style>';
 }

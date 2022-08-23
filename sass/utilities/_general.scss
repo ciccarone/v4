@@ -25,6 +25,21 @@
   }
 }
 
+.section {
+  &-width {
+    &--boxed {
+      width: var(--width-boxed);
+      margin: 0 auto;
+    }
+  }
+}
+
+.bg-attachment {
+  &--parallax {
+    background-attachment: fixed;
+  }
+}
+
 
 
 .gform_footer input[type="submit"] {
@@ -41,6 +56,14 @@ a {
 
 .py-xxl {
   padding: 10em 0;
+}
+
+.my-xl {
+  margin: 6em auto;
+}
+
+.my-xxl {
+  margin: 10em auto;
 }
 
 .page-section {
