@@ -441,6 +441,15 @@ $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $p = get_field('p_settings', 'option');
 
+
+
+
+$button_bg_color = get_field('button_background_color', 'option');
+$button_bg_color_hover = get_field('button_background_color_hover', 'option');
+$button_text_color = get_field('button_text_color', 'option');
+$button_text_color_hover = get_field('button_text_color_hover', 'option');
+
+
 echo '<style>
 :root {
 --color-dark: '.v4_retrieve_color('color_map_dark').';
@@ -519,6 +528,20 @@ p {
   line-height: '.$h6['line_height'].'px;
   text-transform: '.$h6['text_transform'].';
 }
+
+
+.btn {
+
+	background-color: '.v4_retrieve_color('color_map_'.$button_bg_color['color_names']).';
+	border-color: '.v4_retrieve_color('color_map_'.$button_bg_color['color_names']).';
+	color: '.v4_retrieve_color('color_map_'.$button_text_color['color_names']).';
+}
+
+.btn:hover {
+	background-color: '.v4_retrieve_color('color_map_'.$button_bg_color_hover['color_names']).';
+	border-color: '.v4_retrieve_color('color_map_'.$button_bg_color_hover['color_names']).';
+	color: '.v4_retrieve_color('color_map_'.$button_text_color_hover['color_names']).';
+}
 </style>';
 }
 
@@ -528,7 +551,7 @@ function v4_button_generator($buttons)
 	if ($buttons) {
 		$ret = '';
 		foreach ($buttons as $button) {
-			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
+			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.get_field('padding_options', 'option').' btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
 		return $ret;
 	}
@@ -544,6 +567,21 @@ function v4_heading_generator($headings)
 		foreach ($headings as $heading) {
 			$title_override = $heading['heading_text'] !== '' ? $heading['heading_text'] : get_the_title();
 			$ret .= '<'.$heading['element_options'].' class="p-0 v4-heading text-'.$heading['position_options'].' text-'.$heading['color_names'].'">'.$title_override.'</'.$heading['element_options'].'>';
+		}
+		return $ret;
+	}
+	return false;
+}
+
+function v4_text_generator($texts)
+{
+	$title_override = true;
+	if ($texts) {
+
+		$ret = '';
+		foreach ($texts as $text) {
+			$title_override = $text['text'] !== '' ? $text['text'] : get_the_title();
+			$ret .= '<span class="p-0 v4-text text-'.$text['position_options'].' text-'.$text['color_names'].'">'.$title_override.'</span>';
 		}
 		return $ret;
 	}
