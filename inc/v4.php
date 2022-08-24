@@ -440,7 +440,7 @@ $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $p = get_field('p_settings', 'option');
-
+$global_border_radius = get_field('global_border_radius', 'option');
 
 
 
@@ -457,7 +457,13 @@ echo '<style>
 --color-primary: '.v4_retrieve_color('color_map_primary').';
 --color-secondary: '.v4_retrieve_color('color_map_secondary').';
 --width-boxed: '.get_field('site_width', 'option').'px;
+--global-border-radius: '.get_field('global_border_radius', 'option').'px;
 }
+
+.global_border_radius {
+	border-radius: var(--global-border-radius);
+}
+
 
 h1 {
   font-size: '.$h1['font_size'].'px;
@@ -520,13 +526,13 @@ h6 {
 }
 
 p {
-  font-size: '.$h6['font_size'].'px;
-  font-family: '.$h6['font_family'].';
-  font-style: '.$h6['font_style'].';
-  font-weight: '.$h6['font_weight'].';
-  letter-spacing: '.$h6['letter_spacing'].'px;
-  line-height: '.$h6['line_height'].'px;
-  text-transform: '.$h6['text_transform'].';
+  font-size: '.$p['font_size'].'px;
+  font-family: '.$p['font_family'].';
+  font-style: '.$p['font_style'].';
+  font-weight: '.$p['font_weight'].';
+  letter-spacing: '.$p['letter_spacing'].'px;
+  line-height: '.$p['line_height'].'px;
+  text-transform: '.$p['text_transform'].';
 }
 
 

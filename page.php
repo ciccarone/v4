@@ -40,19 +40,30 @@ get_header();
 
 
 					$section_bg = isset($page_section['section_background_color_color_names']) ? 'bg-color__'.$page_section['section_background_color_color_names'] : '';
+
 					$section_bg_attachment = $page_section['section_background_image_parallax'] ? 'bg-attachment--parallax' : '';
+
 					$section_width = 'section-width--' . $page_section['section_width'];
+
 					$section_text_color = isset($page_section['section_text_color']) ? $page_section['section_text_color'] : '';
+
 					$section_bg_image = (isset($page_section['section_background_image']) && ($page_section['section_background_image'])) ? 'style="background-image:url('.$page_section['section_background_image']['sizes']['large'].')"' : false;
+
 					$section_padding_tb = isset($page_section['padding_options_top_bottom']) ? $page_section['padding_options_top_bottom'] : '';
+
 					$section_padding_lr = isset($page_section['padding_options_left_right']) ? $page_section['padding_options_left_right'] : '';
+
 					$section_margin = isset($page_section['section_margin']) ? $page_section['section_margin'] : '';
+
+					$section_border_radius = isset($page_section['section_border_radius']) ? 'global_border_radius' : '';
+
 					if ($overlay_color = isset($page_section['color_names'])) {
 						list($r, $g, $b) = sscanf(get_field('color_map_'.$page_section['color_names'], 'option')['color_selector'], "#%02x%02x%02x");
+
 						$color_div = '<div class="color_overlay" style="background-color: rgba('.$r.','.$g.','.$b.','.$page_section['section_background_color_overlay_opacity'].')"></div>';
 					}
 
-					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '.$section_bg_attachment.' '. $section_padding_tb . ' '. $section_padding_lr .' '.$section_margin.' '.$section_width.' ' .$section_text_color .'" ' . $section_bg_image.'>';
+					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '.$section_bg_attachment.' '. $section_padding_tb . ' '. $section_border_radius . ' ' . $section_padding_lr .' '.$section_margin.' '.$section_width.' ' .$section_text_color .'" ' . $section_bg_image.'>';
 
 					if ((isset($page_section['section_title'])) && ($page_section['section_title'])) {
 						echo '<div class="container"><h3 class="mb-4">'.$page_section['section_title'].'</h3></div>';
