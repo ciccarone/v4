@@ -460,6 +460,10 @@ echo '<style>
 --global-border-radius: '.get_field('global_border_radius', 'option').'px;
 }
 
+.text-primary {
+	color: var(--color-primary) !important;
+}
+
 .global_border_radius {
 	border-radius: var(--global-border-radius);
 }
@@ -574,6 +578,35 @@ function v4_heading_generator($headings)
 			$title_override = $heading['heading_text'] !== '' ? $heading['heading_text'] : get_the_title();
 			$ret .= '<'.$heading['element_options'].' class="p-0 v4-heading text-'.$heading['position_options'].' text-'.$heading['color_names'].'">'.$title_override.'</'.$heading['element_options'].'>';
 		}
+		return $ret;
+	}
+	return false;
+}
+
+function v4_card_image_generator($image)
+{
+	// $card_image['image_option'], $card_image['image_upload'], $card_image['icon_choice']
+	if ($image) {
+
+		// var_dump($image);
+
+		switch ($image['image_option']) {
+			case 'featured':
+				$post_id = $image['card_relationship'][0]->ID;
+				$image = get_the_post_thumbnail($post_id, 'medium_large');
+				var_dump($image);
+				break;
+
+			default:
+				// code...
+				break;
+		}
+
+
+		$ret = '';
+		// foreach ($image as $i) {
+		// 	var_dump($i);
+		// }
 		return $ret;
 	}
 	return false;

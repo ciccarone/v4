@@ -28,7 +28,7 @@
 .section {
   &-width {
     &--boxed {
-      width: var(--width-boxed);
+      max-width: var(--width-boxed);
       margin: 0 auto;
     }
   }

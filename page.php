@@ -25,6 +25,9 @@ get_header();
 				// var_dump($page_sections);
 				foreach ($page_sections as $page_section) {
 					$color_div = false;
+					$section_bg = false;
+					$section_border_radius = false;
+					$section_headings = false;
 
 					if (isset($page_section['button_repeater'])) {
 						$section_buttons = $page_section['button_repeater'] ? v4_button_generator($page_section['button_repeater']) : false;
@@ -55,7 +58,7 @@ get_header();
 
 					$section_margin = isset($page_section['section_margin']) ? $page_section['section_margin'] : '';
 
-					$section_border_radius = isset($page_section['section_border_radius']) ? 'global_border_radius' : '';
+					$section_border_radius = !empty($page_section['section_border_radius']) ? 'global_border_radius' : '';
 
 					if ($overlay_color = isset($page_section['color_names'])) {
 						list($r, $g, $b) = sscanf(get_field('color_map_'.$page_section['color_names'], 'option')['color_selector'], "#%02x%02x%02x");
