@@ -562,13 +562,22 @@ function v4_button_generator($buttons)
 		$ret = '';
 		$ret .= count($buttons) > 1 ? '<div class="btn__container">' : '';
 		foreach ($buttons as $button) {
-			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.get_field('padding_options', 'option').' btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
+			$padding_options_top_bottom = get_field('padding_options_top_bottom', 'option');
+			$padding_options_left_right = get_field('padding_options_left_right', 'option');
+			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.$padding_options_top_bottom.' '.$padding_options_left_right.' global_border_radius btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
 		$ret .= count($buttons) > 1 ? '</div>' : '';
 
 		return $ret;
 	}
 	return false;
+}
+
+// for default options:
+function v4_heading_generator_default($post_id = false)
+{
+		$ret = '<'.get_field('card_title_element_element_options', 'option').' class="p-0 v4-heading text-'.get_field('card_title_position', 'option')['position_options'].' text-'.get_field('card_title_color', 'option')['color_names'].'">'.get_the_title($post_id).'</'.get_field('card_title_element_element_options', 'option').'>';
+		return $ret;
 }
 
 function v4_heading_generator($headings, $post_id = false)
