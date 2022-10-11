@@ -560,22 +560,25 @@ function v4_button_generator($buttons)
 {
 	if ($buttons) {
 		$ret = '';
+		$ret .= count($buttons) > 1 ? '<div class="btn__container">' : '';
 		foreach ($buttons as $button) {
 			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.get_field('padding_options', 'option').' btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
+		$ret .= count($buttons) > 1 ? '</div>' : '';
+
 		return $ret;
 	}
 	return false;
 }
 
-function v4_heading_generator($headings)
+function v4_heading_generator($headings, $post_id = false)
 {
 	$title_override = true;
 	if ($headings) {
 
 		$ret = '';
 		foreach ($headings as $heading) {
-			$title_override = $heading['heading_text'] !== '' ? $heading['heading_text'] : get_the_title();
+			$title_override = $heading['heading_text'] !== '' ? $heading['heading_text'] : get_the_title($post_id);
 			$ret .= '<'.$heading['element_options'].' class="p-0 v4-heading text-'.$heading['position_options'].' text-'.$heading['color_names'].'">'.$title_override.'</'.$heading['element_options'].'>';
 		}
 		return $ret;
@@ -585,16 +588,28 @@ function v4_heading_generator($headings)
 
 function v4_card_image_generator($image)
 {
-	// $card_image['image_option'], $card_image['image_upload'], $card_image['icon_choice']
 	if ($image) {
 
-		// var_dump($image);
+		$image_url = false;
 
 		switch ($image['image_option']) {
 			case 'featured':
+
 				$post_id = $image['card_relationship'][0]->ID;
-				$image = get_the_post_thumbnail($post_id, 'medium_large');
-				var_dump($image);
+				$image_url = get_the_post_thumbnail_url($post_id, 'large');
+				if ($image_url == '') {
+					$image_url = get_field('site_fallback_image','option');
+				}
+				break;
+
+			case 'upload':
+				$image = $image['image_upload'];
+				$image_url = $image['sizes']['medium_large'];
+				break;
+
+			case 'icon':
+				$image = v4_icon_generator($image);
+				// $image_url = $image['sizes']['medium_large'];
 				break;
 
 			default:
@@ -603,13 +618,89 @@ function v4_card_image_generator($image)
 		}
 
 
-		$ret = '';
-		// foreach ($image as $i) {
-		// 	var_dump($i);
-		// }
+
+		$ret = '<div class="v4-card__image" style="background-image: url('.$image_url.')"></div>';
+
 		return $ret;
 	}
 	return false;
+}
+
+function v4_text($text)
+{
+	$padding_options_top_bottom = !empty($text['padding-y']) ? $text['padding-y'] : 'py-0';
+	$padding_options_left_right = !empty($text['padding-x']) ? $text['padding-x'] : 'px-0';
+	return '<div class="'.$padding_options_top_bottom.' '.$padding_options_left_right.' v4-text text-'.$text['position'].' text-'.$text['color'].'">'.$text['content'].'</div>';
+}
+
+
+function v4_card_excerpt_generator($card)
+{
+	if ($card['excerpt_options']) {
+		$excerpt = '';
+
+		switch ($card['excerpt_options']) {
+			case 'show':
+				$excerpt = get_the_excerpt($card);
+				$text['position'] = $card['excerpt_style']['position_options'];
+				$text['color'] = $card['excerpt_style']['color_names'];
+				$text['padding-y'] = $card['excerpt_style']['padding_options_top_bottom'];
+				$text['padding-x'] = $card['excerpt_style']['padding_options_left_right'];
+				$text['content'] = $excerpt;
+				$excerpt = v4_text($text);
+				break;
+
+			case 'custom':
+				$excerpt = $card['custom_excerpt']['text_repeater'][0]['text'];
+				$text['position'] = $card['excerpt_style']['position_options'];
+				$text['color'] = $card['excerpt_style']['color_names'];
+				$text['padding-y'] = $card['excerpt_style']['padding_options_top_bottom'];
+				$text['padding-x'] = $card['excerpt_style']['padding_options_left_right'];
+				$text['content'] = $excerpt;
+				$excerpt = v4_text($text);
+				break;
+
+			case 'none':
+				$excerpt = '';
+				break;
+
+			default:
+				$excerpt = false;
+				break;
+		}
+		return $excerpt;
+	}
+	return false;
+}
+
+function v4_card_button_generator($card)
+{
+	// var_dump($card);
+	if ($card['button_options']) {
+		$button = '';
+
+		switch ($card['button_options']) {
+			case 'show':
+				$button_text = $card['card_button_text'];
+				break;
+
+			case 'none':
+				$button = '';
+				break;
+
+			default:
+				$button = false;
+				break;
+		}
+		return $button;
+	}
+	return false;
+}
+
+function v4_icon_generator($icon)
+{
+	// TODO: get working
+	var_dump($icon);
 }
 
 function v4_text_generator($texts)
@@ -620,7 +711,10 @@ function v4_text_generator($texts)
 		$ret = '';
 		foreach ($texts as $text) {
 			$title_override = $text['text'] !== '' ? $text['text'] : get_the_title();
-			$ret .= '<span class="p-0 v4-text text-'.$text['position_options'].' text-'.$text['color_names'].'">'.$title_override.'</span>';
+			$text['position'] = $text['position_options'];
+			$text['color'] = $text['color_names'];
+			$text['content'] = $title_override;
+			$ret .= v4_text($text);
 		}
 		return $ret;
 	}

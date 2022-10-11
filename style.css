@@ -11724,6 +11724,7 @@ a.btn-v4-dark:hover {
 a.btn-v4-outline-dark {
 	border-color: var(--color-dark);
 	color: var(--color-dark);
+	background-color: transparent !important;
 }
 
 a.btn-v4-outline-dark:hover {
@@ -11735,12 +11736,21 @@ a.btn-v4-outline-dark:hover {
 a.btn-v4-outline-light {
 	border-color: var(--color-light);
 	color: var(--color-light);
+	background-color: transparent !important;
 }
 
 a.btn-v4-outline-light:hover {
 	background-color: var(--color-dark);
 	border-color: var(--color-dark);
 	color: var(--color-light);
+}
+
+.btn__container {
+	display: flex;
+}
+
+.btn__container .btn {
+	margin-right: 10px;
 }
 
 input[type="text"],
@@ -12198,6 +12208,20 @@ textarea {
 	.card {
 		margin-bottom: 2em;
 	}
+}
+
+.v4-card__image {
+	background-position: center;
+	background-size: cover;
+	min-height: 200px;
+}
+
+.v4-card__content {
+	padding: 2em;
+}
+
+.v4-card__content p {
+	margin0bottom: 0;
 }
 
 /* Ping Pong

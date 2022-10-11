@@ -32,3 +32,21 @@
   border: none;
   background-color: var(--color-light);
 }
+
+
+.v4-card {
+
+  &__image {
+    background-position: center;
+    background-size: cover;
+    min-height: 200px;
+  }
+
+  &__content {
+    padding: 2em;
+
+    p {
+      margin0bottom: 0;
+    }
+  }
+}
