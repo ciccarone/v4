@@ -6,6 +6,15 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
+add_filter( 'excerpt_length', function($length) {
+    return get_field('global_excerpt_length', 'option');
+}, PHP_INT_MAX );
+
+function new_excerpt_more( $more ) {
+	return get_field('global_excerpt_ellipsis', 'option');
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
 function acf_load_color_field_choices( $field ) {
 
     // reset choices
@@ -445,6 +454,7 @@ $global_border_radius = get_field('global_border_radius', 'option');
 
 
 
+
 $button_bg_color = get_field('button_background_color', 'option');
 $button_bg_color_hover = get_field('button_background_color_hover', 'option');
 $button_text_color = get_field('button_text_color', 'option');
@@ -459,6 +469,16 @@ echo '<style>
 --color-secondary: '.v4_retrieve_color('color_map_secondary').';
 --width-boxed: '.get_field('site_width', 'option').'px;
 --global-border-radius: '.get_field('global_border_radius', 'option').'px;
+--global-grid-gap: '.get_field('global_grid_gap', 'option').'px;
+--global-mobile-breakpoint: '.get_field('global_mobile_breakpoint', 'option').'px;
+--global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option').'px;
+}
+
+
+@media (max-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
+	.grid {
+		grid-template-columns: 1fr;
+  }
 }
 
 .text-primary {
@@ -563,6 +583,7 @@ function v4_dynamic_cards($cards)
 {
 	$query = $cards['query'];
 	$count = $cards['count'];
+	$border_radius = $cards['border_radius'];
 
 	// WP_Query arguments
 	$args = array(
@@ -612,7 +633,7 @@ function v4_dynamic_cards($cards)
 
           $card_button = v4_button_generator_default(get_the_ID());
 
-          echo '<div class="v4-card bg-color__'.$card_bg_color.'">';
+          echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
             echo v4_card_image_generator($image, get_the_ID());
             echo '<div class="v4-card__content">';
               echo $card_title;
@@ -688,8 +709,9 @@ function v4_heading_generator($headings, $post_id = false)
 
 		$ret = '';
 		foreach ($headings as $heading) {
+
 			$title_override = $heading['heading_text'] !== '' ? $heading['heading_text'] : get_the_title($post_id);
-			$ret .= '<'.$heading['element_options'].' class="p-0 v4-heading text-'.$heading['position_options'].' text-'.$heading['color_names'].'">'.$title_override.'</'.$heading['element_options'].'>';
+			$ret .= '<'.$heading['element_options'].' class="v4-heading text-'.$heading['position_options'].' text-'.$heading['color_names'].' '.$heading['heading_padding']['padding_options_left_right'].' '.$heading['heading_padding']['padding_options_top_bottom'].'">'.$title_override.'</'.$heading['element_options'].'>';
 		}
 		return $ret;
 	}

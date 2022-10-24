@@ -36,6 +36,7 @@
 
 .v4-card {
 
+  overflow: hidden;
   &__image {
     background-position: center;
     background-size: cover;
@@ -46,7 +47,23 @@
     padding: 2em;
 
     p {
-      margin0bottom: 0;
+      margin-bottom: 0;
     }
   }
+}
+
+.grid {
+  display: grid;
+  grid-gap: var(--global-grid-gap);
+}
+
+.v4-cards {
+
+
+  &__count {
+    &--3 {
+     grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
 }

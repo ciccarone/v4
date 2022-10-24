@@ -12206,6 +12206,10 @@ textarea {
 	}
 }
 
+.v4-card {
+	overflow: hidden;
+}
+
 .v4-card__image {
 	background-position: center;
 	background-size: cover;
@@ -12217,7 +12221,16 @@ textarea {
 }
 
 .v4-card__content p {
-	margin0bottom: 0;
+	margin-bottom: 0;
+}
+
+.grid {
+	display: grid;
+	grid-gap: var(--global-grid-gap);
+}
+
+.v4-cards__count--3 {
+	grid-template-columns: repeat(3, 1fr);
 }
 
 /* Ping Pong

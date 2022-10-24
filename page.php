@@ -67,14 +67,22 @@ get_header();
 						$color_div = '<div class="color_overlay" style="background-color: rgba('.$r.','.$g.','.$b.','.$page_section['section_background_color_overlay_opacity'].')"></div>';
 					}
 
-					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '.$section_bg_attachment.' '. $section_padding_tb . ' '. $section_border_radius . ' ' . $section_padding_lr .' '.$section_margin.' '.$section_width.' ' .$section_text_color .'" ' . $section_bg_image.'>';
+					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '.$section_bg_attachment.' '. $section_padding_tb . ' '. $section_border_radius . ' ' . $section_padding_lr .' '.$section_margin.' ' .$section_text_color .'" ' . $section_bg_image.'>';
+
+					echo '<div class="'.$section_width.'">';
 
 					if ((isset($page_section['section_title'])) && ($page_section['section_title'])) {
 						echo '<div class="container"><h3 class="mb-4">'.$page_section['section_title'].'</h3></div>';
 
 					}
 					include( locate_template( 'template-parts/v4-'.$page_section['acf_fc_layout'].'.php', false, false ) );
-					echo $color_div;
+
+					if ($page_section['section_background_color_overlay_opacity']) {
+						echo $color_div;
+					}
+
+
+					echo '</div>';
 					echo '</section>';
 
 				}
