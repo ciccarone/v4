@@ -440,6 +440,7 @@ $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $p = get_field('p_settings', 'option');
+$logo_max_width = get_field('logo_max_width', 'option');
 $global_border_radius = get_field('global_border_radius', 'option');
 
 
@@ -552,9 +553,107 @@ p {
 	border-color: '.v4_retrieve_color('color_map_'.$button_bg_color_hover['color_names']).';
 	color: '.v4_retrieve_color('color_map_'.$button_text_color_hover['color_names']).';
 }
+.site-branding img {
+	max-width: '.$logo_max_width.'px;
+}
 </style>';
 }
 
+function v4_dynamic_cards($cards)
+{
+	$query = $cards['query'];
+	$count = $cards['count'];
+
+	// WP_Query arguments
+	$args = array(
+	    'post_type'              => array('post'),
+	    'post_status'            => array('publish'),
+	    'posts_per_page'         => $count,
+	    'order'                  => 'DESC',
+	    'orderby'                => 'date',
+			'ignore_sticky_posts' => 1,
+	);
+
+	if (null) {
+	$args['tax_query'] = array(
+			'relation' => 'OR', // Use AND for taking result on both condition true
+			array(
+					'taxonomy'         => 'category', // taxonomy slug
+					'terms'            => array(1, 2), // term ids
+					'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
+					'operator'         => 'IN', // Also support: AND, NOT IN, EXISTS, NOT EXISTS
+					'include_children' => true,
+			),
+			array(
+					'taxonomy'         => 'custom-category', // taxonomy slug
+					'terms'            => array(1, 2), // term ids
+					'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
+					'operator'         => 'IN', // Also support: slug, name, term_taxonomy_id
+					'include_children' => true,
+			),
+	);
+	}
+
+	// The Query
+	$query = new WP_Query($args);
+
+	$image['image_option'] = 'featured';
+
+	// The Loop
+	if ($query->have_posts()) {
+	    while ($query->have_posts()) {
+	        $query->the_post();
+
+          $card_bg_color = get_field('card_background_color', 'option')['color_names'];
+
+          $card_title = v4_heading_generator_default(get_the_ID());
+
+          $card_excerpt = v4_card_excerpt_generator_default(get_the_ID());
+
+          $card_button = v4_button_generator_default(get_the_ID());
+
+          echo '<div class="v4-card bg-color__'.$card_bg_color.'">';
+            echo v4_card_image_generator($image, get_the_ID());
+            echo '<div class="v4-card__content">';
+              echo $card_title;
+              echo $card_excerpt;
+              echo $card_button;
+            echo '</div>';
+          echo '</div>';
+
+	        // do something
+	    }
+	} else {
+	    // no posts found
+	}
+
+	// Restore original Post Data
+	wp_reset_postdata();
+
+}
+
+function v4_button_generator_default($post_id)
+{
+
+	if (get_field('card_button_show', 'option')) {
+
+		$b = [
+			[
+			'button_design' => '',
+			'button_position' => 'center',
+			'button_link' => [
+				'url' => get_the_permalink($post_id),
+				'target' => '_self',
+				'title' => get_field('card_button_default_text', 'option')
+			]
+		]
+		];
+
+		return v4_button_generator($b);
+	} else {
+		return;
+	}
+}
 
 function v4_button_generator($buttons)
 {
@@ -576,7 +675,9 @@ function v4_button_generator($buttons)
 // for default options:
 function v4_heading_generator_default($post_id = false)
 {
-		$ret = '<'.get_field('card_title_element_element_options', 'option').' class="p-0 v4-heading text-'.get_field('card_title_position', 'option')['position_options'].' text-'.get_field('card_title_color', 'option')['color_names'].'">'.get_the_title($post_id).'</'.get_field('card_title_element_element_options', 'option').'>';
+	$padding_options_top_bottom = get_field('card_title_padding_padding_options_top_bottom', 'option');
+	$padding_options_left_right = get_field('card_title_padding_padding_options_left_right', 'option');
+		$ret = '<'.get_field('card_title_element_element_options', 'option').' class="'.$padding_options_top_bottom.' '.$padding_options_left_right.' v4-heading text-'.get_field('card_title_position', 'option')['position_options'].' text-'.get_field('card_title_color', 'option')['color_names'].'">'.get_the_title($post_id).'</'.get_field('card_title_element_element_options', 'option').'>';
 		return $ret;
 }
 
@@ -595,7 +696,7 @@ function v4_heading_generator($headings, $post_id = false)
 	return false;
 }
 
-function v4_card_image_generator($image)
+function v4_card_image_generator($image, $passed_post_id = false)
 {
 	if ($image) {
 
@@ -604,7 +705,7 @@ function v4_card_image_generator($image)
 		switch ($image['image_option']) {
 			case 'featured':
 
-				$post_id = $image['card_relationship'][0]->ID;
+				$post_id = $passed_post_id ? $passed_post_id : $image['card_relationship'][0]->ID;
 				$image_url = get_the_post_thumbnail_url($post_id, 'large');
 				if ($image_url == '') {
 					$image_url = get_field('site_fallback_image','option');
@@ -642,6 +743,17 @@ function v4_text($text)
 	return '<div class="'.$padding_options_top_bottom.' '.$padding_options_left_right.' v4-text text-'.$text['position'].' text-'.$text['color'].'">'.$text['content'].'</div>';
 }
 
+function v4_card_excerpt_generator_default($post_id = false)
+{
+	if (!get_field('card_excerpt_show', 'option')) {
+		return;
+	}
+	$padding_options_top_bottom = get_field('card_excerpt_padding_padding_options_top_bottom', 'option');
+	$padding_options_left_right = get_field('card_excerpt_padding_padding_options_left_right', 'option');
+	$position = get_field('card_excerpt_position', 'option')['position_options'];
+	$color = get_field('card_excerpt_color', 'option')['color_names'];
+	return '<div class="'.$padding_options_top_bottom.' '.$padding_options_left_right.' v4-text text-'.$position.' text-'.$color.'">'.get_the_excerpt($post_id).'</div>';
+}
 
 function v4_card_excerpt_generator($card)
 {

@@ -28,6 +28,7 @@ get_header();
 					$section_bg = false;
 					$section_border_radius = false;
 					$section_headings = false;
+					$section_buttons = false;
 
 					if (isset($page_section['button_repeater'])) {
 						$section_buttons = $page_section['button_repeater'] ? v4_button_generator($page_section['button_repeater']) : false;
