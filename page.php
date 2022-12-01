@@ -58,8 +58,8 @@ get_header();
 					$section_padding_lr = isset($page_section['padding_options_left_right']) ? $page_section['padding_options_left_right'] : '';
 
 					$section_margin = isset($page_section['section_margin']) ? $page_section['section_margin'] : '';
-
-					$section_border_radius = !empty($page_section['section_border_radius']) ? 'global_border_radius' : '';
+					// 
+					// $section_border_radius = !empty($page_section['section_border_radius']) ? 'global_border_radius' : '';
 
 					if ($overlay_color = isset($page_section['color_names'])) {
 						list($r, $g, $b) = sscanf(get_field('color_map_'.$page_section['color_names'], 'option')['color_selector'], "#%02x%02x%02x");
@@ -67,7 +67,7 @@ get_header();
 						$color_div = '<div class="color_overlay" style="background-color: rgba('.$r.','.$g.','.$b.','.$page_section['section_background_color_overlay_opacity'].')"></div>';
 					}
 
-					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '.$section_bg_attachment.' '. $section_padding_tb . ' '. $section_border_radius . ' ' . $section_padding_lr .' '.$section_margin.' ' .$section_text_color .'" ' . $section_bg_image.'>';
+					echo '<section class="page-section page-section--'.$page_section['acf_fc_layout'].' '.$section_bg.' '.$section_bg_attachment.' '. $section_padding_tb . ' ' . $section_padding_lr .' '.$section_margin.' ' .$section_text_color .'" ' . $section_bg_image.'>';
 
 					echo '<div class="'.$section_width.'">';
 

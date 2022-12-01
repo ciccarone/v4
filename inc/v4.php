@@ -583,6 +583,8 @@ function v4_dynamic_cards($cards)
 {
 	$query = $cards['query'];
 	$count = $cards['count'];
+	$category = $cards['category'];
+	$category_condition = $cards['category_condition'];
 	$border_radius = $cards['border_radius'];
 
 	// WP_Query arguments
@@ -595,23 +597,16 @@ function v4_dynamic_cards($cards)
 			'ignore_sticky_posts' => 1,
 	);
 
-	if (null) {
+	if ($query == 'category') {
 	$args['tax_query'] = array(
-			'relation' => 'OR', // Use AND for taking result on both condition true
+			'relation' => $category_condition,
 			array(
 					'taxonomy'         => 'category', // taxonomy slug
-					'terms'            => array(1, 2), // term ids
+					'terms'            => $category, // term ids
 					'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
 					'operator'         => 'IN', // Also support: AND, NOT IN, EXISTS, NOT EXISTS
 					'include_children' => true,
-			),
-			array(
-					'taxonomy'         => 'custom-category', // taxonomy slug
-					'terms'            => array(1, 2), // term ids
-					'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
-					'operator'         => 'IN', // Also support: slug, name, term_taxonomy_id
-					'include_children' => true,
-			),
+			)
 	);
 	}
 
