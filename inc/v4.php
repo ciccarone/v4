@@ -474,6 +474,10 @@ echo '<style>
 --global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option').'px;
 }
 
+.boxed {
+  max-width: var(--width-boxed);
+  margin: 0 auto;
+}
 
 @media (max-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
 	.grid {
@@ -875,3 +879,100 @@ function v4_retrieve_page_header( $title_override )
 }
 
 add_filter('the_content','do_shortcode');
+
+
+function v4_author_box() {
+  if (!get_field('show_author_boxes_on_posts', 'option')) {
+	return false;
+  }
+
+  foreach (get_field('author_repeater') as $author) {
+
+	if ($user_association = $author['author_user_association']) {
+		
+		$user_image = false;
+		$user_social = false;
+		$user_label = false;
+		
+		$user_url = $user_association->data->user_url;
+		$userdata = get_user_meta( $user_association->data->ID );
+		$user_bio = wpautop($userdata['description'][0]);
+		
+		$user_name = $user_association->data->user_nicename;
+		
+		if ($user_social_field = get_field('author_social', 'user_'.$user_association->data->ID)['social_links']) {
+			$user_social = social_unwrapper($user_social_field);
+		}
+		
+		if ($user_label_field = get_field('author_label', 'user_'.$user_association->data->ID)) {
+			$user_label = $user_label_field;
+		}
+		if ($user_image_field = get_field('author_image', 'user_'.$user_association->data->ID)) {
+			$user_image = $user_image_field['sizes']['thumbnail'];
+		}
+
+		global $post;
+		$authors_posts = get_posts( array( 'author' => $user_association->data->ID, 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
+
+		if ($authors_posts) {
+			$post_li = '<ul>';
+			foreach ($authors_posts as $authors_post) {
+				$post_li .= '<li><a href="'.$authors_post->guid.'">'.$authors_post->post_title.'</a></li>';
+			}
+			$post_li .= '</ul>';
+		}
+		
+	}
+	
+	var_dump($author); echo "<br /><br />";
+	
+  }
+}
+
+function social_unwrapper($socials)
+{
+	$ret = '<div class="v4-socials">';
+	foreach ($socials as $social) {
+		foreach ($social as $s) {
+			$ret .= '<a href="'.$s['social_network_url'].'" target="_blank">';
+				$ret .= '<i class="fa '.$s['social_network'].'"></i>';
+			$ret .= '</a>';
+		}
+	}
+	$ret .= '</div>';
+	return $ret;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+	# code...
+}
