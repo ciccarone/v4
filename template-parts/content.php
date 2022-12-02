@@ -57,7 +57,10 @@
 		?>
 	</div><!-- .entry-content -->
 
+
+
 	<footer class="entry-footer">
 		<?php v4_entry_footer(); ?>
+		<?php v4_author_box(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

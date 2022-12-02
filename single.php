@@ -10,6 +10,7 @@
 get_header();
 ?>
 
+<div class="v4-single <?php echo get_field('single_post_boxed_layout', 'option') ? 'boxed' : '';?>">
 	<main id="primary" class="site-main">
 
 		<?php
@@ -34,7 +35,9 @@ get_header();
 		?>
 
 	</main><!-- #main -->
-
-<?php
+	<?php
 get_sidebar();
+?>
+</div>
+<?php
 get_footer();
