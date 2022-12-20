@@ -38,6 +38,10 @@ get_header();
 						$section_headings = $page_section['heading_repeater'] ? v4_heading_generator($page_section['heading_repeater']) : false;
 					}
 
+					if (isset($page_section['image_file'])) {
+						$section_image = $page_section['image_file'] ? v4_image_generator($page_section['image_file'], $page_section['image_size']) : false;
+					}
+
 					if (isset($page_section['text_repeater'])) {
 						$section_texts = $page_section['text_repeater'] ? v4_text_generator($page_section['text_repeater']) : false;
 					}
@@ -58,7 +62,7 @@ get_header();
 					$section_padding_lr = isset($page_section['padding_options_left_right']) ? $page_section['padding_options_left_right'] : '';
 
 					$section_margin = isset($page_section['section_margin']) ? $page_section['section_margin'] : '';
-					// 
+					//
 					// $section_border_radius = !empty($page_section['section_border_radius']) ? 'global_border_radius' : '';
 
 					if ($overlay_color = isset($page_section['color_names'])) {
@@ -75,6 +79,8 @@ get_header();
 						echo '<div class="container"><h3 class="mb-4">'.$page_section['section_title'].'</h3></div>';
 
 					}
+					// var_dump($page_section['acf_fc_layout']);
+					
 					include( locate_template( 'template-parts/v4-'.$page_section['acf_fc_layout'].'.php', false, false ) );
 
 					if ($page_section['section_background_color_overlay_opacity']) {

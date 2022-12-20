@@ -17,6 +17,14 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
+			if ($product_name = get_field('product_name')) {
+				echo $product_name;
+			}
+
+			if ($star_rating = get_field('star_rating')) {
+				echo generate_star_rating($star_rating);
+			}
+
 			get_template_part( 'template-parts/content', get_post_type() );
 
 			the_post_navigation(
@@ -36,6 +44,7 @@ get_header();
 
 	</main><!-- #main -->
 	<?php
+
 get_sidebar();
 ?>
 </div>

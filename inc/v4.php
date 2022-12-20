@@ -474,6 +474,12 @@ echo '<style>
 --global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option').'px;
 }
 
+@media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
+	.alignwide {
+		max-width: var(--width-boxed) !important;
+	}
+  }
+
 .boxed {
   max-width: var(--width-boxed);
   margin: 0 auto;
@@ -885,34 +891,66 @@ function v4_author_box() {
   if (!get_field('show_author_boxes_on_posts', 'option')) {
 	return false;
   }
+	$user_image = false;
+	$user_social = false;
+	$user_label = false;
+	if ($author_repeater = get_field('author_repeater')) {
+		$i = 0;
+	  foreach ($author_repeater as $author) {
 
-  foreach (get_field('author_repeater') as $author) {
 
-	if ($user_association = $author['author_user_association']) {
-		
-		$user_image = false;
-		$user_social = false;
-		$user_label = false;
-		
-		$user_url = $user_association->data->user_url;
-		$userdata = get_user_meta( $user_association->data->ID );
-		$user_bio = wpautop($userdata['description'][0]);
-		
-		$user_name = $user_association->data->user_nicename;
-		
-		if ($user_social_field = get_field('author_social', 'user_'.$user_association->data->ID)['social_links']) {
-			$user_social = social_unwrapper($user_social_field);
-		}
-		
-		if ($user_label_field = get_field('author_label', 'user_'.$user_association->data->ID)) {
-			$user_label = $user_label_field;
-		}
-		if ($user_image_field = get_field('author_image', 'user_'.$user_association->data->ID)) {
-			$user_image = $user_image_field['sizes']['thumbnail'];
+		if ($user_association = $author['author_user_association']) {
+
+
+
+			$u[$i]['user_url'] = $user_association->data->user_url;
+			$userdata = get_user_meta( $user_association->data->ID );
+			$u[$i]['user_bio'] = wpautop($userdata['description'][0]);
+			$u[$i]['user_name'] = $user_association->data->display_name;
+
+			if ($user_social_field = get_field('author_social', 'user_'.$user_association->data->ID)['social_links']) {
+				$u[$i]['user_social'] = social_unwrapper($user_social_field);
+			}
+
+			if ($user_label_field = get_field('author_label', 'user_'.$user_association->data->ID)) {
+				$u[$i]['user_label'] = $user_label_field;
+			}
+			if ($user_image_field = get_field('author_image', 'user_'.$user_association->data->ID)) {
+				$u[$i]['user_image'] = $user_image_field['sizes']['thumbnail'];
+			}
+
+			global $post;
+			$authors_posts = get_posts( array( 'author' => $user_association->data->ID, 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
+
+			if ($authors_posts) {
+				$post_li = '<ul>';
+				foreach ($authors_posts as $authors_post) {
+					$post_li .= '<li><a href="'.$authors_post->guid.'">'.$authors_post->post_title.'</a></li>';
+				}
+				$post_li .= '</ul>';
+				$u[$i]['post_li'] = $post_li;
+			}
+
 		}
 
+			$i++;
+	  }
+	} else {
+		$u[0]['user_bio'] = get_the_author_meta('description');
+		$u[0]['user_name'] = get_the_author_meta('display_name');
+		$u[0]['user_url'] = get_the_author_meta('user_url');
+		if ($user_social_field = get_field('author_social', 'user_'.get_the_author_meta('ID'))) {
+			$u[0]['user_social'] = social_unwrapper($user_social_field['social_links']);
+		}
+
+		if ($user_label_field = get_field('author_label', 'user_'.get_the_author_meta('ID'))) {
+			$u[0]['user_label'] = $user_label_field;
+		}
+		if ($user_image_field = get_field('author_image', 'user_'.get_the_author_meta('ID'))) {
+			$u[0]['user_image'] = $user_image_field['sizes']['thumbnail'];
+		}
 		global $post;
-		$authors_posts = get_posts( array( 'author' => $user_association->data->ID, 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
+		$authors_posts = get_posts( array( 'author' => get_the_author_meta('ID'), 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
 
 		if ($authors_posts) {
 			$post_li = '<ul>';
@@ -920,59 +958,69 @@ function v4_author_box() {
 				$post_li .= '<li><a href="'.$authors_post->guid.'">'.$authors_post->post_title.'</a></li>';
 			}
 			$post_li .= '</ul>';
+			$u[0]['post_li'] = $post_li;
 		}
-		
 	}
-	
-	var_dump($author); echo "<br /><br />";
-	
-  }
+	echo display_author_box($u);
+}
+
+function display_author_box($u)
+{
+
+	$ret = false;
+	foreach ($u as $key => $value) {
+		$ret .= '<div class="v4-author__box">';
+		$ret .= '<h4>'.$value['user_name'].'</h4>';
+		if (isset($value['user_label'])) {
+			$ret .= '<h5>'.$value['user_label'].'</h5>';
+		}
+
+		if (isset($value['user_social'])) {
+			$ret .= $value['user_social'];
+		}
+
+		$ret .= '</div>';
+	}
+
+	return $ret;
 }
 
 function social_unwrapper($socials)
 {
 	$ret = '<div class="v4-socials">';
-	foreach ($socials as $social) {
-		foreach ($social as $s) {
+	foreach ($socials as $s) {
+		// foreach ($social as $s) { dafuq?
 			$ret .= '<a href="'.$s['social_network_url'].'" target="_blank">';
 				$ret .= '<i class="fa '.$s['social_network'].'"></i>';
 			$ret .= '</a>';
-		}
+		// }
 	}
 	$ret .= '</div>';
 	return $ret;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function v4_image_generator($images, $size)
 {
-	# code...
+
+	return '<img src="'.$images['sizes'][$size].'" />';
+}
+
+function generate_star_rating($rating)
+{
+	$ret_extra = false;
+	$ret = '<div class="v4-star-rating">';
+	$ret .= '<div class="v4-star-rating__inner">';
+	$ret .= '<div class="v4-star-rating__title">Editor\'s Rating</div>';
+	for ($i=0; $i < $rating; $i++) {
+		$ret .= '<i class="fas fa-star"></i>';
+
+	}
+	if ($rating !== 5) {
+		for ($i=0; $i < (5 - $rating); $i++) {
+			$ret_extra .= '<i class="fal fa-star"></i>';
+		}
+	}
+	$ret_extra .= '<span>'.$rating.'</span>';
+	$ret .= $ret_extra . '</div></div>';
+	return $ret;
 }

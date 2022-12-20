@@ -204,3 +204,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Custom V4 functionality
  */
 	require get_template_directory() . '/inc/v4.php';
+
+	add_theme_support( 'align-wide' );
