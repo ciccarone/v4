@@ -745,7 +745,9 @@ function v4_card_image_generator($image, $passed_post_id = false)
 				break;
 
 			case 'icon':
-				$image = v4_icon_generator($image);
+				var_dump($image['icon_choice']);
+				
+				// $image = v4_icon_generator($image);
 				// $image_url = $image['sizes']['medium_large'];
 				break;
 

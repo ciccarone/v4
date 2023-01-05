@@ -112,3 +112,39 @@
 .dropdown-item.active, .dropdown-item:active {
 	background-color: transparent;
 }
+
+
+.navbar {
+	background-size: cover;
+	@media (max-width: 991px) {
+		.site-branding {
+			margin-left: 1em !important;
+			padding-bottom: 1em !important;
+		}
+		.navbar-toggler {
+			margin-right: 1em !important;
+			padding-bottom: 1em !important;
+		}
+		padding-top: 1em !important;
+
+		.navbar-collapse {
+			padding: 1em;
+		}
+	}
+	&--ownline {
+		@media (min-width: 991px) {
+			flex-direction: column;
+
+			.navbar-collapse {
+				width: 100%;
+				justify-content: center;
+				margin-top: 2em;
+	
+				.navbar-nav {
+					margin-left: 0 !important;
+				}
+			}
+		}
+
+	}
+}

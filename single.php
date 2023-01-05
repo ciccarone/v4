@@ -8,18 +8,58 @@
  */
 
 get_header();
+
+$single_post_padding = false;
+
+if (!get_field('single_post_boxed_layout', 'option')) {
+	$single_post_padding = get_field('single_post_full_layout_padding', 'option')['padding_options_top_bottom'] . ' ' . get_field('single_post_full_layout_padding', 'option')['padding_options_left_right'];
+}
+
 ?>
 
-<div class="v4-single <?php echo get_field('single_post_boxed_layout', 'option') ? 'boxed' : '';?>">
+<div class="v4-single <?php echo get_field('single_post_boxed_layout', 'option') ? 'boxed' : '';?> <?php echo $single_post_padding;?>">
 	<main id="primary" class="site-main">
 
 		<?php
 		while ( have_posts() ) :
 			the_post();
+			?>
+				<header class="entry-header">
+					<?php
+					if ( is_singular() ) :
+						the_title( '<h1 class="entry-title">', '</h1>' );
+					else :
+						the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					endif;
 
-			if ($product_name = get_field('product_name')) {
-				echo $product_name;
-			}
+					if ( 'post' === get_post_type() ) :
+						?>
+						<div class="entry-meta">
+							Written by <?php v4_posted_by(); ?> | <?php echo get_field('post_updated_date') ? 'Updated on ' . get_field('post_updated_date') : 'Posted on ' . v4_posted_on(); ?>
+
+							<?php 
+								if ($author_repeater = get_field('author_repeater')) {
+								$i = 0;
+								  foreach ($author_repeater as $author) {
+							
+							
+									if ($user_association = $author['author_user_association']) {
+										if (get_field('author_label', 'user_'.$user_association->data->ID) == 'Reviewer') {
+											echo '<br />';
+											echo 'Reviewed by ' . '<a href="/author/'.$user_association->data->user_nicename.'">'.$user_association->data->display_name.'</a>';
+											if ($cute_name = get_field('author_cute_name', 'user_'.$user_association->data->ID)) {
+												echo ' / ' . $cute_name;
+											}
+										}
+									}
+								}
+							}
+							
+							?>
+						</div><!-- .entry-meta -->
+					<?php endif; ?>
+				</header><!-- .entry-header -->
+			<?php
 
 			if ($star_rating = get_field('star_rating')) {
 				echo generate_star_rating($star_rating);
