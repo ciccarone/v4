@@ -901,8 +901,10 @@ function v4_author_box() {
 	  foreach ($author_repeater as $author) {
 
 
-		if ($user_association = $author['author_user_association']) {
+		$checked[$i] = '<input ' . ($i == 0 ? 'checked="checked"' : '') . 'id="tab'.$i.'" type="radio" name="pct" />';
 
+
+		if ($user_association = $author['author_user_association']) {
 
 
 			$u[$i]['user_url'] = $user_association->data->user_url;
@@ -918,7 +920,7 @@ function v4_author_box() {
 				$u[$i]['user_label'] = $user_label_field;
 			}
 			if ($user_image_field = get_field('author_image', 'user_'.$user_association->data->ID)) {
-				$u[$i]['user_image'] = $user_image_field['sizes']['thumbnail'];
+				$u[$i]['user_image'] = $user_image_field['sizes']['medium_large'];
 			}
 
 			global $post;
@@ -949,7 +951,7 @@ function v4_author_box() {
 			$u[0]['user_label'] = $user_label_field;
 		}
 		if ($user_image_field = get_field('author_image', 'user_'.get_the_author_meta('ID'))) {
-			$u[0]['user_image'] = $user_image_field['sizes']['thumbnail'];
+			$u[0]['user_image'] = $user_image_field['sizes']['medium_large'];
 		}
 		global $post;
 		$authors_posts = get_posts( array( 'author' => get_the_author_meta('ID'), 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
@@ -963,26 +965,52 @@ function v4_author_box() {
 			$u[0]['post_li'] = $post_li;
 		}
 	}
-	echo display_author_box($u);
+	echo display_author_box($u, $checked);
 }
 
-function display_author_box($u)
+function display_author_box($u, $checked)
 {
-
+	
 	$ret = false;
+	$ret .= '<div class="v4-author__box">';
+
 	foreach ($u as $key => $value) {
-		$ret .= '<div class="v4-author__box">';
-		$ret .= '<h4>'.$value['user_name'].'</h4>';
-		if (isset($value['user_label'])) {
-			$ret .= '<h5>'.$value['user_label'].'</h5>';
+		$ret .= '<div class="v4-author__item">';
+		$ret .= '<input checked="checked" id="tab1" type="radio" name="pct" />';
+		if ($value['post_li'] ?? null) {
+			$ret .= '<input id="tab2" type="radio" name="pct" />';
 		}
+		$ret .= '<nav><ul>';
+			$ret .= '<li class="tab1"><label for="tab1">'.$value['user_name'].'</label></li>';
+			if ($value['post_li'] ?? null) {
+				$ret .= '<li class="tab2"><label for="tab2">Articles</label></li>';
+			}
+		$ret .= '</ul></nav>';
 
-		if (isset($value['user_social'])) {
-			$ret .= $value['user_social'];
-		}
+		$ret .= '<section>';
+		$ret .= '<div class="tab1">';
+		$ret .= '<div class="v4-author__image">';
 
+			if ($value['user_image']) {
+				$ret .= $value['user_image'];
+			} else {
+				$ret .= get_field('user_fallback_image', 'option')['size']['medium_large'];
+			}
+			
+		$ret .= '</div>';
+		$ret .= '<div class="v4-author__content">';
+			$ret .= '<strong>'.$value['user_name'].'</strong>';
+			$ret .= $value['user_bio'];
+			if (isset($value['user_social'])) {
+				$ret .= $value['user_social'];
+			}
+		$ret .= '</div>';
+		// if (isset($value['user_label'])) {
+		// 	$ret .= '<h5>'.$value['user_label'].'</h5>';
+		// }
 		$ret .= '</div>';
 	}
+	$ret .= '</div>';
 
 	return $ret;
 }
