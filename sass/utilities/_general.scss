@@ -1,5 +1,12 @@
 body {
   overflow-x:  hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .bg-color {
@@ -238,4 +245,114 @@ a {
     margin-right: auto;
     margin-left: auto;
     width: 100%;
+}
+
+.v4-author__box .v4-author__item > input,
+.v4-author__box section > div {
+  display: none;
+}
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2,
+#tab3:checked ~ section .tab3 {
+  display: block;
+}
+
+#tab1:checked ~ nav .tab1,
+#tab2:checked ~ nav .tab2,
+#tab3:checked ~ nav .tab3 {
+  // color: red;
+}
+
+
+.v4-author {
+  &__container {
+    display: flex !important;
+  }
+
+  &__image {
+    flex: 2;
+    display: inline-block;
+    overflow: hidden;
+    width: 33%;
+    padding-bottom: 29%;
+    height: 0;
+    position: relative;
+    img{
+      width:100%;
+      height:100%;
+      position: absolute;
+      clip-path: circle(50%);
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex: 5;
+  }
+}
+
+.v4-author__box {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3em;
+
+
+}
+.v4-author__box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.v4-author__box ul li label {
+  // font-family: "Raleway";
+  float: left;
+  padding: 8px 20px;
+  // border: 1px solid #ddd;
+  // border-bottom: 0;
+  background: var(--color-secondary);
+  color: white;
+}
+// .v4-author__box ul li label:hover {
+//   background: #dddddd;
+// }
+// .v4-author__box ul li label:active {
+//   background: #ffffff;
+// }
+.v4-author__box ul li:not(:last-child) label {
+  border-right-width: 0;
+}
+.v4-author__box section {
+  // font-family: "Droid Serif";
+  clear: both;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: relative;
+  top: -7px;
+}
+.v4-author__box nav ul {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  display: inline-flex;
+}
+.v4-author__box section > div {
+  padding: 20px;
+  width: 100%;
+  // border: 1px solid #ddd;
+  background: #fbfaf6;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+}
+.v4-author__box section div h2 {
+  margin: 0;
+  // font-family: "Raleway";
+  // letter-spacing: 1px;
+  color: #34495e;
+}
+
+#tab1:checked ~ nav .tab1 label,
+#tab2:checked ~ nav .tab2 label,
+#tab3:checked ~ nav .tab3 label {
+  background: #fbfaf6;
+  color: var(--color-secondary);
+  position: relative;
 }

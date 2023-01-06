@@ -981,21 +981,23 @@ function display_author_box($u, $checked)
 			$ret .= '<input id="tab2" type="radio" name="pct" />';
 		}
 		$ret .= '<nav><ul>';
-			$ret .= '<li class="tab1"><label for="tab1">'.$value['user_name'].'</label></li>';
+			$ret .= '<li class="tab1"><label for="tab1"><i class="fas fa-user"></i> '.$value['user_name'].'</label></li>';
 			if ($value['post_li'] ?? null) {
-				$ret .= '<li class="tab2"><label for="tab2">Articles</label></li>';
+				$ret .= '<li class="tab2"><label for="tab2"><i class="far fa-list-alt"></i> Articles</label></li>';
 			}
 		$ret .= '</ul></nav>';
 
 		$ret .= '<section>';
 		$ret .= '<div class="tab1">';
+		$ret .= '<div class="v4-author__container">';
 		$ret .= '<div class="v4-author__image">';
-
+			$ret .= '<img src="';
 			if ($value['user_image']) {
 				$ret .= $value['user_image'];
 			} else {
 				$ret .= get_field('user_fallback_image', 'option')['size']['medium_large'];
 			}
+			$ret .= '" />';
 			
 		$ret .= '</div>';
 		$ret .= '<div class="v4-author__content">';
@@ -1008,6 +1010,10 @@ function display_author_box($u, $checked)
 		// if (isset($value['user_label'])) {
 		// 	$ret .= '<h5>'.$value['user_label'].'</h5>';
 		// }
+		$ret .= '</div>';
+		$ret .= '</div>';
+		$ret .= '<div class="tab2">';
+			$ret .= $value['post_li'];
 		$ret .= '</div>';
 	}
 	$ret .= '</div>';
