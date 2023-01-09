@@ -12624,6 +12624,14 @@ a {
 	display: flex;
 }
 
+@media (max-width: 768px) {
+	.v4-single {
+		flex-direction: column;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+}
+
 .v4-single #primary {
 	flex: 3;
 }
@@ -12747,14 +12755,29 @@ a {
 	display: flex !important;
 }
 
+@media (max-width: 768px) {
+	.v4-author__container {
+		flex-direction: column;
+	}
+}
+
 .v4-author__image {
 	flex: 2;
 	display: inline-block;
 	overflow: hidden;
 	width: 33%;
-	padding-bottom: 29%;
+	padding-bottom: 27%;
 	height: 0;
 	position: relative;
+	margin-right: 3em;
+}
+
+@media (max-width: 768px) {
+	.v4-author__image {
+		width: 50%;
+		padding-bottom: 50%;
+		margin: 0 auto 1em;
+	}
 }
 
 .v4-author__image img {
@@ -12769,10 +12792,42 @@ a {
 	flex: 5;
 }
 
+.v4-author__content strong {
+	display: block;
+	color: var(--color-secondary);
+	font-size: 1.8em;
+	margin-bottom: .9em;
+}
+
+.v4-author__content .v4-socials {
+	margin-top: 1em;
+}
+
+.v4-author__content .v4-socials a {
+	background-color: var(--color-secondary);
+	color: var(--color-light);
+	padding: .3em;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+}
+
+.v4-author__content .v4-socials a:not(:last-child) {
+	margin-right: .3em;
+}
+
 .v4-author__box {
 	width: 100%;
 	margin: 0 auto;
-	padding: 3em;
+}
+
+@media (min-width: 768px) {
+	.v4-author__box {
+		padding: 3em;
+	}
 }
 
 .v4-author__box ul {
@@ -12786,6 +12841,13 @@ a {
 	padding: 8px 20px;
 	background: var(--color-secondary);
 	color: white;
+	cursor: pointer;
+}
+
+@media (max-width: 768px) {
+	.v4-author__box ul li label {
+		width: 100%;
+	}
 }
 
 .v4-author__box ul li:not(:last-child) label {
@@ -12796,7 +12858,12 @@ a {
 	clear: both;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 	position: relative;
-	top: -7px;
+}
+
+@media (min-width: 768px) {
+	.v4-author__box section {
+		top: -7px;
+	}
 }
 
 .v4-author__box nav ul {
@@ -12804,8 +12871,15 @@ a {
 	display: inline-flex;
 }
 
+@media (max-width: 768px) {
+	.v4-author__box nav ul {
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
 .v4-author__box section > div {
-	padding: 20px;
+	padding: 2em;
 	width: 100%;
 	background: #fbfaf6;
 	line-height: 1.5em;

@@ -900,10 +900,6 @@ function v4_author_box() {
 		$i = 0;
 	  foreach ($author_repeater as $author) {
 
-
-		$checked[$i] = '<input ' . ($i == 0 ? 'checked="checked"' : '') . 'id="tab'.$i.'" type="radio" name="pct" />';
-
-
 		if ($user_association = $author['author_user_association']) {
 
 
@@ -935,11 +931,12 @@ function v4_author_box() {
 				$u[$i]['post_li'] = $post_li;
 			}
 
-		}
+		} 
 
 			$i++;
 	  }
 	} else {
+		
 		$u[0]['user_bio'] = get_the_author_meta('description');
 		$u[0]['user_name'] = get_the_author_meta('display_name');
 		$u[0]['user_url'] = get_the_author_meta('user_url');
@@ -965,10 +962,10 @@ function v4_author_box() {
 			$u[0]['post_li'] = $post_li;
 		}
 	}
-	echo display_author_box($u, $checked);
+	echo display_author_box($u);
 }
 
-function display_author_box($u, $checked)
+function display_author_box($u)
 {
 	
 	$ret = false;
@@ -1027,7 +1024,7 @@ function social_unwrapper($socials)
 	foreach ($socials as $s) {
 		// foreach ($social as $s) { dafuq?
 			$ret .= '<a href="'.$s['social_network_url'].'" target="_blank">';
-				$ret .= '<i class="fa '.$s['social_network'].'"></i>';
+				$ret .= '<i class="'.$s['social_network'].'"></i>';
 			$ret .= '</a>';
 		// }
 	}
