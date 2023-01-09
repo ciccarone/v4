@@ -931,24 +931,30 @@ function v4_author_box() {
 				$u[$i]['post_li'] = $post_li;
 			}
 
-		} 
+		} else {
+			$u[$i]['user_name'] = $author['author_name'];
+			$u[$i]['user_image'] = $author['author_image']['sizes']['medium_large'];
+			$u[$i]['user_bio'] = $author['author_bio'];
+			$u[$i]['post_li'] = false;
+			$u[$i]['user_social'] = social_unwrapper($author['author_social']['social_links']);
+		}
 
-			$i++;
+		$i++;
 	  }
 	} else {
 		
-		$u[0]['user_bio'] = get_the_author_meta('description');
-		$u[0]['user_name'] = get_the_author_meta('display_name');
-		$u[0]['user_url'] = get_the_author_meta('user_url');
+		$u['m']['user_bio'] = get_the_author_meta('description');
+		$u['m']['user_name'] = get_the_author_meta('display_name');
+		$u['m']['user_url'] = get_the_author_meta('user_url');
 		if ($user_social_field = get_field('author_social', 'user_'.get_the_author_meta('ID'))) {
-			$u[0]['user_social'] = social_unwrapper($user_social_field['social_links']);
+			$u['m']['user_social'] = social_unwrapper($user_social_field['social_links']);
 		}
 
 		if ($user_label_field = get_field('author_label', 'user_'.get_the_author_meta('ID'))) {
-			$u[0]['user_label'] = $user_label_field;
+			$u['m']['user_label'] = $user_label_field;
 		}
 		if ($user_image_field = get_field('author_image', 'user_'.get_the_author_meta('ID'))) {
-			$u[0]['user_image'] = $user_image_field['sizes']['medium_large'];
+			$u['m']['user_image'] = $user_image_field['sizes']['medium_large'];
 		}
 		global $post;
 		$authors_posts = get_posts( array( 'author' => get_the_author_meta('ID'), 'post__not_in' => array( $post->ID ), 'posts_per_page' => 5 ) );
@@ -959,9 +965,11 @@ function v4_author_box() {
 				$post_li .= '<li><a href="'.$authors_post->guid.'">'.$authors_post->post_title.'</a></li>';
 			}
 			$post_li .= '</ul>';
-			$u[0]['post_li'] = $post_li;
+			$u['m']['post_li'] = $post_li;
 		}
 	}
+
+	
 	echo display_author_box($u);
 }
 
@@ -970,22 +978,22 @@ function display_author_box($u)
 	
 	$ret = false;
 	$ret .= '<div class="v4-author__box">';
-
+	$i = 0;
 	foreach ($u as $key => $value) {
 		$ret .= '<div class="v4-author__item">';
-		$ret .= '<input checked="checked" id="tab1" type="radio" name="pct" />';
+		$ret .= '<input checked="checked" id="tab'.$i.'" type="radio" name="pct" />';
 		if ($value['post_li'] ?? null) {
-			$ret .= '<input id="tab2" type="radio" name="pct" />';
+			$ret .= '<input id="tab'.($i+1).'" type="radio" name="pct" />';
 		}
 		$ret .= '<nav><ul>';
-			$ret .= '<li class="tab1"><label for="tab1"><i class="fas fa-user"></i> '.$value['user_name'].'</label></li>';
+			$ret .= '<li class="tab'.$i.'"><label for="tab'.$i.'"><i class="fas fa-user"></i> '.$value['user_name'].'</label></li>';
 			if ($value['post_li'] ?? null) {
-				$ret .= '<li class="tab2"><label for="tab2"><i class="far fa-list-alt"></i> Articles</label></li>';
+				$ret .= '<li class="tab'.($i+1).'"><label for="tab'.($i+1).'"><i class="far fa-list-alt"></i> Articles</label></li>';
 			}
 		$ret .= '</ul></nav>';
 
 		$ret .= '<section>';
-		$ret .= '<div class="tab1">';
+		$ret .= '<div class="tab'.$i.'">';
 		$ret .= '<div class="v4-author__container">';
 		$ret .= '<div class="v4-author__image">';
 			$ret .= '<img src="';
@@ -1009,9 +1017,12 @@ function display_author_box($u)
 		// }
 		$ret .= '</div>';
 		$ret .= '</div>';
-		$ret .= '<div class="tab2">';
+
+		$ret .= '<div class="tab'.($i+1).'">';
 			$ret .= $value['post_li'];
 		$ret .= '</div>';
+		$ret .= '</div>';
+		$i++;
 	}
 	$ret .= '</div>';
 

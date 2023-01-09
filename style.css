@@ -12745,6 +12745,7 @@ a {
 	display: none;
 }
 
+#tab0:checked ~ section .tab0,
 #tab1:checked ~ section .tab1,
 #tab2:checked ~ section .tab2,
 #tab3:checked ~ section .tab3 {
@@ -12892,6 +12893,7 @@ a {
 	color: #34495e;
 }
 
+#tab0:checked ~ nav .tab0 label,
 #tab1:checked ~ nav .tab1 label,
 #tab2:checked ~ nav .tab2 label,
 #tab3:checked ~ nav .tab3 label {
