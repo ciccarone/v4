@@ -19,7 +19,18 @@ jQuery(document).ready(function( $ ) {
     }
   });
 
+
+  var lightbox = GLightbox();
+  lightbox.on('open', (target) => {
+	  console.log('lightbox opened');
+  });
+  var lightboxInlineIframe = GLightbox({
+	  selector: '.glightbox4'
+  });
+  
+
 });
+
 
 document.addEventListener("DOMContentLoaded", function(){
 if (window.innerWidth > 992) {

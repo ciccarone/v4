@@ -38,21 +38,12 @@ if (!get_field('single_post_boxed_layout', 'option')) {
 							Written by <?php v4_posted_by(); ?> | <?php echo get_field('post_updated_date') ? 'Updated on ' . get_field('post_updated_date') : 'Posted on ' . v4_posted_on(); ?>
 
 							<?php 
-								if ($author_repeater = get_field('author_repeater')) {
-								$i = 0;
-								  foreach ($author_repeater as $author) {
-							
-							
-									if ($user_association = $author['author_user_association']) {
-										if (get_field('author_label', 'user_'.$user_association->data->ID) == 'Reviewer') {
-											echo '<br />';
-											echo 'Reviewed by ' . '<a href="/author/'.$user_association->data->user_nicename.'">'.$user_association->data->display_name.'</a>';
-											if ($cute_name = get_field('author_cute_name', 'user_'.$user_association->data->ID)) {
-												echo ' / ' . $cute_name;
-											}
-										}
+								if ($reviewer = get_field('reviewer')) {
+									echo '<br />';
+									echo 'Reviewed by ' . '<a href="/author/'.$reviewer['user_nicename'].'">'.$reviewer['display_name'].'</a>';
+									if ($cute_name = get_field('author_cute_name', 'user_'.$reviewer['ID'])) {
+										echo ' / ' . $cute_name;
 									}
-								}
 							}
 							
 							?>
