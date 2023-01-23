@@ -1021,22 +1021,11 @@ function display_author_box($u)
 		$ret .= '<div class="tab'.($i+1).'">';
 			$ret .= $value['post_li'];
 		$ret .= '</div>';
-		$ret .= '</div>                                    <a href="#inline-example" class="glightbox4" data-glightbox="width: 700; height: auto;">
-		asdf
-	</a>
-	<div id="inline-example" style="display: none">
-		<div class="inline-inner">
-			<h4 class="text-center">Example of inline content</h4>
-			<div class="text-center">
-				<p>
-					Duis quis ipsum vehicula eros ultrices lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nec sollicitudin felis. Donec vel nulla vel leo varius
-					tempor. Duis suscipit pharetra quam id imperdiet. Praesent vitae eros metus. Donec placerat sagittis rhoncus. In condimentum eleifend ante et ornare. Curabitur pharetra nibh non purus gravida.
-				</p>
-			</div>
+		$ret .= '</div>                                    <a href="#inline" data-lity>Inline</a>
 
-			<a class="gtrigger-close inline-close-btn" href="#">Close Box</a>
-		</div>
-	</div>';
+	<div id="inline" style="background:#fff" class="lity-hide">
+Inline content
+</div>';
 		$i++;
 	}
 	$ret .= '</div>';
