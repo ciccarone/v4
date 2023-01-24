@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <div class="v4-cards v4-cards__count--<?php echo count($page_section['page_category_cards']);?> grid">
       <?php
         foreach ($page_section['page_category_cards'] as $card) {
 
@@ -23,6 +24,7 @@
 
         }
       ?>
+    </div>
     </div>
 
   </div>

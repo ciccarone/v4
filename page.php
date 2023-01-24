@@ -92,6 +92,10 @@ get_header();
 					echo '</section>';
 
 				}
+			} else {
+				echo '<div class="container pt-4">';
+				echo the_content();
+				echo '</div>';
 			}
 
 		endwhile; // End of the loop.

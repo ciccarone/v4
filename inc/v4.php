@@ -997,10 +997,10 @@ function display_author_box($u)
 		$ret .= '<div class="v4-author__container">';
 		$ret .= '<div class="v4-author__image">';
 			$ret .= '<img src="';
-			if ($value['user_image']) {
+			if (isset($value['user_image'])) {
 				$ret .= $value['user_image'];
 			} else {
-				$ret .= get_field('user_fallback_image', 'option')['size']['medium_large'];
+				$ret .= get_field('user_fallback_image', 'option');
 			}
 			$ret .= '" />';
 			
@@ -1021,11 +1021,7 @@ function display_author_box($u)
 		$ret .= '<div class="tab'.($i+1).'">';
 			$ret .= $value['post_li'];
 		$ret .= '</div>';
-		$ret .= '</div>                                    <a href="#inline" data-lity>Inline</a>
-
-	<div id="inline" style="background:#fff" class="lity-hide">
-Inline content
-</div>';
+		$ret .= '</div>';
 		$i++;
 	}
 	$ret .= '</div>';

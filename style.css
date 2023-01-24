@@ -12268,6 +12268,18 @@ textarea {
 	grid-template-columns: repeat(3, 1fr);
 }
 
+.v4-cards__count--2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.v4-cards__count--4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.v4-cards__count--5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+
 /* Ping Pong
 --------------------------------------------- */
 .page-section--featured_services_ping_pong .frame {
@@ -12636,6 +12648,12 @@ a {
 	flex: 3;
 }
 
+@media (min-width: 768px) {
+	.v4-single #primary {
+		padding-right: 5em;
+	}
+}
+
 .v4-single #secondary {
 	flex: 1;
 }
@@ -12827,7 +12845,7 @@ a {
 
 @media (min-width: 768px) {
 	.v4-author__box {
-		padding: 3em;
+		padding: 3em 0;
 	}
 }
 
@@ -12900,6 +12918,15 @@ a {
 	background: #fbfaf6;
 	color: var(--color-secondary);
 	position: relative;
+}
+
+.v4-update-box:before {
+	content: '';
+	width: 50px;
+	display: block;
+	background-color: var(--color-primary);
+	height: 6px;
+	margin-bottom: 1em;
 }
 
 .hidden-acf {
