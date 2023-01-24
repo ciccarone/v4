@@ -142,6 +142,7 @@ a {
 
   #primary {
     flex: 3;
+    overflow: hidden;
     @media (min-width: 768px) {
       padding-right: 5em;
     }
@@ -410,4 +411,31 @@ a {
     height: 6px;
     margin-bottom: 1em;
   }
+}
+
+.v4-ad_place {
+  padding: 2em 0;
+}
+
+.v4-index__layout {
+
+  &--simple_list {
+    article {
+      margin-bottom: 2em;
+    }
+
+    h2 {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    .entry-meta {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.nav-links {
+  
 }
