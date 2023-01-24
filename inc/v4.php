@@ -1068,3 +1068,24 @@ function generate_star_rating($rating)
 	$ret .= $ret_extra . '</div></div>';
 	return $ret;
 }
+
+
+function v4_adplace($location)
+{	
+	if ($ad_repeater = get_field('ad_repeater', 'option')) {
+		foreach ($ad_repeater as $ad) {
+			if (in_array($location, $ad['ad_location'])) {
+				echo '<div class="v4-ad_place v4-ad_place__'. $location.'"><a href="'. $ad['ad_link'].'" target="_blank"><img src="'.$ad['ad_image']['url'].'" alt="'.$ad['ad_alt_tag'].'" /></a></div>';
+			}
+		}
+	}
+}
+
+function add_before_my_siderbar($name)
+{
+	echo "Loaded on top of the {$name}-sidebar";
+
+	// Example that uses the $name of the sidebar as switch/trigger
+	'main' === $name and print "I'm picky and only echo for special sidebars!";
+}
+add_action('wp_meta', 'add_before_my_siderbar');

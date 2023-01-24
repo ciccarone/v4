@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -13,23 +14,33 @@
  */
 
 get_header();
+
+$index_padding = false;
+if (!get_field('index_boxed_layout', 'option')) {
+	$index_padding = get_field('index_full_layout_padding', 'option')['padding_options_top_bottom'] . ' ' . get_field('index_full_layout_padding', 'option')['padding_options_left_right'];
+}
+
 ?>
+<div class="v4-single <?php echo get_field('index_boxed_layout', 'option') ? 'boxed' : ''; ?> <?php echo $index_padding; ?>">
 
 	<main id="primary" class="site-main">
 
 		<?php
-		if ( have_posts() ) :
+		if (have_posts()) :
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
+			if (is_home() && !is_front_page()) :
+		?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
-				<?php
+		<?php
 			endif;
-
+			v4_adplace('above_index_loop');
 			/* Start the Loop */
-			while ( have_posts() ) :
+
+			echo '<div class="v4-index v4-index__layout--'.get_field('index_layout', 'option').'">';
+
+			while (have_posts()) :
 				the_post();
 
 				/*
@@ -37,21 +48,28 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+
+
+				get_template_part('template-parts/index', get_post_type());
 
 			endwhile;
+
+			echo '</div>';
 
 			the_posts_navigation();
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part('template-parts/content', 'none');
 
 		endif;
 		?>
 
 	</main><!-- #main -->
 
+	<?php
+	get_sidebar();
+	?>
+</div>
 <?php
-get_sidebar();
-get_footer();
+	get_footer();
