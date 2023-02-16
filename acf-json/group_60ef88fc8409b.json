@@ -1,0 +1,86 @@
+{
+    "key": "group_60ef88fc8409b",
+    "title": "Meta: Colors",
+    "fields": [
+        {
+            "key": "field_60ef8b16b84f7",
+            "label": "Color Selector",
+            "name": "color_selector",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "#131313": "#131313",
+                "#f8f8f8": "#f8f8f8",
+                "#0F52BA": "#0F52BA",
+                "#4682B4": "#4682B4",
+                "#ffffff": "#ffffff",
+                "#000000": "#000000"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_60ef96004903e",
+            "label": "Color Name",
+            "name": "color_names",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "dark": "Dark",
+                "light": "Light",
+                "primary": "Primary",
+                "secondary": "Secondary",
+                "white": "White",
+                "black": "Black",
+                "none": "None (Transparent)"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1676506610
+}

@@ -436,6 +436,46 @@ a {
   }
 }
 
+.posts-navigation {
+  padding-top: 3em;
+}
+
 .nav-links {
-  
+  display: flex;
+
+  > div {
+    display: flex;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    &:before, &:after {
+        font-family: "Font Awesome 5 Pro";
+        font-size: .8em;
+        position: relative;
+        top: 1px;
+        font-weight: bold;
+      }
+  }
+
+  .nav-previous a {
+      &:before {
+        content: '\f053';
+        margin-right: .5em;
+      }
+    }
+  .nav-next {
+    justify-content: end;
+  }
+  .nav-next a {
+      &:after {
+        content: '\f054';
+        margin-left: .5em;
+      }
+    }
+
+  a {
+    @extend .btn, .btn-primary;
+  }
 }

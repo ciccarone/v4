@@ -1,0 +1,99 @@
+{
+    "key": "group_63891989e8e1a",
+    "title": "Meta: Social",
+    "fields": [
+        {
+            "key": "field_6389199013b6d",
+            "label": "Social Links",
+            "name": "social_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_638919a113b6e",
+                    "label": "Social Network",
+                    "name": "social_network",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "fab fa-youtube": "YouTube",
+                        "fab fa-facebook": "Facebook",
+                        "fab fa-twitter": "Twitter",
+                        "fab fa-tiktok": "TikTok",
+                        "fab fa-pinterest": "Pinterest",
+                        "fab fa-snapchat": "Snapchat",
+                        "fab fa-linkedin": "LinkedIn",
+                        "fab fa-blog": "Blog"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6389199013b6d"
+                },
+                {
+                    "key": "field_63891a7e13b6f",
+                    "label": "Social Network URL",
+                    "name": "social_network_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_6389199013b6d"
+                }
+            ],
+            "rows_per_page": 20
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1676506621
+}

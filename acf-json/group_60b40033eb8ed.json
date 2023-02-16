@@ -1,0 +1,70 @@
+{
+    "key": "group_60b40033eb8ed",
+    "title": "Meta: Financial Services",
+    "fields": [
+        {
+            "key": "field_60b4003403a1d",
+            "label": "Financial Service",
+            "name": "financial_service",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "accounts-receivable": "Accounts Receivable",
+                "commercial-real-estate-financing": "Commercial Real Estate Financing",
+                "equipment-financing": "Equipment Financing",
+                "fix-and-flip-financing": "Fix and Flip Financing",
+                "franchise-financing": "Franchise Financing",
+                "healthcare-financing": "Healthcare Financing",
+                "merchant-cash-advance": "Merchant Cash Advance",
+                "purchase-order-financing": "Purchase Order Financing",
+                "small-business-loan": "Small Business Loan",
+                "stated-income-commercial-real-estate": "Stated Income Commercial Real Estate",
+                "unsecured-business-lines-of-credit": "Unsecured Business Lines of Credit",
+                "mezzanine-financing": "Mezzanine Financing",
+                "bridge-and-hard-money-loans": "Bridge and Hard Money Loans",
+                "business-acquisition-financing": "Business Acquisition Financing",
+                "church-real-estate-financing": "Church Real Estate Financing",
+                "distressed-note-acquisition-financing": "Distressed Note Acquisition Financing",
+                "energy-and-commodity-financing": "Energy and Commodity Financing",
+                "financing-for-corporate-mergers-and-acquisitions": "Financing for Corporate Mergers and Acquisitions",
+                "inventory-financing": "Inventory Financing",
+                "joint-venture-capital-solutions": "Joint Venture Capital Solutions",
+                "large-project-financing": "Large Project Financing"
+            },
+            "default_value": false,
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "array",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1676506612
+}

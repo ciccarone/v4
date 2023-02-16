@@ -12,6 +12,184 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+
+require_once get_template_directory() . '/class-tgm-plugin-activation.php';
+
+
+add_action('tgmpa_register', 'v4_child_register_required_plugins');
+
+
+function v4_child_register_required_plugins()
+{
+
+	$plugins = array(
+
+		array(
+			'name'               => 'ACF Pro', // The plugin name.
+			'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+			'source'             => get_template_directory() . '/advanced-custom-fields-pro.zip', // The plugin source.
+			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+			'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
+			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
+		),
+		array(
+			'name'               => 'ACF Typography', // The plugin name.
+			'slug'               => 'acf-typography-field', // The plugin slug (typically the folder name).
+			'source'             => get_template_directory() . '/acf-typography-field.zip', // The plugin source.
+			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+			'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
+			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
+		),
+		array(
+			'name'               => 'ACF Font Awesome', // The plugin name.
+			'slug'               => 'advanced-custom-fields-font-awesome', // The plugin slug (typically the folder name).
+			'source'             => get_template_directory() . '/advanced-custom-fields-font-awesome.zip', // The plugin source.
+			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+			'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
+			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
+		),
+
+		// array(
+		// 	'name'      => 'ACF (Advanced Custom Fields)',
+		// 	'slug'      => 'advanced-custom-fields',
+		// 	'required'  => true,
+		// )
+
+	);
+
+	/*
+	 * Array of configuration settings. Amend each line as needed.
+	 *
+	 * TGMPA will start providing localized text strings soon. If you already have translations of our standard
+	 * strings available, please help us make TGMPA even better by giving us access to these translations or by
+	 * sending in a pull-request with .po file(s) with the translations.
+	 *
+	 * Only uncomment the strings in the config array if you want to customize the strings.
+	 */
+	$config = array(
+		'id'           => 'v4-child',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+		'default_path' => '',                      // Default absolute path to bundled plugins.
+		'menu'         => 'tgmpa-install-plugins', // Menu slug.
+		'parent_slug'  => 'themes.php',            // Parent menu slug.
+		'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+		'has_notices'  => true,                    // Show admin notices or not.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+		'message'      => '',                      // Message to output right before the plugins table.
+
+		/*
+		'strings'      => array(
+			'page_title'                      => __( 'Install Required Plugins', 'v4-child' ),
+			'menu_title'                      => __( 'Install Plugins', 'v4-child' ),
+			/* translators: %s: plugin name. * /
+			'installing'                      => __( 'Installing Plugin: %s', 'v4-child' ),
+			/* translators: %s: plugin name. * /
+			'updating'                        => __( 'Updating Plugin: %s', 'v4-child' ),
+			'oops'                            => __( 'Something went wrong with the plugin API.', 'v4-child' ),
+			// 'notice_can_install_required'     => _n_noop(
+			// 	/* translators: 1: plugin name(s). * /
+			// 	'This theme requires the following plugin: %1$s.',
+			// 	'This theme requires the following plugins: %1$s.',
+			// 	'v4-child'
+			// ),
+			'notice_can_install_recommended'  => _n_noop(
+				/* translators: 1: plugin name(s). * /
+				'This theme recommends the following plugin: %1$s.',
+				'This theme recommends the following plugins: %1$s.',
+				'v4-child'
+			),
+			'notice_ask_to_update'            => _n_noop(
+				/* translators: 1: plugin name(s). * /
+				'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
+				'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
+				'v4-child'
+			),
+			'notice_ask_to_update_maybe'      => _n_noop(
+				/* translators: 1: plugin name(s). * /
+				'There is an update available for: %1$s.',
+				'There are updates available for the following plugins: %1$s.',
+				'v4-child'
+			),
+			'notice_can_activate_required'    => _n_noop(
+				/* translators: 1: plugin name(s). * /
+				'The following required plugin is currently inactive: %1$s.',
+				'The following required plugins are currently inactive: %1$s.',
+				'v4-child'
+			),
+			'notice_can_activate_recommended' => _n_noop(
+				/* translators: 1: plugin name(s). * /
+				'The following recommended plugin is currently inactive: %1$s.',
+				'The following recommended plugins are currently inactive: %1$s.',
+				'v4-child'
+			),
+			'install_link'                    => _n_noop(
+				'Begin installing plugin',
+				'Begin installing plugins',
+				'v4-child'
+			),
+			'update_link' 					  => _n_noop(
+				'Begin updating plugin',
+				'Begin updating plugins',
+				'v4-child'
+			),
+			'activate_link'                   => _n_noop(
+				'Begin activating plugin',
+				'Begin activating plugins',
+				'v4-child'
+			),
+			'return'                          => __( 'Return to Required Plugins Installer', 'v4-child' ),
+			'plugin_activated'                => __( 'Plugin activated successfully.', 'v4-child' ),
+			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'v4-child' ),
+			/* translators: 1: plugin name. * /
+			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'v4-child' ),
+			/* translators: 1: plugin name. * /
+			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'v4-child' ),
+			/* translators: 1: dashboard link. * /
+			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'v4-child' ),
+			'dismiss'                         => __( 'Dismiss this notice', 'v4-child' ),
+			'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'v4-child' ),
+			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'v4-child' ),
+
+			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
+		),
+		*/
+	);
+
+	tgmpa($plugins, $config);
+}
+
+if (function_exists('get_field')) :
+
+	add_filter('acf/settings/save_json', 'my_acf_json_save_point');
+
+	function my_acf_json_save_point($path)
+	{
+
+		// Update path
+		$path = get_template_directory() . '/acf-json';
+		// Return path
+		return $path;
+	}
+
+	add_filter('acf/settings/load_json', function ($paths) {
+		$paths[] = get_template_directory() . '/acf-json';
+		return $paths;
+	});
+endif;
+
+
+
+
 if ( ! function_exists( 'v4_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -100,6 +278,252 @@ if ( ! function_exists( 'v4_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+
+		global $wpdb;
+
+
+		$option_sql = "
+INSERT INTO `wp_options` (`option_name`, `option_value`, `autoload`) VALUES
+('options_color_selector',	'#4682B4',	'no'),
+('_options_color_selector',	'field_60ef8b16b84f7',	'no'),
+('options_header_background_color',	'',	'no'),
+('_options_header_background_color',	'field_60ef8d7f3785c',	'no'),
+('options_color_map_dark',	'',	'no'),
+('_options_color_map_dark',	'field_60ef93bdfbcec',	'no'),
+('options_color_map_light',	'',	'no'),
+('_options_color_map_light',	'field_60ef93fefbced',	'no'),
+('options_color_map_primary',	'',	'no'),
+('_options_color_map_primary',	'field_60ef9405fbcee',	'no'),
+('options_color_map_secondary',	'',	'no'),
+('_options_color_map_secondary',	'field_60ef940ffbcef',	'no'),
+('options_color_map_dark_color_selector',	'#131313',	'no'),
+('_options_color_map_dark_color_selector',	'field_60ef8b16b84f7',	'no'),
+('options_color_map_light_color_selector',	'#ffffff',	'no'),
+('_options_color_map_light_color_selector',	'field_60ef8b16b84f7',	'no'),
+('options_color_map_secondary_color_selector',	'#0F52BA',	'no'),
+('_options_color_map_secondary_color_selector',	'field_60ef8b16b84f7',	'no'),
+('options_color_names',	'dark',	'no'),
+('_options_color_names',	'field_60ef96004903e',	'no'),
+('options_header_text_color',	'',	'no'),
+('_options_header_text_color',	'field_60f15f5fa179b',	'no'),
+('options_header_background_color_color_names',	'light',	'no'),
+('_options_header_background_color_color_names',	'field_60ef96004903e',	'no'),
+('options_header_text_color_color_names',	'light',	'no'),
+('_options_header_text_color_color_names',	'field_60ef96004903e',	'no'),
+('options_header_overlay_on_homepage',	'0',	'no'),
+('_options_header_overlay_on_homepage',	'field_61f5c927d3d30',	'no'),
+('options_footer_column_count',	'1fr 1fr 1fr',	'no'),
+('_options_footer_column_count',	'field_61f5eb85609b6',	'no'),
+('options_footer_background_color',	'',	'no'),
+('_options_footer_background_color',	'field_61f5ef10bd041',	'no'),
+('options_footer_text_color',	'text-light',	'no'),
+('_options_footer_text_color',	'field_61f5f215062b1',	'no'),
+('options_copyright_content',	'Copyright <a href=\"#\">Lorem</a> ipsum dolor sit amet',	'no'),
+('_options_copyright_content',	'field_61f5f7570884c',	'no'),
+('options_my_select_values',	'#131313\r\n#f8f8f8\r\n#085bbc\r\n#555\r\n#ffffff\r\n#000000',	'no'),
+('_options_my_select_values',	'field_62f59364bd05d',	'no'),
+('options_v4_theme_colors',	'#131313\r\n#f8f8f8\r\n#0F52BA\r\n#4682B4\r\n#ffffff\r\n#000000',	'no'),
+('_options_v4_theme_colors',	'field_62f59364bd05d',	'no'),
+('options_color_map_black_color_selector',	'#000000',	'no'),
+('_options_color_map_black_color_selector',	'field_60ef8b16b84f7',	'no'),
+('options_color_map_black',	'',	'no'),
+('_options_color_map_black',	'field_62f5a03cf7840',	'no'),
+('options_color_map_white_color_selector',	'#ffffff',	'no'),
+('_options_color_map_white_color_selector',	'field_60ef8b16b84f7',	'no'),
+('options_color_map_white',	'',	'no'),
+('_options_color_map_white',	'field_62f5a045f7841',	'no'),
+('options_h1_settings',	'a:7:{s:9:\"font_size\";s:2:\"50\";s:11:\"font_family\";s:16:\"Roboto Condensed\";s:11:\"font_weight\";s:3:\"900\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"70\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_h1_settings',	'field_630415be8cc3c',	'no'),
+('options_body_font_family',	'a:1:{s:11:\"font_family\";s:28:\"Arial, Helvetica, sans-serif\";}',	'no'),
+('_options_body_font_family',	'field_630415f48cc3e',	'no'),
+('options_h2_settings',	'a:7:{s:9:\"font_size\";s:2:\"42\";s:11:\"font_family\";s:6:\"Roboto\";s:11:\"font_weight\";s:3:\"400\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"42\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_h2_settings',	'field_63041f1b57b5c',	'no'),
+('options_h3_settings',	'a:7:{s:9:\"font_size\";s:2:\"38\";s:11:\"font_family\";s:6:\"Roboto\";s:11:\"font_weight\";s:3:\"400\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"38\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_h3_settings',	'field_63041f989cce0',	'no'),
+('options_h4_settings',	'a:7:{s:9:\"font_size\";s:2:\"32\";s:11:\"font_family\";s:6:\"Roboto\";s:11:\"font_weight\";s:3:\"400\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"32\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_h4_settings',	'field_63041fad9cce1',	'no'),
+('options_h5_settings',	'a:7:{s:9:\"font_size\";s:2:\"28\";s:11:\"font_family\";s:6:\"Roboto\";s:11:\"font_weight\";s:3:\"400\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"28\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_h5_settings',	'field_63041fbb9cce2',	'no'),
+('options_h6_settings',	'a:7:{s:9:\"font_size\";s:2:\"24\";s:11:\"font_family\";s:6:\"Roboto\";s:11:\"font_weight\";s:3:\"400\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"30\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_h6_settings',	'field_63041fca9cce3',	'no'),
+('options_p_settings',	'a:7:{s:9:\"font_size\";s:2:\"16\";s:11:\"font_family\";s:6:\"Roboto\";s:11:\"font_weight\";s:3:\"400\";s:10:\"font_style\";s:6:\"normal\";s:11:\"line_height\";s:2:\"26\";s:14:\"letter_spacing\";s:1:\"0\";s:14:\"text_transform\";s:4:\"none\";}',	'no'),
+('_options_p_settings',	'field_63041fdc9cce4',	'no'),
+('options_site_width',	'1320',	'no'),
+('_options_site_width',	'field_630429506fff0',	'no'),
+('options_button_background_color_color_names',	'primary',	'no'),
+('_options_button_background_color_color_names',	'field_60ef96004903e',	'no'),
+('options_button_background_color',	'',	'no'),
+('_options_button_background_color',	'field_6305357f1f311',	'no'),
+('options_button_background_color_hover_color_names',	'black',	'no'),
+('_options_button_background_color_hover_color_names',	'field_60ef96004903e',	'no'),
+('options_button_background_color_hover',	'',	'no'),
+('_options_button_background_color_hover',	'field_6305358d1f312',	'no'),
+('options_button_text_color_color_names',	'white',	'no'),
+('_options_button_text_color_color_names',	'field_60ef96004903e',	'no'),
+('options_button_text_color',	'',	'no'),
+('_options_button_text_color',	'field_630535a01f313',	'no'),
+('options_button_text_color_hover_color_names',	'white',	'no'),
+('_options_button_text_color_hover_color_names',	'field_60ef96004903e',	'no'),
+('options_button_text_color_hover',	'',	'no'),
+('_options_button_text_color_hover',	'field_630540f0893f5',	'no'),
+('options_padding_options',	'py-3',	'no'),
+('_options_padding_options',	'field_6305444400304',	'no'),
+('options_button_padding',	'',	'no'),
+('_options_button_padding',	'field_6305430ad8977',	'no'),
+('options_global_border_radius',	'6',	'no'),
+('_options_global_border_radius',	'field_63055e35f79c3',	'no'),
+('options_padding_options_top_bottom',	'py-2',	'no'),
+('_options_padding_options_top_bottom',	'field_6305444400304',	'no'),
+('options_padding_options_left_right',	'px-3',	'no'),
+('_options_padding_options_left_right',	'field_630550c5259b5',	'no'),
+('options_site_fallback_image',	'5911',	'no'),
+('_options_site_fallback_image',	'field_6328591c51c72',	'no'),
+('options_card_background_color_color_names',	'white',	'no'),
+('_options_card_background_color_color_names',	'field_60ef96004903e',	'no'),
+('options_card_background_color',	'',	'no'),
+('_options_card_background_color',	'field_6345848449ea7',	'no'),
+('options_card_title_element_element_options',	'h6',	'no'),
+('_options_card_title_element_element_options',	'field_6303fb72a3f0c',	'no'),
+('options_card_title_element',	'',	'no'),
+('_options_card_title_element',	'field_6345976456456',	'no'),
+('options_card_title_position_position_options',	'start',	'no'),
+('_options_card_title_position_position_options',	'field_6303fd5478f80',	'no'),
+('options_card_title_position',	'',	'no'),
+('_options_card_title_position',	'field_63459bef99d32',	'no'),
+('options_card_title_color_color_names',	'dark',	'no'),
+('_options_card_title_color_color_names',	'field_60ef96004903e',	'no'),
+('options_card_title_color',	'',	'no'),
+('_options_card_title_color',	'field_63459cb2185ee',	'no'),
+('options_card_title_options_card_title_element_element_options',	'h5',	'no'),
+('_options_card_title_options_card_title_element_element_options',	'field_6303fb72a3f0c',	'no'),
+('options_card_title_options_card_title_element',	'',	'no'),
+('_options_card_title_options_card_title_element',	'field_6345976456456',	'no'),
+('options_card_title_options',	'',	'no'),
+('_options_card_title_options',	'field_6345a1685483c',	'no'),
+('options_card_excerpt_padding_padding_options_top_bottom',	'py-1',	'no'),
+('_options_card_excerpt_padding_padding_options_top_bottom',	'field_6305444400304',	'no'),
+('options_card_excerpt_padding_padding_options_left_right',	'px-0',	'no'),
+('_options_card_excerpt_padding_padding_options_left_right',	'field_630550c5259b5',	'no'),
+('options_card_excerpt_padding',	'',	'no'),
+('_options_card_excerpt_padding',	'field_6345a19d5483e',	'no'),
+('options_card_excerpt_position_position_options',	'start',	'no'),
+('_options_card_excerpt_position_position_options',	'field_6303fd5478f80',	'no'),
+('options_card_excerpt_position',	'',	'no'),
+('_options_card_excerpt_position',	'field_6345a3bd7ec86',	'no'),
+('options_card_excerpt_color_color_names',	'dark',	'no'),
+('_options_card_excerpt_color_color_names',	'field_60ef96004903e',	'no'),
+('options_card_excerpt_color',	'',	'no'),
+('_options_card_excerpt_color',	'field_6345a3d07ec87',	'no'),
+('options_card_excerpt_show',	'1',	'no'),
+('_options_card_excerpt_show',	'field_6345a744b690d',	'no'),
+('options_card_title_padding_padding_options_top_bottom',	'py-2',	'no'),
+('_options_card_title_padding_padding_options_top_bottom',	'field_6305444400304',	'no'),
+('options_card_title_padding_padding_options_left_right',	'px-0',	'no'),
+('_options_card_title_padding_padding_options_left_right',	'field_630550c5259b5',	'no'),
+('options_card_title_padding',	'',	'no'),
+('_options_card_title_padding',	'field_6345a87e517b4',	'no'),
+('options_card_button_background_color_color_names',	'primary',	'no'),
+('_options_card_button_background_color_color_names',	'field_60ef96004903e',	'no'),
+('options_card_button_background_color',	'',	'no'),
+('_options_card_button_background_color',	'field_6345aa23c0544',	'no'),
+('options_card_button_background_color_hover_color_names',	'secondary',	'no'),
+('_options_card_button_background_color_hover_color_names',	'field_60ef96004903e',	'no'),
+('options_card_button_background_color_hover',	'',	'no'),
+('_options_card_button_background_color_hover',	'field_6345aa33c0545',	'no'),
+('options_card_button_text_color_color_names',	'light',	'no'),
+('_options_card_button_text_color_color_names',	'field_60ef96004903e',	'no'),
+('options_card_button_text_color',	'',	'no'),
+('_options_card_button_text_color',	'field_6345aa42c0546',	'no'),
+('options_card_button_text_color_hover_color_names',	'light',	'no'),
+('_options_card_button_text_color_hover_color_names',	'field_60ef96004903e',	'no'),
+('options_card_button_text_color_hover',	'',	'no'),
+('_options_card_button_text_color_hover',	'field_6345aa52c0547',	'no'),
+('options_card_button_padding',	'',	'no'),
+('_options_card_button_padding',	'field_6345aa60c0548',	'no'),
+('options_logo_max_width',	'130',	'no'),
+('_options_logo_max_width',	'field_63566f2c9685a',	'no'),
+('options_card_button_show',	'1',	'no'),
+('_options_card_button_show',	'field_635671a38739e',	'no'),
+('options_card_button_default_text',	'Check it out',	'no'),
+('_options_card_button_default_text',	'field_635671cb8739f',	'no'),
+('options_grid_gap',	'8',	'no'),
+('_options_grid_gap',	'field_6356a67cc1243',	'no'),
+('options_global_grid_gap',	'32',	'no'),
+('_options_global_grid_gap',	'field_6356a67cc1243',	'no'),
+('options_global_excerpt_length',	'20',	'no'),
+('_options_global_excerpt_length',	'field_6356aa55ccf09',	'no'),
+('options_global_excerpt_ellipsis',	'...',	'no'),
+('_options_global_excerpt_ellipsis',	'field_6356aabdcf1e5',	'no'),
+('options_global_mobile_breakpoint',	'768',	'no'),
+('_options_global_mobile_breakpoint',	'field_6356ce619885d',	'no'),
+('options_global_tablet_breakpoint',	'1024',	'no'),
+('_options_global_tablet_breakpoint',	'field_6356ce899885e',	'no'),
+('options_single_post_boxed_layout',	'1',	'no'),
+('_options_single_post_boxed_layout',	'field_63891737fc4cf',	'no'),
+('options_page_header_width',	'full',	'no'),
+('_options_page_header_width',	'field_6357450415633',	'no'),
+('options_page_header_background_color_color_names',	'dark',	'no'),
+('_options_page_header_background_color_color_names',	'field_60ef96004903e',	'no'),
+('options_page_header_text_color',	'text-white',	'no'),
+('_options_page_header_text_color',	'field_6357450415641',	'no'),
+('options_page_header_margin',	'my-0',	'no'),
+('_options_page_header_margin',	'field_635745041564e',	'no'),
+('options_page_header_background_image',	'',	'no'),
+('_options_page_header_background_image',	'field_6357450415655',	'no'),
+('options_page_header_background_image_parallax',	'0',	'no'),
+('_options_page_header_background_image_parallax',	'field_635745041565b',	'no'),
+('options_page_header_background_color_overlay_opacity',	'',	'no'),
+('_options_page_header_background_color_overlay_opacity',	'field_6357450415669',	'no'),
+('options__copy',	'',	'no'),
+('_options__copy',	'field_635746299217f',	'no'),
+('options_show_author_boxes_on_posts',	'1',	'no'),
+('_options_show_author_boxes_on_posts',	'field_63892fad6ef43',	'no'),
+('options_nav_on_its_own_line',	'1',	'no'),
+('_options_nav_on_its_own_line',	'field_63a1829d5b744',	'no'),
+('options_show_topbar',	'0',	'no'),
+('_options_show_topbar',	'field_63a18479e8c10',	'no'),
+('options_navbar_background_color_color_names',	'primary',	'no'),
+('_options_navbar_background_color_color_names',	'field_60ef96004903e',	'no'),
+('options_navbar_background_color',	'',	'no'),
+('_options_navbar_background_color',	'field_63a18940ff3a0',	'no'),
+('options_sticky_nav',	'1',	'no'),
+('_options_sticky_nav',	'field_63a1907c2a1de',	'no'),
+('options_header_background_image',	'6235',	'no'),
+('_options_header_background_image',	'field_63a19228da688',	'no'),
+('options_single_post_full_layout_padding',	'',	'no'),
+('_options_single_post_full_layout_padding',	'field_63b2f2e531114',	'no'),
+('options_single_post_full_layout_padding_padding_options_top_bottom',	'py-0',	'no'),
+('_options_single_post_full_layout_padding_padding_options_top_bottom',	'field_6305444400304',	'no'),
+('options_single_post_full_layout_padding_padding_options_left_right',	'px-xl',	'no'),
+('_options_single_post_full_layout_padding_padding_options_left_right',	'field_630550c5259b5',	'no'),
+('options_global_review_blurb',	'We independently research, test, review, and recommend the best products. If you buy something through our links, we may earn a commission. <a href=\"#\" data-fancybox=\"\" data-src=\"#global-affiliate-disclosure\">Learn more here</a>.',	'no'),
+('_options_global_review_blurb',	'field_63b3395f70c07',	'no'),
+('options_user_fallback_image',	'5911',	'no'),
+('_options_user_fallback_image',	'field_63b765e2ff121',	'no'),
+('options_global_affiliate_disclosure',	'<h4 class=\"mb-4\">Affiliate Disclosure</h4>\r\nV4 Base Theme is an independent publisher and comparison service, not an investment advisor, financial advisor, loan broker, insurance producer, or insurance broker. Its articles, interactive tools and other content are provided to you for free, as self-help tools and for informational purposes only. They are not intended to provide investment advice. V4 Base Theme does not and cannot guarantee the accuracy or applicability of any information in regard to your individual circumstances. We encourage you to seek personalized advice from qualified professionals regarding specific investment issues. Featured estimates are based on past market performance, and past performance is not a guarantee of future performance.',	'no'),
+('_options_global_affiliate_disclosure',	'field_63ce98faf835e',	'no'),
+('options_index_boxed_layout',	'1',	'no'),
+('_options_index_boxed_layout',	'field_63cf23c3614b3',	'no'),
+('options_index_layout',	'cards',	'no'),
+('_options_index_layout',	'field_63cf367d9e820',	'no'),
+('options_index_layout_column_count',	'2',	'no'),
+('_options_index_layout_column_count',	'field_63cfdd80b1d75',	'no'),
+('options_card_padding_padding_options_top_bottom',	'py-1',	'no'),
+('_options_card_padding_padding_options_top_bottom',	'field_6305444400304',	'no'),
+('options_card_padding_padding_options_left_right',	'px-0',	'no'),
+('_options_card_padding_padding_options_left_right',	'field_630550c5259b5',	'no'),
+('options_card_padding',	'',	'no'),
+('_options_card_padding',	'field_63cfdf827eade',	'no'),
+('options_card_button_position_position_options',	'start',	'no'),
+('_options_card_button_position_position_options',	'field_6303fd5478f80',	'no'),
+('options_card_button_position',	'',	'no'),
+('_options_card_button_position',	'field_63cfe1e18fe4f',	'no');
+			";
+
+
+		$wpdb->query($wpdb->prepare($option_sql));
+
+
 	}
 endif;
 add_action( 'after_setup_theme', 'v4_setup' );

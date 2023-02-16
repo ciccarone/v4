@@ -1,0 +1,89 @@
+{
+    "key": "group_6305443a6e48c",
+    "title": "Meta: Padding Options",
+    "fields": [
+        {
+            "key": "field_6305444400304",
+            "label": "Padding Options Top\/Bottom",
+            "name": "padding_options_top_bottom",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "py-0": "0",
+                "py-1": "1",
+                "py-2": "2",
+                "py-3": "3",
+                "py-4": "4",
+                "py-5": "5",
+                "py-xl": "XL",
+                "py-xxl": "XXL"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_630550c5259b5",
+            "label": "Padding Options Left\/Right",
+            "name": "padding_options_left_right",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "px-0": "0",
+                "px-1": "1",
+                "px-2": "2",
+                "px-3": "3",
+                "px-4": "4",
+                "px-5": "5",
+                "px-xl": "XL",
+                "px-xxl": "XXL"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1676506617
+}
