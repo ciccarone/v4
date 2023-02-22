@@ -11771,8 +11771,32 @@ a.btn-v4-outline-light:hover {
 	display: flex;
 }
 
+@media screen and (max-width: 991px) {
+	.btn__container {
+		flex-direction: column;
+	}
+	.btn__container .btn, .btn__container .nav-links a, .nav-links .btn__container a {
+		margin-bottom: var(--global-grid-gap);
+	}
+}
+
 .btn__container .btn, .btn__container .nav-links a, .nav-links .btn__container a {
 	margin-right: 10px;
+}
+
+.btn__container__alignment--left {
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.btn__container__alignment--center {
+	justify-content: center;
+	align-items: center;
+}
+
+.btn__container__alignment--right {
+	justify-content: flex-end;
+	align-items: flex-end;
 }
 
 input[type="text"],

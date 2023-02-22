@@ -82,9 +82,29 @@ a.btn {
 .btn {
 	&__container {
 		display: flex;
-
+		@media screen and (max-width: 991px) {
+			flex-direction: column;
+			.btn {
+					margin-bottom: var(--global-grid-gap);
+				}
+		}
 		.btn {
 			margin-right: 10px;
+		}
+
+		&__alignment {
+			&--left {
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
+			&--center {
+				justify-content: center;
+				align-items: center;
+			}
+			&--right {
+				justify-content: flex-end;
+				align-items: flex-end;
+			}
 		}
 	}
 }
