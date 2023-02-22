@@ -421,12 +421,12 @@ function v4_button_generator_default($post_id)
 	}
 }
 
-function v4_button_generator($buttons)
+function v4_button_generator($buttons, $alignment = 'left')
 {
 	if ($buttons) {
 		
 		$ret = '';
-		$ret .= count($buttons) > 1 ? '<div class="btn__container">' : '';
+		$ret .= count($buttons) > 1 ? '<div class="btn__container btn__container__alignment--'.$alignment.'">' : '';
 		foreach ($buttons as $button) {
 			$padding_options_top_bottom = get_field('padding_options_top_bottom', 'option');
 			$padding_options_left_right = get_field('padding_options_left_right', 'option');
