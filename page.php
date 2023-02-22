@@ -31,7 +31,7 @@ get_header();
 					$section_buttons = false;
 
 					if (isset($page_section['button_repeater'])) {
-						$section_buttons = $page_section['button_repeater'] ? v4_button_generator($page_section['button_repeater']) : false;
+						$section_buttons = $page_section['button_repeater'] ? v4_button_generator($page_section['button_repeater'], $page_section['button_repeater_alignment']) : false;
 					}
 
 					if (isset($page_section['heading_repeater'])) {
