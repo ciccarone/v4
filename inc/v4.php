@@ -408,7 +408,6 @@ function v4_button_generator_default($post_id)
 {
 
 	if (get_field('card_button_show', 'option')) {
-		var_dump(get_field('card_button_background_color', 'option'));
 		
 		$b = [
 			[
