@@ -365,6 +365,9 @@ function v4_dynamic_cards($cards)
 
 	$image['image_option'] = 'featured';
 
+	$padding_options_top_bottom = get_field('card_content_padding_padding_options_top_bottom', 'option');
+	$padding_options_left_right = get_field('card_content_padding_padding_options_left_right', 'option');
+
 	// The Loop
 	if ($query->have_posts()) {
 	    while ($query->have_posts()) {
@@ -380,7 +383,7 @@ function v4_dynamic_cards($cards)
 
           echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
             echo v4_card_image_generator($image, get_the_ID());
-            echo '<div class="v4-card__content">';
+            echo '<div class="v4-card__content '. $padding_options_top_bottom .' ' . $padding_options_left_right . '">';
               echo $card_title;
               echo $card_excerpt;
               echo $card_button;
