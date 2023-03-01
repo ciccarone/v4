@@ -199,6 +199,9 @@ $button_bg_color = get_field('button_background_color', 'option');
 $button_bg_color_hover = get_field('button_background_color_hover', 'option');
 $button_text_color = get_field('button_text_color', 'option');
 $button_text_color_hover = get_field('button_text_color_hover', 'option');
+$button_padding_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
+$button_padding_left_right = get_field('button_padding_padding_options_left_right', 'option');
+
 
 
 echo '<style>
@@ -405,6 +408,7 @@ function v4_button_generator_default($post_id)
 {
 
 	if (get_field('card_button_show', 'option')) {
+		var_dump(get_field('card_button_background_color', 'option'));
 		
 		$b = [
 			[
@@ -431,8 +435,10 @@ function v4_button_generator($buttons, $alignment = 'left')
 		$ret = '';
 		$ret .= count($buttons) > 1 ? '<div class="btn__container btn__container__alignment--'.$alignment.'">' : '';
 		foreach ($buttons as $button) {
-			$padding_options_top_bottom = get_field('padding_options_top_bottom', 'option');
-			$padding_options_left_right = get_field('padding_options_left_right', 'option');
+			// var_dump($button);
+			
+			$padding_options_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
+			$padding_options_left_right = get_field('button_padding_padding_options_top_bottom', 'option');
 			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.$padding_options_top_bottom.' '.$padding_options_left_right.' global_border_radius btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
 		$ret .= count($buttons) > 1 ? '</div>' : '';
