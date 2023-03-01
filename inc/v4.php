@@ -438,7 +438,7 @@ function v4_button_generator($buttons, $alignment = 'left')
 			// var_dump($button);
 			
 			$padding_options_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
-			$padding_options_left_right = get_field('button_padding_padding_options_top_bottom', 'option');
+			$padding_options_left_right = get_field('button_padding_padding_options_left_right', 'option');
 			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.$padding_options_top_bottom.' '.$padding_options_left_right.' global_border_radius btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
 		$ret .= count($buttons) > 1 ? '</div>' : '';
