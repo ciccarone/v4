@@ -127,22 +127,22 @@ a.btn {
 		}
 	}
 	&_text_color_hover {
-		&--light {
+		&--light:hover {
 			color: var(--color-light) !important;
 		}
-		&--dark {
+		&--dark:hover {
 			color: var(--color-dark) !important;
 		}
-		&--primary {
+		&--primary:hover {
 			color: var(--color-primary) !important;
 		}
-		&--secondary {
+		&--secondary:hover {
 			color: var(--color-secondary) !important;
 		}
-		&--white {
+		&--white:hover {
 			color: var(--color-white) !important;
 		}
-		&--black {
+		&--black:hover {
 			color: var(--color-black) !important;
 		}
 	}

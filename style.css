@@ -11821,27 +11821,27 @@ a.btn-v4-outline-light:hover {
 	color: var(--color-black) !important;
 }
 
-.button_design_text_color_hover--light {
+.button_design_text_color_hover--light:hover {
 	color: var(--color-light) !important;
 }
 
-.button_design_text_color_hover--dark {
+.button_design_text_color_hover--dark:hover {
 	color: var(--color-dark) !important;
 }
 
-.button_design_text_color_hover--primary {
+.button_design_text_color_hover--primary:hover {
 	color: var(--color-primary) !important;
 }
 
-.button_design_text_color_hover--secondary {
+.button_design_text_color_hover--secondary:hover {
 	color: var(--color-secondary) !important;
 }
 
-.button_design_text_color_hover--white {
+.button_design_text_color_hover--white:hover {
 	color: var(--color-white) !important;
 }
 
-.button_design_text_color_hover--black {
+.button_design_text_color_hover--black:hover {
 	color: var(--color-black) !important;
 }
 
