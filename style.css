@@ -12139,6 +12139,12 @@ textarea {
 	max-width: 100%;
 }
 
+.widget ul, .widget ol {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
 /* Media
 --------------------------------------------- */
 .page-content .wp-smiley,

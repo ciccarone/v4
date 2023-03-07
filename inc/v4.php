@@ -201,10 +201,12 @@ $button_bg_color = get_field('button_background_color', 'option');
 $button_bg_color_hover = get_field('button_background_color_hover', 'option');
 $button_text_color = get_field('button_text_color', 'option');
 $button_text_color_hover = get_field('button_text_color_hover', 'option');
-$button_padding_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
-$button_padding_left_right = get_field('button_padding_padding_options_left_right', 'option');
+// $button_padding_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
+// $button_padding_left_right = get_field('button_padding_padding_options_left_right', 'option');
+
 
 $sidebar_bg_color = get_field('sidebar_bg_color', 'option');
+$sidebar_link_color = get_field('sidebar_link_color', 'option');
 
 
 
@@ -260,6 +262,10 @@ aside.widget-area h2 {
 
 aside.widget-area {
 	background-color: '. v4_retrieve_color('color_map_'. $sidebar_bg_color['color_names']) .';
+}
+
+aside.widget-area a {
+	color: '. v4_retrieve_color('color_map_' . $sidebar_link_color['color_names']) .';
 }
 
 

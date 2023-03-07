@@ -967,6 +967,72 @@
             "prefix_name": 1
         },
         {
+            "key": "field_64074c43f09be",
+            "label": "Sidebar Text Color",
+            "name": "sidebar_text_color",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_60ef96004903e"
+            ],
+            "display": "group",
+            "layout": "row",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_64074de516099",
+            "label": "Sidebar Link Color",
+            "name": "sidebar_link_color",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_60ef96004903e"
+            ],
+            "display": "group",
+            "layout": "row",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_6407483b38c0b",
+            "label": "Sidebar Padding",
+            "name": "sidebar_padding",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_6305443a6e48c"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
             "key": "field_630532d94f9a3",
             "label": "Header Options",
             "name": "",
@@ -2066,5 +2132,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678198364
+    "modified": 1678200346
 }

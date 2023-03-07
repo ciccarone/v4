@@ -5,4 +5,12 @@
 	select {
 		max-width: 100%;
 	}
+
+	ul, ol {
+		margin-left: 0;
+		padding-left: 0;
+		list-style: none;
+	}
 }
+
+

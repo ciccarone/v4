@@ -11,9 +11,15 @@
 if (!is_active_sidebar('sidebar-1')) {
 	return;
 }
+
+$sidebar_padding_top_bottom = get_field('sidebar_padding_padding_options_top_bottom', 'option');
+$sidebar_padding_left_right = get_field('sidebar_padding_padding_options_left_right', 'option');
+$sidebar_text_color = get_field('sidebar_text_color', 'option')['color_names'];
 ?>
 
-<aside id="secondary" class="widget-area">
+
+
+<aside id="secondary" class="text-<?php echo $sidebar_text_color;?> widget-area <?php echo $sidebar_padding_top_bottom; ?>  <?php echo $sidebar_padding_left_right; ?> ">
 
 	<?php v4_adplace('before_sidebar_widgets'); ?>
 
