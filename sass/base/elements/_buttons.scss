@@ -79,6 +79,101 @@ a.btn {
 	}
 }
 
+.button_design {
+	&_bg_color {
+		&--light {
+			background-color: var(--color-light) !important;
+			border-color: var(--color-light) !important;
+		}
+		&--dark {
+			background-color: var(--color-dark) !important;
+			border-color: var(--color-dark) !important;
+		}
+		&--primary {
+			background-color: var(--color-primary) !important;
+			border-color: var(--color-primary) !important;
+		}
+		&--secondary {
+			background-color: var(--color-secondary) !important;
+			border-color: var(--color-secondary) !important;
+		}
+		&--white {
+			background-color: var(--color-white) !important;
+			border-color: var(--color-white) !important;
+		}
+		&--black {
+			background-color: var(--color-black) !important;
+			border-color: var(--color-black) !important;
+		}
+	}
+	&_text_color {
+		&--light {
+			color: var(--color-light) !important;
+		}
+		&--dark {
+			color: var(--color-dark) !important;
+		}
+		&--primary {
+			color: var(--color-primary) !important;
+		}
+		&--secondary {
+			color: var(--color-secondary) !important;
+		}
+		&--white {
+			color: var(--color-white) !important;
+		}
+		&--black {
+			color: var(--color-black) !important;
+		}
+	}
+	&_text_color_hover {
+		&--light {
+			color: var(--color-light) !important;
+		}
+		&--dark {
+			color: var(--color-dark) !important;
+		}
+		&--primary {
+			color: var(--color-primary) !important;
+		}
+		&--secondary {
+			color: var(--color-secondary) !important;
+		}
+		&--white {
+			color: var(--color-white) !important;
+		}
+		&--black {
+			color: var(--color-black) !important;
+		}
+	}
+	&_bg_color_hover {
+		&--light:hover {
+			background-color: var(--color-light) !important;
+			border-color: var(--color-light) !important;
+		}
+		&--dark:hover {
+			background-color: var(--color-dark) !important;
+			border-color: var(--color-dark) !important;
+		}
+		&--primary:hover {
+			background-color: var(--color-primary) !important;
+			border-color: var(--color-primary) !important;
+		}
+		&--secondary:hover {
+			background-color: var(--color-secondary) !important;
+			border-color: var(--color-secondary) !important;
+		}
+		&--white:hover {
+			background-color: var(--color-white) !important;
+			border-color: var(--color-white) !important;
+		}
+		&--black:hover {
+			background-color: var(--color-black) !important;
+			border-color: var(--color-black) !important;
+		}
+	}
+}
+
 .btn {
 	&__container {
 		display: flex;

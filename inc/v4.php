@@ -412,6 +412,12 @@ function v4_button_generator_default($post_id)
 		$b = [
 			[
 			'button_design' => '',
+			'button_custom' => [
+					'button_design_bg_color' => get_field('card_button_background_color', 'option')['color_names'],
+					'button_design_bg_color_hover' => get_field('card_button_background_color_hover', 'option')['color_names'],
+					'button_design_text_color' => get_field('card_button_text_color', 'option')['color_names'],
+					'button_design_text_color_hover' => get_field('card_button_text_color_hover', 'option')['color_names'],
+			],
 			'button_position' => get_field('card_button_position', 'option')['position_options'],
 			'button_link' => [
 				'url' => get_the_permalink($post_id),
@@ -432,13 +438,22 @@ function v4_button_generator($buttons, $alignment = 'left')
 	if ($buttons) {
 		
 		$ret = '';
+		$custom_button_classes = '';
 		$ret .= count($buttons) > 1 ? '<div class="btn__container btn__container__alignment--'.$alignment.'">' : '';
 		foreach ($buttons as $button) {
-			// var_dump($button);
+
+			if (isset($button['button_custom'])) {
+				$custom_button_classes_arr[] = 'button_design_bg_color--' . $button['button_custom']['button_design_bg_color'];
+				$custom_button_classes_arr[] = 'button_design_bg_color_hover--' . $button['button_custom']['button_design_bg_color_hover'];
+				$custom_button_classes_arr[] = 'button_design_text_color--' . $button['button_custom']['button_design_text_color'];
+				$custom_button_classes_arr[] = 'button_design_text_color_hover--' . $button['button_custom']['button_design_text_color_hover'];
+
+				$custom_button_classes = join(' ', $custom_button_classes_arr);
+			}
 			
 			$padding_options_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
 			$padding_options_left_right = get_field('button_padding_padding_options_left_right', 'option');
-			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.$padding_options_top_bottom.' '.$padding_options_left_right.' global_border_radius btn__position--'.$button['button_position'].'" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
+			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.$padding_options_top_bottom.' '.$padding_options_left_right.' global_border_radius btn__position--'.$button['button_position'].' ' . $custom_button_classes . '" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
 		$ret .= count($buttons) > 1 ? '</div>' : '';
 
