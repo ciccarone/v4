@@ -189,7 +189,6 @@ $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $sidebar_heading = get_field('sidebar_heading_settings', 'option');
-var_dump(get_field('sidebar_heading_settings', 'option'));
 
 $p = get_field('p_settings', 'option');
 $logo_max_width = get_field('logo_max_width', 'option');
@@ -204,6 +203,10 @@ $button_text_color = get_field('button_text_color', 'option');
 $button_text_color_hover = get_field('button_text_color_hover', 'option');
 $button_padding_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
 $button_padding_left_right = get_field('button_padding_padding_options_left_right', 'option');
+
+$sidebar_bg_color = get_field('sidebar_bg_color', 'option');
+
+
 
 
 
@@ -241,7 +244,7 @@ aside.widget-area h2 {
   margin: 0 auto;
 }
 
-@media (max-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
+@media (max-width: '.get_field('global_mobile_breakpoint', 'option'). 'px) {
 	.grid {
 		grid-template-columns: 1fr;
   }
@@ -253,6 +256,10 @@ aside.widget-area h2 {
 
 .global_border_radius {
 	border-radius: var(--global-border-radius);
+}
+
+aside.widget-area {
+	background-color: '. v4_retrieve_color('color_map_'. $sidebar_bg_color['color_names']) .';
 }
 
 
