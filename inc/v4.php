@@ -188,6 +188,9 @@ $h3 = get_field('h3_settings', 'option');
 $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
+$sidebar_heading = get_field('sidebar_heading_settings', 'option');
+var_dump(get_field('sidebar_heading_settings', 'option'));
+
 $p = get_field('p_settings', 'option');
 $logo_max_width = get_field('logo_max_width', 'option');
 $global_border_radius = get_field('global_border_radius', 'option');
@@ -214,7 +217,17 @@ echo '<style>
 --global-border-radius: '.get_field('global_border_radius', 'option').'px;
 --global-grid-gap: '.get_field('global_grid_gap', 'option').'px;
 --global-mobile-breakpoint: '.get_field('global_mobile_breakpoint', 'option').'px;
---global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option').'px;
+--global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option'). 'px;
+}
+
+aside.widget-area h2 {
+  font-size: ' . $sidebar_heading['font_size'] . 'px;
+  font-family: ' . $sidebar_heading['font_family'] . ';
+  font-style: ' . $sidebar_heading['font_style'] . ';
+  font-weight: ' . $sidebar_heading['font_weight'] . ';
+  letter-spacing: ' . $sidebar_heading['letter_spacing'] . 'px;
+  line-height: ' . $sidebar_heading['line_height'] . 'px;
+  text-transform: ' . $sidebar_heading['text_transform'] . ';
 }
 
 @media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
