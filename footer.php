@@ -21,7 +21,7 @@
 <?php
 
 if (is_active_sidebar('footer-widget')) : ?>
-	<div class="v4-footer bg-color__<?php echo get_field('footer_background_color', 'option')['color_names'] ?> py-5 <?php echo get_field('footer_text_color', 'option') ?>">
+	<div class="v4-footer bg-color__<?php echo get_field('footer_background_color', 'option')['color_names'] ?> py-5 text-<?php echo get_field('footer_text_color', 'option')['color_names'] ?>">
 		<div class="container">
 			<div id="footer-widget-area" class="footer-widget-area" role="complementary">
 				<?php dynamic_sidebar('footer-widget'); ?>

@@ -189,14 +189,12 @@ $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $li = get_field('li_settings', 'option');
+$footer_heading = get_field('footer_heading_settings', 'option');
 $sidebar_heading = get_field('sidebar_heading_settings', 'option');
 
 $p = get_field('p_settings', 'option');
 $logo_max_width = get_field('logo_max_width', 'option');
 $global_border_radius = get_field('global_border_radius', 'option');
-
-
-
 
 $button_bg_color = get_field('button_background_color', 'option');
 $button_bg_color_hover = get_field('button_background_color_hover', 'option');
@@ -205,15 +203,10 @@ $button_text_color_hover = get_field('button_text_color_hover', 'option');
 // $button_padding_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
 // $button_padding_left_right = get_field('button_padding_padding_options_left_right', 'option');
 
-
 $sidebar_bg_color = get_field('sidebar_bg_color', 'option');
 $sidebar_link_color = get_field('sidebar_link_color', 'option');
 
-
 $footer_link_color = get_field('footer_link_color', 'option');
-
-
-
 
 
 echo '<style>
@@ -239,8 +232,8 @@ aside.widget-area h2 {
   text-transform: ' . $sidebar_heading['text_transform'] . ';
 }
 
-.v4-footer a {
-  color: '. v4_retrieve_color('color_map_' . $footer_link_color) .';
+.v4-footer a, .v4-footer a:hover {
+  color: '. v4_retrieve_color('color_map_' . $footer_link_color['color_names']) .';
 }
 
 @media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
@@ -355,6 +348,16 @@ li {
   letter-spacing: '.$li['letter_spacing'].'px;
   line-height: '.$li['line_height'].'px;
   text-transform: '.$li['text_transform'].';
+}
+
+.v4-footer .footer-title {
+  font-size: '.$footer_heading['font_size'].'px;
+  font-family: '.$footer_heading['font_family'].';
+  font-style: '.$footer_heading['font_style'].';
+  font-weight: '.$footer_heading['font_weight'].';
+  letter-spacing: '.$footer_heading['letter_spacing'].'px;
+  line-height: '.$footer_heading['line_height'].'px;
+  text-transform: '.$footer_heading['text_transform'].';
 }
 
 
