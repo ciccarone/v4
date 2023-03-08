@@ -12795,30 +12795,30 @@ a {
 	margin: 0 0 0 auto;
 }
 
-.v4-single {
+.v4-single, .v4-archive {
 	display: flex;
 }
 
 @media (max-width: 768px) {
-	.v4-single {
+	.v4-single, .v4-archive {
 		flex-direction: column;
 		padding-left: 1em;
 		padding-right: 1em;
 	}
 }
 
-.v4-single #primary {
+.v4-single #primary, .v4-archive #primary {
 	flex: 3;
 	overflow: hidden;
 }
 
 @media (min-width: 768px) {
-	.v4-single #primary {
+	.v4-single #primary, .v4-archive #primary {
 		padding-right: 5em;
 	}
 }
 
-.v4-single #secondary {
+.v4-single #secondary, .v4-archive #secondary {
 	flex: 1;
 }
 

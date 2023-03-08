@@ -241,15 +241,51 @@
             "type": "clone",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63891737fc4cf",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_6305443a6e48c"
             ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_6407cf3b6b686",
+            "label": "Archive Post Full Layout Padding",
+            "name": "archive_post_full_layout_padding",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_6305443a6e48c"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_63cf23d7614b4",
+            "label": "Index Full Layout Padding",
+            "name": "index_full_layout_padding",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -344,34 +380,24 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_63cf23d7614b4",
-            "label": "Index Full Layout Padding",
-            "name": "index_full_layout_padding",
+            "key": "field_6407cadf48478",
+            "label": "Archive Boxed Layout",
+            "name": "archive_boxed_layout",
             "aria-label": "",
-            "type": "clone",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63cf23c3614b3",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "group_6305443a6e48c"
-            ],
-            "display": "group",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 1
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_63cf367d9e820",
@@ -616,6 +642,84 @@
             "endpoint": 0
         },
         {
+            "key": "field_63041fdc9cce4",
+            "label": "p settings",
+            "name": "p_settings",
+            "aria-label": "",
+            "type": "Typography",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_properties": [
+                "font_size",
+                "font_family",
+                "font_weight",
+                "font_style",
+                "line_height",
+                "letter_spacing",
+                "text_transform"
+            ],
+            "required_properties": [
+                "font_family"
+            ],
+            "font_size": 20,
+            "font_family": "initial",
+            "font_weight": 400,
+            "font_style": "normal",
+            "font_variant": "normal",
+            "font_stretch": "normal",
+            "line_height": 20,
+            "letter_spacing": 0,
+            "text_align": "left",
+            "text_color": "#000",
+            "text_decoration": "none",
+            "text_transform": "none"
+        },
+        {
+            "key": "field_64075156aa10a",
+            "label": "li settings",
+            "name": "li_settings",
+            "aria-label": "",
+            "type": "Typography",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_properties": [
+                "font_size",
+                "font_family",
+                "font_weight",
+                "font_style",
+                "line_height",
+                "letter_spacing",
+                "text_transform"
+            ],
+            "required_properties": [
+                "font_family"
+            ],
+            "font_size": 20,
+            "font_family": "initial",
+            "font_weight": 400,
+            "font_style": "normal",
+            "font_variant": "normal",
+            "font_stretch": "normal",
+            "line_height": 20,
+            "letter_spacing": 0,
+            "text_align": "left",
+            "text_color": "#000",
+            "text_decoration": "none",
+            "text_transform": "none"
+        },
+        {
             "key": "field_630415be8cc3c",
             "label": "h1 settings",
             "name": "h1_settings",
@@ -625,7 +729,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -642,7 +746,7 @@
                 "font_family"
             ],
             "font_size": 48,
-            "font_family": "Roboto Slab",
+            "font_family": "initial",
             "font_weight": 400,
             "font_style": "normal",
             "font_variant": "normal",
@@ -664,7 +768,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -703,7 +807,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -742,7 +846,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -781,7 +885,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -820,7 +924,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -843,45 +947,6 @@
             "font_variant": "normal",
             "font_stretch": "normal",
             "line_height": 24,
-            "letter_spacing": 0,
-            "text_align": "left",
-            "text_color": "#000",
-            "text_decoration": "none",
-            "text_transform": "none"
-        },
-        {
-            "key": "field_63041fdc9cce4",
-            "label": "p settings",
-            "name": "p_settings",
-            "aria-label": "",
-            "type": "Typography",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "display_properties": [
-                "font_size",
-                "font_family",
-                "font_weight",
-                "font_style",
-                "line_height",
-                "letter_spacing",
-                "text_transform"
-            ],
-            "required_properties": [
-                "font_family"
-            ],
-            "font_size": 20,
-            "font_family": "Roboto",
-            "font_weight": 400,
-            "font_style": "normal",
-            "font_variant": "normal",
-            "font_stretch": "normal",
-            "line_height": 20,
             "letter_spacing": 0,
             "text_align": "left",
             "text_color": "#000",
@@ -1607,6 +1672,28 @@
             "prefix_name": 1
         },
         {
+            "key": "field_6345848449ea7",
+            "label": "Card Background Color",
+            "name": "card_background_color",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_60ef96004903e"
+            ],
+            "display": "group",
+            "layout": "row",
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
             "key": "field_6345a1685483c",
             "label": "Card Title Options",
             "name": "",
@@ -1640,28 +1727,6 @@
             },
             "clone": [
                 "group_6303fb5c1aed9"
-            ],
-            "display": "group",
-            "layout": "row",
-            "prefix_label": 1,
-            "prefix_name": 1
-        },
-        {
-            "key": "field_6345848449ea7",
-            "label": "Card Background Color",
-            "name": "card_background_color",
-            "aria-label": "",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "field_60ef96004903e"
             ],
             "display": "group",
             "layout": "row",
@@ -2132,5 +2197,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678200346
+    "modified": 1678233701
 }

@@ -188,6 +188,7 @@ $h3 = get_field('h3_settings', 'option');
 $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
+$li = get_field('li_settings', 'option');
 $sidebar_heading = get_field('sidebar_heading_settings', 'option');
 
 $p = get_field('p_settings', 'option');
@@ -337,6 +338,16 @@ p {
   letter-spacing: '.$p['letter_spacing'].'px;
   line-height: '.$p['line_height'].'px;
   text-transform: '.$p['text_transform'].';
+}
+
+li {
+  font-size: '.$li['font_size'].'px;
+  font-family: '.$li['font_family'].';
+  font-style: '.$li['font_style'].';
+  font-weight: '.$li['font_weight'].';
+  letter-spacing: '.$li['letter_spacing'].'px;
+  line-height: '.$li['line_height'].'px;
+  text-transform: '.$li['text_transform'].';
 }
 
 
@@ -807,10 +818,12 @@ function display_author_box($u)
 		// }
 		$ret .= '</div>';
 		$ret .= '</div>';
-
+		
+		if (isset($value['post_li'])) {
 		$ret .= '<div class="tab'.($i+1).'">';
 			$ret .= $value['post_li'];
 		$ret .= '</div>';
+		}
 		$ret .= '</div>';
 		$i++;
 	}

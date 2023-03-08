@@ -12,9 +12,8 @@ get_header();
 
 $single_post_padding = false;
 
-if (!get_field('single_post_boxed_layout', 'option')) {
-	$single_post_padding = get_field('single_post_full_layout_padding', 'option')['padding_options_top_bottom'] . ' ' . get_field('single_post_full_layout_padding', 'option')['padding_options_left_right'];
-}
+$single_post_padding = get_field('single_post_full_layout_padding', 'option')['padding_options_top_bottom'] . ' ' . get_field('single_post_full_layout_padding', 'option')['padding_options_left_right'];
+
 
 ?>
 
