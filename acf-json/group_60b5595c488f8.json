@@ -20,12 +20,30 @@
             "endpoint": 0
         },
         {
+            "key": "field_6407e7f2dedd6",
+            "label": "Global",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
             "key": "field_630429506fff0",
             "label": "Site Width",
             "name": "site_width",
             "aria-label": "",
             "type": "number",
-            "instructions": "",
+            "instructions": "Boxed layout width (in px)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -51,17 +69,17 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": 6,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
             "min": 0,
             "max": "",
-            "step": 1
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_6356a67cc1243",
@@ -73,17 +91,17 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "15",
                 "class": "",
                 "id": ""
             },
             "default_value": 8,
-            "placeholder": "",
-            "prepend": "",
-            "append": "px",
             "min": "",
             "max": "",
-            "step": ""
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_6356aa55ccf09",
@@ -95,17 +113,17 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": 20,
-            "placeholder": "",
-            "prepend": "",
-            "append": "words",
             "min": "",
             "max": "",
-            "step": ""
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "words"
         },
         {
             "key": "field_6356aabdcf1e5",
@@ -117,15 +135,15 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
             "default_value": "...",
+            "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "append": ""
         },
         {
             "key": "field_6356ce619885d",
@@ -137,7 +155,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -147,7 +165,7 @@
             "placeholder": "",
             "step": "",
             "prepend": "",
-            "append": ""
+            "append": "px"
         },
         {
             "key": "field_6356ce899885e",
@@ -159,7 +177,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -172,31 +190,11 @@
             "append": "px"
         },
         {
-            "key": "field_60b672851b831",
-            "label": "Show Excerpts",
-            "name": "show_excerpts",
+            "key": "field_63ce98faf835e",
+            "label": "Global Affiliate Disclosure",
+            "name": "global_affiliate_disclosure",
             "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_63566f2c9685a",
-            "label": "Logo Max Width",
-            "name": "logo_max_width",
-            "aria-label": "",
-            "type": "number",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -205,18 +203,74 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 200,
-            "placeholder": "",
-            "prepend": "",
-            "append": "px",
-            "min": "",
-            "max": "",
-            "step": ""
+            "default_value": "<h2>Affiliate Disclosure<\/h2>\r\n  <p>\r\n  V4 Base Theme is an independent publisher and comparison service, not an investment advisor, financial advisor, loan broker, insurance producer, or insurance broker. Its articles, interactive tools and other content are provided to you for free, as self-help tools and for informational purposes only. They are not intended to provide investment advice. V4 Base Theme does not and cannot guarantee the accuracy or applicability of any information in regard to your individual circumstances. We encourage you to seek personalized advice from qualified professionals regarding specific investment issues. Featured estimates are based on past market performance, and past performance is not a guarantee of future performance.\r\n  <\/p>",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_63b3395f70c07",
+            "label": "Global Review Blurb",
+            "name": "global_review_blurb",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We independently research, test, review, and recommend the best products.  If you buy something through our links, we may earn a commission.  <a data-fancybox data-src=\"#global-affiliate-disclosure\">Learn more here<\/a>.",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_6407e806dedd7",
+            "label": "Single Posts",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
         },
         {
             "key": "field_63891737fc4cf",
             "label": "Single Post Boxed Layout",
             "name": "single_post_boxed_layout",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_63892fad6ef43",
+            "label": "Show Author Boxes on Posts",
+            "name": "show_author_boxes_on_posts",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -256,6 +310,24 @@
             "prefix_name": 1
         },
         {
+            "key": "field_6407e820dedd8",
+            "label": "Archives",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
             "key": "field_6407cf3b6b686",
             "label": "Archive Post Full Layout Padding",
             "name": "archive_post_full_layout_padding",
@@ -276,6 +348,44 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 1
+        },
+        {
+            "key": "field_6407cadf48478",
+            "label": "Archive Boxed Layout",
+            "name": "archive_boxed_layout",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6407e832dedd9",
+            "label": "Index",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
         },
         {
             "key": "field_63cf23d7614b4",
@@ -300,89 +410,9 @@
             "prefix_name": 1
         },
         {
-            "key": "field_63892fad6ef43",
-            "label": "Show Author Boxes on Posts",
-            "name": "show_author_boxes_on_posts",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_63b3395f70c07",
-            "label": "Global Review Blurb",
-            "name": "global_review_blurb",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "We independently research, test, review, and recommend the best products.  If you buy something through our links, we may earn a commission.  <a data-fancybox data-src=\"#global-affiliate-disclosure\">Learn more here<\/a>.",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
-            "key": "field_63ce98faf835e",
-            "label": "Global Affiliate Disclosure",
-            "name": "global_affiliate_disclosure",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "<h2>Affiliate Disclosure<\/h2>\r\n  <p>\r\n  V4 Base Theme is an independent publisher and comparison service, not an investment advisor, financial advisor, loan broker, insurance producer, or insurance broker. Its articles, interactive tools and other content are provided to you for free, as self-help tools and for informational purposes only. They are not intended to provide investment advice. V4 Base Theme does not and cannot guarantee the accuracy or applicability of any information in regard to your individual circumstances. We encourage you to seek personalized advice from qualified professionals regarding specific investment issues. Featured estimates are based on past market performance, and past performance is not a guarantee of future performance.\r\n  <\/p>",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
             "key": "field_63cf23c3614b3",
             "label": "Index Boxed Layout",
             "name": "index_boxed_layout",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_6407cadf48478",
-            "label": "Archive Boxed Layout",
-            "name": "archive_boxed_layout",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -454,6 +484,24 @@
             "min": 2,
             "max": 4,
             "step": 1
+        },
+        {
+            "key": "field_6407e856dedda",
+            "label": "Site Option End",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "Boxed layout width (in px)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 1
         },
         {
             "key": "field_62f5a1dd1cee4",
@@ -1133,6 +1181,28 @@
             "endpoint": 0
         },
         {
+            "key": "field_63566f2c9685a",
+            "label": "Logo Max Width",
+            "name": "logo_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 200,
+            "placeholder": "",
+            "prepend": "",
+            "append": "px",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
             "key": "field_60f15f5fa179b",
             "label": "Header Text Color:",
             "name": "header_text_color",
@@ -1282,6 +1352,32 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_6407e412003e3",
+            "label": "Site Header Width",
+            "name": "page_header_width",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full": "Full",
+                "boxed": "Boxed"
+            },
+            "default_value": "boxed",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_63a1907c2a1de",
@@ -2246,5 +2342,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678238374
+    "modified": 1678239876
 }

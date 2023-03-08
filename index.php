@@ -15,10 +15,8 @@
 
 get_header();
 
-$index_padding = false;
-if (!get_field('index_boxed_layout', 'option')) {
-	$index_padding = get_field('index_full_layout_padding', 'option')['padding_options_top_bottom'] . ' ' . get_field('index_full_layout_padding', 'option')['padding_options_left_right'];
-}
+$index_padding = get_field('index_full_layout_padding', 'option')['padding_options_top_bottom'] . ' ' . get_field('index_full_layout_padding', 'option')['padding_options_left_right'];
+
 
 ?>
 <div class="v4-single <?php echo get_field('index_boxed_layout', 'option') ? 'boxed' : ''; ?> <?php echo $index_padding; ?>">
