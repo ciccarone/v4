@@ -210,6 +210,9 @@ $sidebar_bg_color = get_field('sidebar_bg_color', 'option');
 $sidebar_link_color = get_field('sidebar_link_color', 'option');
 
 
+$footer_link_color = get_field('footer_link_color', 'option');
+
+
 
 
 
@@ -234,6 +237,10 @@ aside.widget-area h2 {
   letter-spacing: ' . $sidebar_heading['letter_spacing'] . 'px;
   line-height: ' . $sidebar_heading['line_height'] . 'px;
   text-transform: ' . $sidebar_heading['text_transform'] . ';
+}
+
+.v4-footer a {
+  color: '. v4_retrieve_color('color_map_' . $footer_link_color) .';
 }
 
 @media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {

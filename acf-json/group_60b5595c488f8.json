@@ -1435,6 +1435,32 @@
             "placeholder": ""
         },
         {
+            "key": "field_6407d6e4db58a",
+            "label": "Footer Link Color",
+            "name": "footer_link_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "text-light": "Light",
+                "text-dark": "Dark"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_61f5eb85609b6",
             "label": "Footer Column Count",
             "name": "footer_column_count",
@@ -2197,5 +2223,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678233701
+    "modified": 1678235385
 }
