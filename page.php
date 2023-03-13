@@ -47,9 +47,8 @@ get_header();
 				if (isset($page_section['text_repeater'])) {
 					$section_texts = $page_section['text_repeater'] ? v4_text_generator($page_section['text_repeater']) : false;
 				}
-
-
-				$section_bg = isset($page_section['section_background_color_color_names']) ? 'bg-color__' . $page_section['section_background_color_color_names'] : '';
+				
+				$section_bg = isset($page_section['section_background_color']['color_names']) ? 'bg-color__' . $page_section['section_background_color']['color_names'] : '';
 
 				$section_bg_attachment = $page_section['section_background_image_parallax'] ? 'bg-attachment--parallax' : '';
 
