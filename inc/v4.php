@@ -189,6 +189,7 @@ $h4 = get_field('h4_settings', 'option');
 $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $li = get_field('li_settings', 'option');
+$li_footer = get_field('footer_list_item_settings', 'option');
 $footer_heading = get_field('footer_heading_settings', 'option');
 $sidebar_heading = get_field('sidebar_heading_settings', 'option');
 
@@ -348,6 +349,16 @@ li {
   letter-spacing: '.$li['letter_spacing'].'px;
   line-height: '.$li['line_height'].'px;
   text-transform: '.$li['text_transform'].';
+}
+
+.v4-footer li {
+  font-size: '.$li_footer['font_size'].'px;
+  font-family: '.$li_footer['font_family'].';
+  font-style: '.$li_footer['font_style'].';
+  font-weight: '.$li_footer['font_weight'].';
+  letter-spacing: '.$li_footer['letter_spacing'].'px;
+  line-height: '.$li_footer['line_height'].'px;
+  text-transform: '.$li_footer['text_transform'].';
 }
 
 .v4-footer .footer-title {

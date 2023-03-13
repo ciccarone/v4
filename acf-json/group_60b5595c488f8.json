@@ -1552,6 +1552,45 @@
             "text_transform": "none"
         },
         {
+            "key": "field_640f0337406df",
+            "label": "footer list item settings",
+            "name": "footer_list_item_settings",
+            "aria-label": "",
+            "type": "Typography",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_properties": [
+                "font_size",
+                "font_family",
+                "font_weight",
+                "font_style",
+                "line_height",
+                "letter_spacing",
+                "text_transform"
+            ],
+            "required_properties": [
+                "font_family"
+            ],
+            "font_size": 20,
+            "font_family": "Arial, Helvetica, sans-serif",
+            "font_weight": 400,
+            "font_style": "normal",
+            "font_variant": "normal",
+            "font_stretch": "normal",
+            "line_height": 20,
+            "letter_spacing": 0,
+            "text_align": "left",
+            "text_color": "#000",
+            "text_decoration": "none",
+            "text_transform": "none"
+        },
+        {
             "key": "field_61f5ef10bd041",
             "label": "Footer Background Color",
             "name": "footer_background_color",
@@ -2380,5 +2419,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678242919
+    "modified": 1678705482
 }
