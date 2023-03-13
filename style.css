@@ -12794,30 +12794,30 @@ a {
 	margin: 0 0 0 auto;
 }
 
-.v4-single, .v4-archive {
+.v4-single, .v4-archive, .page-section > div {
 	display: flex;
 }
 
 @media (max-width: 768px) {
-	.v4-single, .v4-archive {
+	.v4-single, .v4-archive, .page-section > div {
 		flex-direction: column;
 		padding-left: 1em;
 		padding-right: 1em;
 	}
 }
 
-.v4-single #primary, .v4-archive #primary {
+.v4-single #primary, .v4-archive #primary, .page-section > div #primary {
 	flex: 3;
 	overflow: hidden;
 }
 
 @media (min-width: 768px) {
-	.v4-single #primary, .v4-archive #primary {
+	.v4-single #primary, .v4-archive #primary, .page-section > div #primary {
 		padding-right: 5em;
 	}
 }
 
-.v4-single #secondary, .v4-archive #secondary {
+.v4-single #secondary, .v4-single .secondary, .v4-single .sidebar__container, .v4-archive #secondary, .v4-archive .secondary, .v4-archive .sidebar__container, .page-section > div #secondary, .page-section > div .secondary, .page-section > div .sidebar__container {
 	flex: 1;
 }
 

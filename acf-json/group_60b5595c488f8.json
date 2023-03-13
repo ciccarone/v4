@@ -486,6 +486,44 @@
             "step": 1
         },
         {
+            "key": "field_6407f43f212f0",
+            "label": "Performance",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_6407f448212f1",
+            "label": "Include Sticky Sidebar Script",
+            "name": "include_sticky_sidebar_script",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6407e856dedda",
             "label": "Site Option End",
             "name": "",
@@ -2342,5 +2380,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678239876
+    "modified": 1678242919
 }

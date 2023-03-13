@@ -902,3 +902,21 @@ function add_before_my_siderbar($name)
 	'main' === $name and print "I'm picky and only echo for special sidebars!";
 }
 add_action('wp_meta', 'add_before_my_siderbar');
+
+
+add_action('widgets_init', 'v4_register_sidebars');
+function v4_register_sidebars()
+{
+
+	register_sidebar(
+		array(
+			'id'            => 'page',
+			'name'          => __('Page Sidebar'),
+			'description'   => __(''),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+}

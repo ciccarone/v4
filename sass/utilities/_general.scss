@@ -131,7 +131,7 @@ a {
 }
 
 
-.v4-single, .v4-archive {
+.v4-single, .v4-archive, .page-section > div {
   display: flex;
 
   @media (max-width: 768px) {
@@ -149,7 +149,7 @@ a {
   }
 
 
-  #secondary {
+  #secondary, .secondary, .sidebar__container {
     flex: 1;
   }
 }

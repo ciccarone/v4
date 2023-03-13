@@ -20,7 +20,7 @@
                 "layout_61f5d77ff0a18": {
                     "key": "layout_61f5d77ff0a18",
                     "name": "content_section",
-                    "label": "V4 Content Section",
+                    "label": "Page Content",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -69,7 +69,7 @@
                 "layout_61f5dc3951bf3": {
                     "key": "layout_61f5dc3951bf3",
                     "name": "v4_header_section",
-                    "label": "Page Header Section",
+                    "label": "Header",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -393,7 +393,7 @@
                 "layout_639674db9d608": {
                     "key": "layout_639674db9d608",
                     "name": "image_blurb",
-                    "label": "Image Blurb",
+                    "label": "Image & Text",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -918,6 +918,7 @@
                             "max": 0,
                             "layout": "block",
                             "button_label": "Add Card",
+                            "rows_per_page": 20,
                             "sub_fields": [
                                 {
                                     "key": "field_63211d0a06fa0",
@@ -942,8 +943,7 @@
                                     "prefix_name": 0,
                                     "parent_repeater": "field_63057907b0c27"
                                 }
-                            ],
-                            "rows_per_page": 20
+                            ]
                         },
                         {
                             "key": "field_63057809b0c26",
@@ -972,9 +972,9 @@
                     "max": ""
                 }
             },
-            "button_label": "Add Page Section",
             "min": "",
-            "max": ""
+            "max": "",
+            "button_label": "Add Page Section"
         }
     ],
     "location": [
@@ -997,5 +997,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1676506624
+    "modified": 1678241020
 }
