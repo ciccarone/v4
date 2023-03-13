@@ -1040,6 +1040,45 @@
             "text_transform": "none"
         },
         {
+            "key": "field_640f0f40f5833",
+            "label": "Nav font settings",
+            "name": "nav_font_settings",
+            "aria-label": "",
+            "type": "Typography",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_properties": [
+                "font_size",
+                "font_family",
+                "font_weight",
+                "font_style",
+                "line_height",
+                "letter_spacing",
+                "text_transform"
+            ],
+            "required_properties": [
+                "font_family"
+            ],
+            "font_size": 24,
+            "font_family": "Arial, Helvetica, sans-serif",
+            "font_weight": 400,
+            "font_style": "normal",
+            "font_variant": "normal",
+            "font_stretch": "normal",
+            "line_height": 24,
+            "letter_spacing": 0,
+            "text_align": "left",
+            "text_color": "#000",
+            "text_decoration": "none",
+            "text_transform": "none"
+        },
+        {
             "key": "field_64073adf63a33",
             "label": "Sidebar Options",
             "name": "",
@@ -2419,5 +2458,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678705482
+    "modified": 1678708630
 }

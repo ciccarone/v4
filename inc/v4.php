@@ -190,6 +190,7 @@ $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $li = get_field('li_settings', 'option');
 $li_footer = get_field('footer_list_item_settings', 'option');
+$nav_font = get_field('nav_font_settings', 'option');
 $footer_heading = get_field('footer_heading_settings', 'option');
 $sidebar_heading = get_field('sidebar_heading_settings', 'option');
 
@@ -238,7 +239,7 @@ aside.widget-area h2 {
 }
 
 @media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
-	.alignwide {
+	.alignwide {	
 		max-width: var(--width-boxed) !important;
 	}
   }
@@ -355,7 +356,17 @@ li {
   font-weight: '.$li['font_weight'].';
   letter-spacing: '.$li['letter_spacing'].'px;
   line-height: '.$li['line_height'].'px;
-  text-transform: '.$li['text_transform'].';
+  text-transform: '.$li['text_transform']. ';
+}
+
+.navbar-nav li {
+  font-size: '.$nav_font['font_size'].'px;
+  font-family: '.$nav_font['font_family'].';
+  font-style: '.$nav_font['font_style'].';
+  font-weight: '.$nav_font['font_weight'].';
+  letter-spacing: '.$nav_font['letter_spacing'].'px;
+  line-height: '.$nav_font['line_height'].'px;
+  text-transform: '.$nav_font['text_transform'].';
 }
 
 .v4-footer li {
