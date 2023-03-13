@@ -138,6 +138,7 @@ a {
     flex-direction: column;
     padding-left: 1em;
     padding-right: 1em;
+    
   }
 
   #primary {
@@ -152,6 +153,8 @@ a {
   #secondary, .secondary, .sidebar__container {
     flex: 1;
   }
+
+
 }
 
 .dropdown:hover .dropdown-menu {

@@ -252,6 +252,13 @@ aside.widget-area h2 {
 	.grid {
 		grid-template-columns: 1fr;
   }
+
+}
+@media (max-width: '.(get_field('site_width', 'option') + 40). 'px) {
+
+        div.v4-single.boxed {
+          padding: 1em !important;
+        }
 }
 
 .text-primary {
