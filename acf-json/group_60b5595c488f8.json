@@ -1079,23 +1079,6 @@
             "text_transform": "none"
         },
         {
-            "key": "field_64073adf63a33",
-            "label": "Sidebar Options",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
             "key": "field_64073b6c6ee21",
             "label": "Sidebar Heading Settings",
             "name": "sidebar_heading_settings",
@@ -1105,7 +1088,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -1133,6 +1116,101 @@
             "text_color": "#000",
             "text_decoration": "none",
             "text_transform": "none"
+        },
+        {
+            "key": "field_640f11d7c8032",
+            "label": "Sidebar List Items Settings",
+            "name": "sidebar_list_items_settings",
+            "aria-label": "",
+            "type": "Typography",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_properties": [
+                "font_size",
+                "font_family",
+                "font_weight",
+                "font_style",
+                "line_height",
+                "letter_spacing",
+                "text_transform"
+            ],
+            "required_properties": [
+                "font_family"
+            ],
+            "font_size": 24,
+            "font_family": "Arial, Helvetica, sans-serif",
+            "font_weight": 400,
+            "font_style": "normal",
+            "font_variant": "normal",
+            "font_stretch": "normal",
+            "line_height": 24,
+            "letter_spacing": 0,
+            "text_align": "left",
+            "text_color": "#000",
+            "text_decoration": "none",
+            "text_transform": "none"
+        },
+        {
+            "key": "field_640f12d0117a5",
+            "label": "Sidebar Text Settings",
+            "name": "sidebar_text_settings",
+            "aria-label": "",
+            "type": "Typography",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "display_properties": [
+                "font_size",
+                "font_family",
+                "font_weight",
+                "font_style",
+                "line_height",
+                "letter_spacing",
+                "text_transform"
+            ],
+            "required_properties": [
+                "font_family"
+            ],
+            "font_size": 24,
+            "font_family": "Arial, Helvetica, sans-serif",
+            "font_weight": 400,
+            "font_style": "normal",
+            "font_variant": "normal",
+            "font_stretch": "normal",
+            "line_height": 24,
+            "letter_spacing": 0,
+            "text_align": "left",
+            "text_color": "#000",
+            "text_decoration": "none",
+            "text_transform": "none"
+        },
+        {
+            "key": "field_64073adf63a33",
+            "label": "Sidebar Options",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_64074155551a0",
@@ -2458,5 +2536,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678708630
+    "modified": 1679174205
 }

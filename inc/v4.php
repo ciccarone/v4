@@ -190,6 +190,8 @@ $h5 = get_field('h5_settings', 'option');
 $h6 = get_field('h6_settings', 'option');
 $li = get_field('li_settings', 'option');
 $li_footer = get_field('footer_list_item_settings', 'option');
+$sidebar_li = get_field('sidebar_list_items_settings', 'option');
+$sidebar_text = get_field('sidebar_text_settings', 'option');
 $nav_font = get_field('nav_font_settings', 'option');
 $footer_heading = get_field('footer_heading_settings', 'option');
 $sidebar_heading = get_field('sidebar_heading_settings', 'option');
@@ -224,7 +226,7 @@ echo '<style>
 --global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option'). 'px;
 }
 
-aside.widget-area h2 {
+aside.widget-area h2, .wp-block-search__label {
   font-size: ' . $sidebar_heading['font_size'] . 'px;
   font-family: ' . $sidebar_heading['font_family'] . ';
   font-style: ' . $sidebar_heading['font_style'] . ';
@@ -376,7 +378,25 @@ li {
   font-weight: '.$li_footer['font_weight'].';
   letter-spacing: '.$li_footer['letter_spacing'].'px;
   line-height: '.$li_footer['line_height'].'px;
-  text-transform: '.$li_footer['text_transform'].';
+  text-transform: '.$li_footer['text_transform']. ';
+}
+aside.widget-area li {
+  font-size: '.$sidebar_li['font_size'].'px;
+  font-family: '.$sidebar_li['font_family'].';
+  font-style: '.$sidebar_li['font_style'].';
+  font-weight: '.$sidebar_li['font_weight'].';
+  letter-spacing: '.$sidebar_li['letter_spacing'].'px;
+  line-height: '.$sidebar_li['line_height'].'px;
+  text-transform: '.$sidebar_li['text_transform'].';
+}
+aside.widget-area {
+  font-size: '.$sidebar_text['font_size'].'px;
+  font-family: '.$sidebar_text['font_family'].';
+  font-style: '.$sidebar_text['font_style'].';
+  font-weight: '.$sidebar_text['font_weight'].';
+  letter-spacing: '.$sidebar_text['letter_spacing'].'px;
+  line-height: '.$sidebar_text['line_height'].'px;
+  text-transform: '.$sidebar_text['text_transform'].';
 }
 
 .v4-footer .footer-title {

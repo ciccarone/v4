@@ -12821,6 +12821,12 @@ a {
 	flex: 1;
 }
 
+@media (max-width: 768px) {
+	.v4-single #secondary, .v4-single .secondary, .v4-single .sidebar__container, .v4-archive #secondary, .v4-archive .secondary, .v4-archive .sidebar__container, .page-section > div #secondary, .page-section > div .secondary, .page-section > div .sidebar__container {
+		margin-top: 1em;
+	}
+}
+
 .dropdown:hover .dropdown-menu {
 	display: block;
 	margin-top: 0;
@@ -13147,6 +13153,10 @@ a {
 .nav-links .nav-next a:after {
 	content: '\f054';
 	margin-left: .5em;
+}
+
+.wp-block-search__button {
+	padding: .5em;
 }
 
 .hidden-acf {
