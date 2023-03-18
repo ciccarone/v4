@@ -212,6 +212,8 @@ $sidebar_link_color = get_field('sidebar_link_color', 'option');
 
 $footer_link_color = get_field('footer_link_color', 'option');
 
+$card_full_min_height = get_field('card_full_min_height', 'option');
+
 
 echo '<style>
 :root {
@@ -238,6 +240,10 @@ aside.widget-area h2, .wp-block-search__label {
 
 .v4-footer a, .v4-footer a:hover {
   color: '. v4_retrieve_color('color_map_' . $footer_link_color['color_names']) .';
+}
+
+.full-card {
+  min-height: '. $card_full_min_height.'px;
 }
 
 @media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {

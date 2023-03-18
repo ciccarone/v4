@@ -13116,6 +13116,20 @@ a {
 	margin-bottom: 1em;
 }
 
+.v4-index__layout--full a {
+	position: relative;
+}
+
+.v4-index__layout--full a .full-card {
+	background-size: cover;
+	position: relative;
+}
+
+.v4-index__layout--full a .full-card__inner {
+	z-index: 2;
+	position: relative;
+}
+
 .posts-navigation {
 	padding-top: 3em;
 }

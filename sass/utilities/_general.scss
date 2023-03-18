@@ -440,6 +440,28 @@ a {
       margin-bottom: 1em;
     }
   }
+
+  &--full {
+          a {
+              position: relative;
+            }
+    a {
+
+
+      .full-card {
+        background-size: cover;
+        position: relative;
+
+        
+
+        &__inner {
+              z-index: 2;
+                position: relative;
+        }
+      }
+    }
+    
+  }
 }
 
 .posts-navigation {

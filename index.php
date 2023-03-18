@@ -36,7 +36,7 @@ $index_padding = get_field('index_full_layout_padding', 'option')['padding_optio
 			v4_adplace('above_index_loop');
 			/* Start the Loop */
 
-			$card_classes = get_field('index_layout', 'option') == 'cards' ? 'v4-cards v4-cards__count--' . get_field('index_layout_column_count', 'option') . ' grid' : '';
+			$card_classes = get_field('index_layout', 'option') == ('cards' || 'full') ? 'v4-cards v4-cards__count--' . get_field('index_layout_column_count', 'option') . ' grid' : '';
 			echo '<div class="v4-index v4-index__layout--'.get_field('index_layout', 'option'). ' ' . $card_classes . ' ">';
 
 			
@@ -77,6 +77,11 @@ $index_padding = get_field('index_full_layout_padding', 'option')['padding_optio
 
 					case 'simple_list':
 						get_template_part('template-parts/index', get_post_type());
+						break;
+					
+
+					case 'full':
+						get_template_part('template-parts/index-full');
 						break;
 					
 					default:

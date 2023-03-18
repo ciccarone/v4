@@ -65,6 +65,10 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 						get_template_part('template-parts/index', get_post_type());
 						break;
 
+					case 'full':
+						get_template_part('template-parts/index-full);
+						break;
+
 					default:
 						# code...
 						break;
