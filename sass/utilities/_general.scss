@@ -152,6 +152,9 @@ a {
 
   #secondary, .secondary, .sidebar__container {
     flex: 1;
+  @media (max-width: 768px) {
+    margin-top: 1em;
+    }
   }
 
 
@@ -480,5 +483,11 @@ a {
 
   a {
     @extend .btn, .btn-primary;
+  }
+}
+
+.wp-block-search {
+  &__button {
+    padding: .5em;
   }
 }

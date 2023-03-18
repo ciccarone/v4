@@ -18,7 +18,7 @@ $sidebar_text_color = get_field('sidebar_text_color', 'option')['color_names'];
 ?>
 
 
-<div class="sidebar__container">
+
 <aside id="secondary" class="text-<?php echo $sidebar_text_color;?> widget-area <?php echo $sidebar_padding_top_bottom; ?>  <?php echo $sidebar_padding_left_right; ?> ">
 
 	<?php v4_adplace('before_sidebar_widgets'); ?>
@@ -49,4 +49,3 @@ $sidebar_text_color = get_field('sidebar_text_color', 'option')['color_names'];
 
 	<?php v4_adplace('after_sidebar_widgets'); ?>
 </aside><!-- #secondary -->
-</div>
