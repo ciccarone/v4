@@ -12819,6 +12819,7 @@ a {
 
 .v4-single #secondary, .v4-single .secondary, .v4-single .sidebar__container, .v4-archive #secondary, .v4-archive .secondary, .v4-archive .sidebar__container, .page-section > div #secondary, .page-section > div .secondary, .page-section > div .sidebar__container {
 	flex: 1;
+	height: fit-content;
 }
 
 @media (max-width: 768px) {
@@ -13018,6 +13019,17 @@ a {
 	}
 }
 
+@media (max-width: 768px) {
+	.v4-author__box {
+		flex-direction: column;
+		margin: 3em 0;
+	}
+	.v4-author__box nav {
+		top: 6px;
+		position: relative;
+	}
+}
+
 .v4-author__box ul {
 	list-style: none;
 	margin: 0;
@@ -13171,6 +13183,10 @@ a {
 
 .wp-block-search__button {
 	padding: .5em;
+}
+
+.edit-link {
+	display: none;
 }
 
 .hidden-acf {

@@ -152,6 +152,7 @@ a {
 
   #secondary, .secondary, .sidebar__container {
     flex: 1;
+        height: fit-content;
   @media (max-width: 768px) {
     margin-top: 1em;
     }
@@ -345,6 +346,15 @@ a {
   @media (min-width: 768px) {
     padding: 3em 0;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 3em 0;
+
+    nav {
+      top: 6px;
+        position: relative;
+    }
+  }
 
 }
 .v4-author__box ul {
@@ -511,5 +521,15 @@ a {
 .wp-block-search {
   &__button {
     padding: .5em;
+  }
+}
+
+.edit-link {
+  display: none;
+}
+
+.entry-footer {
+  .cat-links {
+
   }
 }

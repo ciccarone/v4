@@ -26,6 +26,9 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 			</header><!-- .page-header -->
 
 		<?php
+
+			$card_classes = get_field('index_layout', 'option') == ('cards' || 'full') ? 'v4-cards v4-cards__count--' . get_field('index_layout_column_count', 'option') . ' grid' : '';
+			echo '<div class="v4-index v4-index__layout--' . get_field('index_layout', 'option') . ' ' . $card_classes . ' ">';
 			/* Start the Loop */
 			while (have_posts()) :
 				the_post();
@@ -66,7 +69,7 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 						break;
 
 					case 'full':
-						get_template_part('template-parts/index-full);
+						get_template_part('template-parts/index-full');
 						break;
 
 					default:
@@ -75,6 +78,8 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 				}
 
 			endwhile;
+
+			echo '</div>';
 
 			the_posts_navigation();
 

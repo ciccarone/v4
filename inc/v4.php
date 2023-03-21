@@ -211,6 +211,7 @@ $sidebar_bg_color = get_field('sidebar_bg_color', 'option');
 $sidebar_link_color = get_field('sidebar_link_color', 'option');
 
 $footer_link_color = get_field('footer_link_color', 'option');
+$global_link_color = get_field('link_color', 'option');
 
 $card_full_min_height = get_field('card_full_min_height', 'option');
 
@@ -226,6 +227,10 @@ echo '<style>
 --global-grid-gap: '.get_field('global_grid_gap', 'option').'px;
 --global-mobile-breakpoint: '.get_field('global_mobile_breakpoint', 'option').'px;
 --global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option'). 'px;
+}
+
+a {
+  color: '. $global_link_color.';
 }
 
 aside.widget-area h2, .wp-block-search__label {
