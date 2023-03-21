@@ -667,6 +667,33 @@
                             "endpoint": 0
                         },
                         {
+                            "key": "field_6419c01f1c330",
+                            "label": "Card Type",
+                            "name": "card_type",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "simple_list": "Simple List",
+                                "cards": "Cards",
+                                "full": "Full Cards"
+                            },
+                            "default_value": false,
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_6356c969619ce",
                             "label": "Card Border Radius",
                             "name": "card_border_radius",
@@ -997,5 +1024,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678241020
+    "modified": 1679409232
 }
