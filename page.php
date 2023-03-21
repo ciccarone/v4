@@ -112,7 +112,7 @@ get_header();
 							</aside>
 						</div>
 						<?php
-						if ($page_section['section_sidebar_sticky']) { ?>
+						if ($page_section['section_sidebar_sticky'] === "UNUSED") { ?>
 							<script src="<?php echo get_template_directory_uri() ?>'/js/sticky.js'"></script>
 							<script type="text/javascript">
 								mastheadElement = document.querySelector("#masthead");

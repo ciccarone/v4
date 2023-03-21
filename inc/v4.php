@@ -211,6 +211,9 @@ $sidebar_bg_color = get_field('sidebar_bg_color', 'option');
 $sidebar_link_color = get_field('sidebar_link_color', 'option');
 
 $footer_link_color = get_field('footer_link_color', 'option');
+$global_link_color = get_field('link_color', 'option');
+
+$card_full_min_height = get_field('card_full_min_height', 'option');
 
 
 echo '<style>
@@ -226,6 +229,10 @@ echo '<style>
 --global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option'). 'px;
 }
 
+a {
+  color: '. $global_link_color.';
+}
+
 aside.widget-area h2, .wp-block-search__label {
   font-size: ' . $sidebar_heading['font_size'] . 'px;
   font-family: ' . $sidebar_heading['font_family'] . ';
@@ -238,6 +245,10 @@ aside.widget-area h2, .wp-block-search__label {
 
 .v4-footer a, .v4-footer a:hover {
   color: '. v4_retrieve_color('color_map_' . $footer_link_color['color_names']) .';
+}
+
+.full-card {
+  min-height: '. $card_full_min_height.'px;
 }
 
 @media  (min-width: '.get_field('global_mobile_breakpoint', 'option').'px) {
