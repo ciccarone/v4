@@ -280,10 +280,11 @@ if ( ! function_exists( 'v4_setup' ) ) :
 		);
 
 		global $wpdb;
+		$table_prefix = $wpdb->get_blog_prefix();
 
 
 		$option_sql = "
-			INSERT INTO `wp_options` (`option_name`, `option_value`, `autoload`) VALUES
+			INSERT INTO `".$table_prefix."options` (`option_name`, `option_value`, `autoload`) VALUES
 			('options_color_selector',	'#4682B4',	'no'),
 			('_options_color_selector',	'field_60ef8b16b84f7',	'no'),
 			('options_header_background_color',	'',	'no'),
