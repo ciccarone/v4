@@ -171,9 +171,11 @@ if ( ! function_exists( 'v4_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
+			<?php if (get_field('single_post_featured_image', 'option')) : ?>
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php  echo v4_header_image_generator(['image_option' => 'featured'], get_the_ID()) ?>
 			</div><!-- .post-thumbnail -->
+			<?php endif; ?>
 
 		<?php else : ?>
 

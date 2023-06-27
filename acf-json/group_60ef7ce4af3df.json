@@ -850,7 +850,7 @@
                         },
                         {
                             "key": "field_635689ef9a3da",
-                            "label": "Card Count",
+                            "label": "Card Column Count",
                             "name": "card_count",
                             "aria-label": "",
                             "type": "select",
@@ -866,16 +866,37 @@
                                 "2": "2",
                                 "3": "3",
                                 "4": "4",
-                                "6": "6",
-                                "9": "9"
+                                "6": "6"
                             },
                             "default_value": false,
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
                             "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_649b3a52de84e",
+                            "label": "Card Limit",
+                            "name": "card_limit",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "101",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": -1,
+                            "min": "",
+                            "max": "",
+                            "placeholder": "",
+                            "step": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_635689049a3d8",
@@ -1024,5 +1045,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1679409232
+    "modified": 1687897672
 }

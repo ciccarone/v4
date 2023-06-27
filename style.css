@@ -11648,10 +11648,6 @@ img {
 	max-width: 100%;
 }
 
-figure {
-	margin: 1em 0;
-}
-
 table {
 	margin: 0 0 1.5em;
 	width: 100%;
@@ -12115,6 +12111,11 @@ textarea {
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.v4-page__image {
+	background-size: cover;
+	background-position: center;
 }
 
 /* Comments

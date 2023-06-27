@@ -3,6 +3,7 @@
   echo $section_headings;
   echo $section_texts;
   $cards['count'] = $page_section['card_count'];
+  $cards['limit'] = $page_section['card_limit'];
   $cards['query'] = $page_section['card_query'];
   $cards['category'] = $page_section['card_category'];
   $cards['type'] = $page_section['card_type'];

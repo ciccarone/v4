@@ -214,6 +214,7 @@ $footer_link_color = get_field('footer_link_color', 'option');
 $global_link_color = get_field('link_color', 'option');
 
 $card_full_min_height = get_field('card_full_min_height', 'option');
+$single_post_featured_image_height = get_field('single_post_featured_image_height', 'option');
 
 
 echo '<style>
@@ -227,6 +228,10 @@ echo '<style>
 --global-grid-gap: '.get_field('global_grid_gap', 'option').'px;
 --global-mobile-breakpoint: '.get_field('global_mobile_breakpoint', 'option').'px;
 --global-tablet-breakpoint: '.get_field('global_tablet_breakpoint', 'option'). 'px;
+}
+
+.v4-page__image {
+  padding-bottom: '. $single_post_featured_image_height.'%;
 }
 
 a {
@@ -443,6 +448,7 @@ function v4_dynamic_cards($cards)
 {
 	$query = $cards['query'];
 	$count = $cards['count'];
+	$limit = $cards['limit'];
 	$category = $cards['category'];
 	$category_condition = $cards['category_condition'];
 	$border_radius = $cards['border_radius'];
@@ -454,6 +460,7 @@ function v4_dynamic_cards($cards)
 	    'posts_per_page'         => $count,
 	    'order'                  => 'DESC',
 	    'orderby'                => 'date',
+		'posts_per_page'		 => $limit,
 			'ignore_sticky_posts' => 1,
 	);
 
@@ -489,7 +496,7 @@ function v4_dynamic_cards($cards)
 
           $card_excerpt = v4_card_excerpt_generator_default(get_the_ID());
 
-          $card_button = v4_button_generator_default(get_the_ID());
+          $card_button = v4_button_generator_default(get_the_ID(), true);
 
 		  if ($cards['type'] == 'full') {
 				$padding_options_top_bottom = get_field('card_content_padding_padding_options_top_bottom', 'option');
@@ -526,14 +533,22 @@ function v4_dynamic_cards($cards)
     </div>
 </a><!-- #post-<?php the_ID(); ?> -->
 		  <?php } else {
-          echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
+		  if (!get_field('card_button_show', 'option')) {
+          echo '<a href="'.get_the_permalink().'" class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
+		  } else {
+		  echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
+		  }
             echo v4_card_image_generator($image, get_the_ID());
             echo '<div class="v4-card__content '. $padding_options_top_bottom .' ' . $padding_options_left_right . '">';
               echo $card_title;
               echo $card_excerpt;
               echo $card_button;
             echo '</div>';
-          echo '</div>';
+				if (!get_field('card_button_show', 'option')) {
+					echo '</a>';
+				} else {
+					echo '</div>';
+				}
 		  }
 
 	        // do something
@@ -547,7 +562,7 @@ function v4_dynamic_cards($cards)
 
 }
 
-function v4_button_generator_default($post_id)
+function v4_button_generator_default($post_id, $card = false)
 {
 
 	if (get_field('card_button_show', 'option')) {
@@ -570,13 +585,13 @@ function v4_button_generator_default($post_id)
 		]
 		];
 
-		return v4_button_generator($b);
+		return v4_button_generator($b, 'left', $card);
 	} else {
 		return;
 	}
 }
 
-function v4_button_generator($buttons, $alignment = 'left')
+function v4_button_generator($buttons, $alignment = 'left', $card)
 {
 	if ($buttons) {
 		
@@ -594,8 +609,15 @@ function v4_button_generator($buttons, $alignment = 'left')
 				$custom_button_classes = join(' ', $custom_button_classes_arr);
 			}
 			
-			$padding_options_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
-			$padding_options_left_right = get_field('button_padding_padding_options_left_right', 'option');
+			
+			if ($card) {
+				$padding_options_top_bottom = get_field('card_button_padding_padding_options_top_bottom', 'option');
+				$padding_options_left_right = get_field('card_button_padding_padding_options_left_right', 'option');
+			} else {
+				$padding_options_top_bottom = get_field('button_padding_padding_options_top_bottom', 'option');
+				$padding_options_left_right = get_field('button_padding_padding_options_left_right', 'option');
+
+			}
 			$ret .= '<a class="btn btn-v4-'.$button['button_design'].' '.$padding_options_top_bottom.' '.$padding_options_left_right.' global_border_radius btn__position--'.$button['button_position'].' ' . $custom_button_classes . '" href="'.$button['button_link']['url'].'" target="'.$button['button_link']['target'].'">'.$button['button_link']['title'].'</a>';
 		}
 		$ret .= count($buttons) > 1 ? '</div>' : '';
@@ -666,6 +688,48 @@ function v4_card_image_generator($image, $passed_post_id = false)
 
 
 		$ret = '<div class="v4-card__image" style="background-image: url('.$image_url.')"></div>';
+
+		return $ret;
+	}
+	return false;
+}
+
+function v4_header_image_generator($image, $passed_post_id = false)
+{
+	if ($image) {
+
+		$image_url = false;
+
+		switch ($image['image_option']) {
+			case 'featured':
+
+				$post_id = $passed_post_id ? $passed_post_id : $image['card_relationship'][0]->ID;
+				$image_url = get_the_post_thumbnail_url($post_id, 'large');
+				if ($image_url == '') {
+					$image_url = get_field('site_fallback_image', 'option');
+				}
+				break;
+
+			case 'upload':
+				$image = $image['image_upload'];
+				$image_url = $image['sizes']['medium_large'];
+				break;
+
+			case 'icon':
+				var_dump($image['icon_choice']);
+
+				// $image = v4_icon_generator($image);
+				// $image_url = $image['sizes']['medium_large'];
+				break;
+
+			default:
+				// code...
+				break;
+		}
+
+
+
+		$ret = '<div class="v4-page__image" style="background-image: url(' . $image_url . ')"></div>';
 
 		return $ret;
 	}

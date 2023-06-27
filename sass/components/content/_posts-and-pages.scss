@@ -21,3 +21,10 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+.v4-page {
+	&__image {
+		background-size: cover;
+		background-position: center;
+	}
+}
