@@ -2236,6 +2236,37 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_649b701ce60bc",
+            "label": "Show Meta",
+            "name": "show_meta",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "meta-author": "Show Author",
+                "meta-date": "Show Date",
+                "meta-category": "Show Main Category"
+            },
+            "default_value": [
+                "meta-author",
+                "meta-date",
+                "meta-category"
+            ],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
             "key": "field_6416487a6d9c7",
             "label": "Card Full-Style Options",
             "name": "",
@@ -2865,5 +2896,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687906429
+    "modified": 1687908751
 }
