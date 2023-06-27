@@ -452,6 +452,10 @@ function v4_dynamic_cards($cards)
 	$category = $cards['category'];
 	$category_condition = $cards['category_condition'];
 	$border_radius = $cards['border_radius'];
+	$card_meta_author = false;
+	$card_meta_date = false;
+	$card_meta_category = false;
+
 
 	// WP_Query arguments
 	$args = array(
@@ -485,6 +489,19 @@ function v4_dynamic_cards($cards)
 	$padding_options_top_bottom = get_field('card_content_padding_padding_options_top_bottom', 'option');
 	$padding_options_left_right = get_field('card_content_padding_padding_options_left_right', 'option');
 	$card_shadow = get_field('card_shadow', 'option');
+	$card_meta = get_field('show_meta', 'option');
+	foreach ($card_meta as $value) {
+		if ($value == 'meta-author') {
+			$card_meta_author = 'Written by ' . v4_posted_by_no_link(false);
+		}
+		if ($value == 'meta-date') {
+			$updated_date = get_field('post_updated_date') ? ' | Updated on ' . get_field('post_updated_date') : '';
+			$card_meta_date = 'Posted on ' . v4_posted_on_no_link(false) . $updated_date;
+		}
+		if ($value == 'meta-category') {
+			$card_meta_category = true;
+		}
+	}
 	
 
 	// The Loop
