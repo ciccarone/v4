@@ -1212,26 +1212,6 @@
             "text_transform": "none"
         },
         {
-            "key": "field_6419c4c9db9b8",
-            "label": "Show Sidebar Globally",
-            "name": "show_sidebar_globally",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_6419c6c0d6acf",
             "label": "Navigation",
             "name": "",
@@ -1418,6 +1398,26 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_6419c4c9db9b8",
+            "label": "Show Sidebar Globally",
+            "name": "show_sidebar_globally",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_64074155551a0",
@@ -2771,5 +2771,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1679411210
+    "modified": 1687889108
 }
