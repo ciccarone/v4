@@ -484,6 +484,8 @@ function v4_dynamic_cards($cards)
 
 	$padding_options_top_bottom = get_field('card_content_padding_padding_options_top_bottom', 'option');
 	$padding_options_left_right = get_field('card_content_padding_padding_options_left_right', 'option');
+	$card_shadow = get_field('card_shadow', 'option');
+	
 
 	// The Loop
 	if ($query->have_posts()) {
@@ -512,31 +514,30 @@ function v4_dynamic_cards($cards)
 				$card_title = v4_heading_generator_default(get_the_ID());
 				$card_excerpt = v4_card_excerpt_generator_default(get_the_ID());
 			?>
-<a id="post-<?php the_ID(); ?>" <?php post_class(['text-' . $card_text_color['color_names']]); ?> href="<?php echo get_the_permalink(); ?>">
+			<a id="post-<?php the_ID(); ?>" <?php post_class(['text-' . $card_text_color['color_names'], 'v4-card__shadow--' . $card_shadow]); ?> href="<?php echo get_the_permalink(); ?>">
+				<div class="full-card <?php echo $padding_options_top_bottom . ' ' . $padding_options_left_right; ?>" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>')">
+					<div class="full-card__inner">
+						<?php echo $card_title; ?>
+						<div class="entry-meta">
+							Written by <?php v4_posted_by_no_link(false); ?> | <?php echo 'Posted on ' . v4_posted_on_no_link(true); ?> <?php echo get_field('post_updated_date') ? ' | Updated on ' . get_field('post_updated_date') : ''; ?>
+						</div><!-- .entry-meta -->
+						<?php echo $card_excerpt; ?>
 
-    <div class="full-card <?php echo $padding_options_top_bottom . ' ' . $padding_options_left_right; ?>" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>')">
-        <div class="full-card__inner">
-            <?php echo $card_title; ?>
-            <div class="entry-meta">
-                Written by <?php v4_posted_by_no_link(false); ?> | <?php echo 'Posted on ' . v4_posted_on_no_link(true); ?> <?php echo get_field('post_updated_date') ? ' | Updated on ' . get_field('post_updated_date') : ''; ?>
-            </div><!-- .entry-meta -->
-            <?php echo $card_excerpt; ?>
 
+					</div>
+					<?php
 
-        </div>
-        <?php
-
-        if (null !== get_field('card_full_background_overlay_color', 'option')) {
-            echo $color_div;
-        }
-        ?>
-    </div>
-</a><!-- #post-<?php the_ID(); ?> -->
+					if (null !== get_field('card_full_background_overlay_color', 'option')) {
+						echo $color_div;
+					}
+					?>
+				</div>
+			</a><!-- #post-<?php the_ID(); ?> -->
 		  <?php } else {
 		  if (!get_field('card_button_show', 'option')) {
-          echo '<a href="'.get_the_permalink().'" class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
+          echo '<a href="'.get_the_permalink().'" class="v4-card bg-color__'.$card_bg_color.' '.$border_radius . ' v4-card__shadow--' . $card_shadow .'">';
 		  } else {
-		  echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius.'">';
+		  echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius . ' v4-card__shadow--' . $card_shadow . '">';
 		  }
             echo v4_card_image_generator($image, get_the_ID());
             echo '<div class="v4-card__content '. $padding_options_top_bottom .' ' . $padding_options_left_right . '">';

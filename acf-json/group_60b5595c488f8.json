@@ -2216,6 +2216,26 @@
             "prefix_name": 1
         },
         {
+            "key": "field_649b6339dcba4",
+            "label": "Card Shadow",
+            "name": "card_shadow",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6416487a6d9c7",
             "label": "Card Full-Style Options",
             "name": "",
@@ -2845,5 +2865,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687904365
+    "modified": 1687906429
 }
