@@ -84,14 +84,22 @@ if ( ! function_exists( 'v4_posted_by_no_link' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function v4_posted_by_no_link() {
+	
+	function v4_posted_by_no_link($post_id) {
+		$author_id = get_post_field('post_author', $post_id);
+		
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( '%s', 'post author', 'v4' ),
-			'<span class="author vcard">' . esc_html( get_the_author() ) . '</span>'
+			'<span class="author vcard">' . esc_html( get_the_author_meta('display_name', $author_id) ) . '</span>'
 		);
+		// $byline = sprintf(
+		// 	/* translators: %s: post author. */
+		// 	esc_html_x( '%s', 'post author', 'v4' ),
+		// 	'<span class="author vcard">' . esc_html( get_the_author() ) . '</span>'
+		// );
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		return '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;

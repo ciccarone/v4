@@ -12427,6 +12427,22 @@ textarea {
 	margin: 9px;
 }
 
+.v4-card__meta__main {
+	display: flex;
+	font-size: 11px;
+}
+
+.v4-card__meta__secondary {
+	display: flex;
+	font-size: 11px;
+}
+
+.v4-card__meta__author:after {
+	content: '|';
+	margin-right: 0.5em;
+	padding-left: 0.5em;
+}
+
 .grid {
 	display: grid;
 	grid-gap: var(--global-grid-gap);

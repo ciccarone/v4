@@ -490,24 +490,26 @@ function v4_dynamic_cards($cards)
 	$padding_options_left_right = get_field('card_content_padding_padding_options_left_right', 'option');
 	$card_shadow = get_field('card_shadow', 'option');
 	$card_meta = get_field('show_meta', 'option');
-	foreach ($card_meta as $value) {
-		if ($value == 'meta-author') {
-			$card_meta_author = 'Written by ' . v4_posted_by_no_link(false);
-		}
-		if ($value == 'meta-date') {
-			$updated_date = get_field('post_updated_date') ? ' | Updated on ' . get_field('post_updated_date') : '';
-			$card_meta_date = 'Posted on ' . v4_posted_on_no_link(false) . $updated_date;
-		}
-		if ($value == 'meta-category') {
-			$card_meta_category = true;
-		}
-	}
+
 	
 
 	// The Loop
 	if ($query->have_posts()) {
 	    while ($query->have_posts()) {
 	        $query->the_post();
+
+			foreach ($card_meta as $value) {
+				if ($value == 'meta-author') {
+					$card_meta_author = 'Written by ' . v4_posted_by_no_link(get_the_ID());
+				}
+				if ($value == 'meta-date') {
+					$updated_date = get_field('post_updated_date') ? ' | Updated on ' . get_field('post_updated_date') : '';
+					$card_meta_date = 'Posted on ' . v4_posted_on_no_link(false) . $updated_date;
+				}
+				if ($value == 'meta-category') {
+					$card_meta_category = get_primary_category(get_the_category());
+				}
+			}
 
           $card_bg_color = get_field('card_background_color', 'option')['color_names'];
 
@@ -559,6 +561,26 @@ function v4_dynamic_cards($cards)
             echo v4_card_image_generator($image, get_the_ID());
             echo '<div class="v4-card__content '. $padding_options_top_bottom .' ' . $padding_options_left_right . '">';
               echo $card_title;
+			  if ($card_meta_author || $card_meta_date || $card_meta_category) {
+				echo '<div class="v4-card__meta">';
+					echo '<div class="v4-card__meta__inner">';
+					echo '<div class="v4-card__meta__main">';
+						if ($card_meta_author) {
+							echo '<div class="v4-card__meta__author">'.$card_meta_author.'</div>';
+						} 
+						if ($card_meta_date) {
+							echo '<div class="v4-card__meta__date">'.$card_meta_date.'</div>';
+						}
+					echo '</div>';
+					echo '<div class="v4-card__meta__secondary">';
+						if ($card_meta_category) {
+							echo '<div class="v4-card__meta__category">Category: '.$card_meta_category.'</div>';
+						}
+					echo '</div>';
+				echo '</div>';
+			echo '</div>';
+
+			  }
               echo $card_excerpt;
               echo $card_button;
             echo '</div>';
@@ -578,6 +600,43 @@ function v4_dynamic_cards($cards)
 	// Restore original Post Data
 	wp_reset_postdata();
 
+}
+
+function get_primary_category($category)
+{
+	$useCatLink = true;
+	// If post has a category assigned.
+	if ($category) {
+		$category_display = '';
+		$category_link = '';
+		if (class_exists('WPSEO_Primary_Term')) {
+			// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+			$wpseo_primary_term = new WPSEO_Primary_Term('category', get_the_id());
+			$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+			$term = get_term($wpseo_primary_term);
+			if (is_wp_error($term)) {
+				// Default to first category (not Yoast) if an error is returned
+				$category_display = $category[0]->name;
+				$category_link = get_category_link($category[0]->term_id);
+			} else {
+				// Yoast Primary category
+				$category_display = $term->name;
+				$category_link = get_category_link($term->term_id);
+			}
+		} else {
+			// Default, display the first category in WP's list of assigned categories
+			$category_display = $category[0]->name;
+			$category_link = get_category_link($category[0]->term_id);
+		}
+		// Display category
+		if (!empty($category_display)) {
+			if ($useCatLink == true && !empty($category_link)) {
+				return '<span class="post-category"><a href="' . $category_link . '">' . htmlspecialchars($category_display) . '</a></span>';
+			} else {
+				return '<span class="post-category">' . htmlspecialchars($category_display) . '</span>';
+			}
+		}
+	}
 }
 
 function v4_button_generator_default($post_id, $card = false)

@@ -57,6 +57,25 @@
       margin: 9px;
     }
   }
+
+  &__meta {
+    &__main {
+      display: flex;
+      font-size: 11px;
+    }
+    &__secondary {
+      display: flex;
+      font-size: 11px;
+    }
+    &__author {
+
+      &:after {
+        content: '|';
+        margin-right: 0.5em;
+        padding-left: 0.5em;
+      }
+    }
+  }
 }
 
 .grid {
