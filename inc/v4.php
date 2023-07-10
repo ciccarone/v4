@@ -653,9 +653,9 @@ function v4_dynamic_cards($cards)
 
 
 	    }
-		// var_dump($query->max_num_pages);
+		
 		// previous_posts_link("Newer Entries");
-		// next_posts_link("Older Entries", 23);
+		// next_posts_link("Older Entries", $query->max_num_pages);
 
 
 
