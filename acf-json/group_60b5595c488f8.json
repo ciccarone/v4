@@ -1856,6 +1856,44 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_64ac5699bcdfa",
+            "label": "Make Last Nav Item a Button?",
+            "name": "make_last_nav_item_a_button",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_64ac57688808b",
+            "label": "Last Nav Item Button BG Color",
+            "name": "last_nav_item_button_bg_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "rgb(0,158,126)",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
             "key": "field_63574385c3c6d",
             "label": "Post\/Page Header",
             "name": "",
@@ -2966,26 +3004,6 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
-        },
-        {
-            "key": "field_649b2840e108b",
-            "label": "",
-            "name": "",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -3006,5 +3024,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1689006664
+    "modified": 1689016697
 }

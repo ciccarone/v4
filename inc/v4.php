@@ -199,6 +199,7 @@ $sidebar_heading = get_field('sidebar_heading_settings', 'option');
 $p = get_field('p_settings', 'option');
 $logo_max_width = get_field('logo_max_width', 'option');
 $global_border_radius = get_field('global_border_radius', 'option');
+$make_last_nav_item_a_button = get_field('make_last_nav_item_a_button', 'option');
 
 $button_bg_color = get_field('button_background_color', 'option');
 $button_bg_color_hover = get_field('button_background_color_hover', 'option');
@@ -244,6 +245,16 @@ if ($single_post_featured_image_size_type == 'contain') {
 	background-repeat: no-repeat;
 	background-position: initial;
   }';
+}
+if ($make_last_nav_item_a_button) {
+	  echo '
+  @media (min-width: '.get_field('global_mobile_breakpoint', 'option'). 'px) {
+  .navbar-nav > li:last-child a {
+	background-color: '.get_field('last_nav_item_button_bg_color', 'option'). ';
+	margin-left: 12px;
+	padding: 10px 30px !important;
+	border-radius: ' . get_field('global_border_radius', 'option') . 'px;
+  }}';
 }
 
 echo '
