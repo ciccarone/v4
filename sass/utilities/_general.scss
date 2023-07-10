@@ -488,12 +488,17 @@ a {
   a {
     display: flex;
     align-items: center;
+    font-size: .9em;
     &:before, &:after {
         font-family: "Font Awesome 5 Pro";
         font-size: .8em;
         position: relative;
         top: 1px;
         font-weight: bold;
+      }
+
+      .nav-subtitle {
+        margin-right: .5em;
       }
   }
 
@@ -526,6 +531,10 @@ a {
 
 .edit-link {
   display: none;
+}
+
+.entry-meta {
+  margin-bottom: 1em;
 }
 
 .entry-footer {

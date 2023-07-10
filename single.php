@@ -35,7 +35,9 @@ $single_post_padding = get_field('single_post_full_layout_padding', 'option')['p
 				if ('post' === get_post_type()) :
 				?>
 					<div class="entry-meta">
-						Written by <?php v4_posted_by(); ?> | <?php echo 'Posted on ' . v4_posted_on(true); ?> <?php echo get_field('post_updated_date') ? 'Updated on ' . get_field('post_updated_date') : ''; ?>
+						Written by <?php v4_posted_by(); ?> | <?php echo 'Posted on ' . v4_posted_on(true); ?> <?php echo get_field('post_updated_date') ? 'Updated on ' . get_field('post_updated_date') : '';
+						echo '<br />';
+						echo 'Category: ' . get_primary_category(get_the_category()); ?>
 
 						<?php
 						if ($reviewer = get_field('reviewer')) {

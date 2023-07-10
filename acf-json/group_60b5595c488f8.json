@@ -364,6 +364,32 @@
             "placeholder": ""
         },
         {
+            "key": "field_64ac0a0ecffa8",
+            "label": "Single Post Featured Image Size Type",
+            "name": "single_post_featured_image_size_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Choose a percent value as bottom padding within image frame",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "cover": "Cover",
+                "contain": "Contain"
+            },
+            "default_value": "cover",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6407e820dedd8",
             "label": "Archives",
             "name": "",
@@ -518,27 +544,19 @@
             "type": "number",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63cf367d9e820",
-                        "operator": "==",
-                        "value": "cards"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": 2,
+            "min": 1,
             "max": 4,
-            "step": 1
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6407f43f212f0",
@@ -1823,7 +1841,15 @@
             "type": "accordion",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_630429506fff0",
+                        "operator": "==",
+                        "value": "deleted"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -2896,5 +2922,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1687908751
+    "modified": 1688999189
 }

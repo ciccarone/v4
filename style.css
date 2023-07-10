@@ -13179,6 +13179,7 @@ a {
 .nav-links a {
 	display: flex;
 	align-items: center;
+	font-size: .9em;
 }
 
 .nav-links a:before, .nav-links a:after {
@@ -13187,6 +13188,10 @@ a {
 	position: relative;
 	top: 1px;
 	font-weight: bold;
+}
+
+.nav-links a .nav-subtitle {
+	margin-right: .5em;
 }
 
 .nav-links .nav-previous a:before {
@@ -13209,6 +13214,10 @@ a {
 
 .edit-link {
 	display: none;
+}
+
+.entry-meta {
+	margin-bottom: 1em;
 }
 
 .hidden-acf {

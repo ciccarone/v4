@@ -215,6 +215,7 @@ $global_link_color = get_field('link_color', 'option');
 
 $card_full_min_height = get_field('card_full_min_height', 'option');
 $single_post_featured_image_height = get_field('single_post_featured_image_height', 'option');
+$single_post_featured_image_size_type = get_field('single_post_featured_image_size_type', 'option');
 
 
 echo '<style>
@@ -232,8 +233,18 @@ echo '<style>
 
 .v4-page__image {
   padding-bottom: '. $single_post_featured_image_height.'%;
+}';
+
+if ($single_post_featured_image_size_type == 'contain') {
+	  echo '
+  .v4-page__image {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: initial;
+  }';
 }
 
+echo '
 a {
   color: '. $global_link_color.';
 }
@@ -439,8 +450,12 @@ aside.widget-area {
 	color: '.v4_retrieve_color('color_map_'.$button_text_color_hover['color_names']).';
 }
 .site-branding img {
-	max-width: '.$logo_max_width.'px;
+	max-width: '.$logo_max_width. 'px;
 }
+
+// .site-header {
+// 	background-color: ' . v4_retrieve_color('color_map_' . $page_header_background_color['color_names']) . ';
+// }
 </style>';
 }
 

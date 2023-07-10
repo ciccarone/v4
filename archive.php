@@ -40,28 +40,24 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 				 */
 				switch (get_field('index_layout', 'option')) {
 					case 'cards':
-						$card_bg_color = get_field('card_background_color', 'option')['color_names'];
+								
+					$cards['count'] = get_field('index_layout_column_count', 'option');
+					$cards['limit'] = 12;
+					$cards['query'] = false;
+					$cards['category'] = false;
+					$cards['type'] = false;
+					$cards['type_class'] = false;
+					$cards['category_condition'] = false;
+					$cards['border_radius'] = false;
+					?>
 
-						$card_title = v4_heading_generator_default(get_the_ID());
-
-						$card_excerpt = v4_card_excerpt_generator_default(get_the_ID());
-
-						$card_button = v4_button_generator_default(get_the_ID());
-
-						$card_image['image_option'] = 'featured';
-
-						echo '<div class="v4-card bg-color__' . $card_bg_color . ' ' . get_field('global_border_radius',) . '">';
-						echo v4_card_image_generator($card_image, get_the_ID());
-						$padding_options_top_bottom = get_field('card_padding_padding_options_top_bottom', 'option');
-						$padding_options_left_right = get_field('card_padding_padding_options_left_right', 'option');
-						echo '<div class="v4-card__content ' . $padding_options_top_bottom . ' ' . $padding_options_left_right . '">';
-						echo $card_title;
-						echo $card_excerpt;
-						echo $card_button;
-						echo '</div>';
-						echo '</div>';
-						// get_template_part('template-parts/index-post-cards');
-
+					<div class="v4-cards v4-cards__count--<?php echo $cards['count']; ?> grid <?php echo $cards['type_class']; ?>">
+						<?php
+						echo v4_dynamic_cards($cards);
+						?>
+					</div>
+					<?php 
+	
 						break;
 
 					case 'simple_list':
