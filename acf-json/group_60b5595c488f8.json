@@ -1580,6 +1580,28 @@
             "prefix_name": 1
         },
         {
+            "key": "field_64ac22e96f728",
+            "label": "Sidebar List Item Spacing",
+            "name": "sidebar_list_item_spacing",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 6,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_630532d94f9a3",
             "label": "Header Options",
             "name": "",
@@ -2505,6 +2527,26 @@
             "prefix_name": 1
         },
         {
+            "key": "field_64ac2890c6e92",
+            "label": "Card Title Link",
+            "name": "card_title_link",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6345a9d6c0543",
             "label": "Card Button Options",
             "name": "",
@@ -2922,5 +2964,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688999189
+    "modified": 1689004431
 }

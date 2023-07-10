@@ -12423,7 +12423,7 @@ textarea {
 }
 
 .v4-card__shadow--1 {
-	box-shadow: 8px 6px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.1);
 	margin: 9px;
 }
 
@@ -13218,6 +13218,10 @@ a {
 
 .entry-meta {
 	margin-bottom: 1em;
+}
+
+.entry-title, .page-title {
+	margin-top: 0;
 }
 
 .hidden-acf {
