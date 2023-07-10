@@ -198,93 +198,63 @@ if ( ! function_exists( 'v4_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function v4_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on V4, use a find and replace
-		 * to change 'v4' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'v4', get_template_directory() . '/languages' );
 
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+	add_action('admin_menu', 'test_button_menu');
 
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
+	function test_button_menu()
+	{
+		add_menu_page('Reset Base Theme Settings', 'Reset Base Theme Settings', 'manage_options', 'test-button-slug', 'test_button_admin_page');
+	}
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support( 'post-thumbnails' );
+	function test_button_admin_page()
+	{
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'v4' ),
-			)
-		);
+		// This function creates the output for the admin page.
+		// It also checks the value of the $_POST variable to see whether
+		// there has been a form submission. 
 
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-				'style',
-				'script',
-			)
-		);
+		// The check_admin_referer is a WordPress function that does some security
+		// checking and is recommended good practice.
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'v4_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
+		// General check for user permissions.
+		if (!current_user_can('manage_options')) {
+			wp_die(__('You do not have sufficient pilchards to access this page.'));
+		}
 
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+		// Start building the page
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
+		echo '<div class="wrap">';
 
+		echo '<h2>Reset Base Theme Settings</h2>';
+		echo '<p>Warning, this will reset any base theme settings that you have previously added.</p>';
+
+		// Check whether the button has been pressed AND also check the nonce
+		if (isset($_POST['test_button']) && check_admin_referer('test_button_clicked')) {
+			// the button has been pressed AND we've passed the security check
+			test_button_action();
+		}
+
+		echo '<form action="options-general.php?page=test-button-slug" method="post">';
+
+		// this is a WordPress security feature - see: https://codex.wordpress.org/WordPress_Nonces
+		wp_nonce_field('test_button_clicked');
+		echo '<input type="hidden" value="true" name="test_button" />';
+		submit_button('Reset Base Theme Settings');
+		echo '</form>';
+
+		echo '</div>';
+	}
+
+	function test_button_action()
+	{
+		echo '<div id="message" class="updated fade"><p>'
+		. 'Base theme settings have been reloaded' . '</p></div>';
 		global $wpdb;
 		$table_prefix = $wpdb->get_blog_prefix();
 
 
 		$option_sql = "
-			INSERT INTO `".$table_prefix. "options` (`option_name`, `option_value`, `autoload`) VALUES
+			REPLACE `" . $table_prefix . "options` (`option_name`, `option_value`, `autoload`) VALUES
 				('options_site_width',	'1320',	'no'),
 				('_options_site_width',	'field_630429506fff0',	'no'),
 				('options_global_border_radius',	'6',	'no'),
@@ -591,8 +561,6 @@ if ( ! function_exists( 'v4_setup' ) ) :
 				('_options_single_post_featured_image_size_type',	'field_64ac0a0ecffa8',	'no'),
 				('options_index_layout_column_count',	'2',	'no'),
 				('_options_index_layout_column_count',	'field_63cfdd80b1d75',	'no'),
-				(1448079,	'_transient_timeout_apbPostsArgs-bef6d832-3',	'1689083769',	'no'),
-				(1448080,	'_transient_apbPostsArgs-bef6d832-3',	'a:8:{s:9:\"post_type\";s:4:\"post\";s:14:\"posts_per_page\";i:12;s:7:\"orderby\";s:4:\"date\";s:5:\"order\";s:4:\"desc\";s:9:\"tax_query\";a:1:{s:8:\"relation\";s:3:\"AND\";}s:6:\"offset\";i:0;s:12:\"category__in\";a:0:{}s:7:\"tag__in\";a:0:{}}',	'no'),
 				('options_card_excerpt_character_limit',	'100',	'no'),
 				('_options_card_excerpt_character_limit',	'field_64ac1de13d0f6',	'no'),
 				('options_sidebar_list_item_spacing',	'6',	'no'),
@@ -602,7 +570,7 @@ if ( ! function_exists( 'v4_setup' ) ) :
 				('options_card_image_padding',	'100',	'no'),
 				('_options_card_image_padding',	'field_64ac2c7f55f64',	'no'),
 				('options_card_image_link',	'1',	'no'),
-				('_options_card_image_link',	'field_64ac323213c02',	'no');
+				('_options_card_image_link',	'field_64ac323213c02',	'no'),
 				('options_single_post_featured_image',	'1',	'no'),
 				('_options_single_post_featured_image',	'field_649b2867e108c',	'no'),
 				('options_',	'',	'no'),
@@ -611,7 +579,7 @@ if ( ! function_exists( 'v4_setup' ) ) :
 				('_options_single_post_height',	'field_649b2e1ec67ba',	'no'),
 				('options_single_post_featured_image_height',	'30',	'no'),
 				('_options_single_post_featured_image_height',	'field_649b2e1ec67ba',	'no'),
-				(1288793,	'acft_settings',	'a:1:{s:10:\"google_key\";s:39:\"AIzaSyCpsCYh4tdrfNVO0WqAu0fQ5aIAouilIYg\";}',	'yes'),
+				('acft_settings',	'a:1:{s:10:\"google_key\";s:39:\"AIzaSyCpsCYh4tdrfNVO0WqAu0fQ5aIAouilIYg\";}',	'yes'),
 				('options_card_shadow',	'1',	'no'),
 				('_options_card_shadow',	'field_649b6339dcba4',	'no'),
 				('options_card_border_radius',	'1',	'no'),
@@ -624,6 +592,92 @@ if ( ! function_exists( 'v4_setup' ) ) :
 
 
 		$wpdb->query($wpdb->prepare($option_sql));
+
+		
+
+	}  
+	
+	function v4_setup() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on V4, use a find and replace
+		 * to change 'v4' to the name of your theme in all the template files.
+		 */
+		load_theme_textdomain( 'v4', get_template_directory() . '/languages' );
+
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
+		add_theme_support( 'post-thumbnails' );
+
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus(
+			array(
+				'menu-1' => esc_html__( 'Primary', 'v4' ),
+			)
+		);
+
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'style',
+				'script',
+			)
+		);
+
+		// Set up the WordPress core custom background feature.
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'v4_custom_background_args',
+				array(
+					'default-color' => 'ffffff',
+					'default-image' => '',
+				)
+			)
+		);
+
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		/**
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
+		 */
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 250,
+				'width'       => 250,
+				'flex-width'  => true,
+				'flex-height' => true,
+			)
+		);
+
 
 
 	}
