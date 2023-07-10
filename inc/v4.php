@@ -480,6 +480,7 @@ aside.widget-area {
 
 function v4_dynamic_cards($cards)
 {
+	
 	$query = $cards['query'];
 	$count = $cards['count'];
 	$limit = $cards['limit'];
@@ -490,30 +491,42 @@ function v4_dynamic_cards($cards)
 	$card_meta_date = false;
 	$card_meta_category = false;
 
+	if (get_query_var('paged')) {
+		$paged = get_query_var('paged');
+	} elseif (get_query_var('page')) {
+		$paged = get_query_var('page');
+	} else {
+		$paged = 1;
+	}
 
+	
 	// WP_Query arguments
 	$args = array(
 	    'post_type'              => array('post'),
 	    'post_status'            => array('publish'),
-	    'posts_per_page'         => $count,
+	    'posts_per_page'         => $limit,
 	    'order'                  => 'DESC',
 	    'orderby'                => 'date',
 		'posts_per_page'		 => $limit,
-			'ignore_sticky_posts' => 1,
+		'paged'         		 => $paged,
 	);
+	
 
 	if ($query == 'category') {
-	$args['tax_query'] = array(
-			'relation' => $category_condition,
-			array(
-					'taxonomy'         => 'category', // taxonomy slug
-					'terms'            => $category, // term ids
-					'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
-					'operator'         => 'IN', // Also support: AND, NOT IN, EXISTS, NOT EXISTS
-					'include_children' => true,
-			)
-	);
+		$args['tax_query'] = array(
+				'relation' => $category_condition,
+				array(
+						'taxonomy'         => 'category', // taxonomy slug
+						'terms'            => $category, // term ids
+						'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
+						'operator'         => 'IN', // Also support: AND, NOT IN, EXISTS, NOT EXISTS
+						'include_children' => true,
+				)
+		);
 	}
+
+
+
 
 	// The Query
 	$query = new WP_Query($args);
@@ -638,11 +651,19 @@ function v4_dynamic_cards($cards)
 				echo '</div>';
 		  }
 
-	        // do something
+
 	    }
+		// var_dump($query->max_num_pages);
+		// previous_posts_link("Newer Entries");
+		// next_posts_link("Older Entries", 23);
+
+
+
 	} else {
 	    // no posts found
 	}
+
+
 
 	// Restore original Post Data
 	wp_reset_postdata();

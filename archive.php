@@ -30,8 +30,12 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 			$card_classes = get_field('index_layout', 'option') == ('cards' || 'full') ? 'v4-cards v4-cards__count--' . get_field('index_layout_column_count', 'option') . ' grid' : '';
 			echo '<div class="v4-index v4-index__layout--' . get_field('index_layout', 'option') . ' ' . $card_classes . ' ">';
 			/* Start the Loop */
-			while (have_posts()) :
-				the_post();
+			$category_id = false;
+
+			$categories = get_the_category();
+			$category_id = $categories[0]->cat_ID;
+
+
 
 				/*
 				 * Include the Post-Type-specific template for the content.
@@ -43,8 +47,9 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 								
 					$cards['count'] = get_field('index_layout_column_count', 'option');
 					$cards['limit'] = 12;
-					$cards['query'] = false;
-					$cards['category'] = false;
+					$cards['query'] = 'category';
+
+					$cards['category'] = ($category_id ? $category_id : false);
 					$cards['type'] = false;
 					$cards['type_class'] = false;
 					$cards['category_condition'] = false;
@@ -72,7 +77,7 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 						break;
 				}
 
-			endwhile;
+
 
 			echo '</div>';
 
