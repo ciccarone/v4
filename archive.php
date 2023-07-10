@@ -51,11 +51,10 @@ $archive_padding = get_field('archive_post_full_layout_padding', 'option')['padd
 					$cards['border_radius'] = false;
 					?>
 
-					<div class="v4-cards v4-cards__count--<?php echo $cards['count']; ?> grid <?php echo $cards['type_class']; ?>">
 						<?php
 						echo v4_dynamic_cards($cards);
 						?>
-					</div>
+
 					<?php 
 	
 						break;

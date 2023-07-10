@@ -215,6 +215,7 @@ $footer_link_color = get_field('footer_link_color', 'option');
 $global_link_color = get_field('link_color', 'option');
 
 $card_full_min_height = get_field('card_full_min_height', 'option');
+$card_image_padding = get_field('card_image_padding', 'option');
 $single_post_featured_image_height = get_field('single_post_featured_image_height', 'option');
 $single_post_featured_image_size_type = get_field('single_post_featured_image_size_type', 'option');
 
@@ -458,6 +459,10 @@ aside.widget-area {
   margin-bottom: ' . $sidebar_list_item_spacing . 'px;;
 }
 
+.v4-card .v4-card__image {
+  padding-bottom: '.$card_image_padding.'%;
+}
+
 
 </style>';
 }
@@ -571,12 +576,24 @@ function v4_dynamic_cards($cards)
 				</div>
 			</a><!-- #post-<?php the_ID(); ?> -->
 		  <?php } else {
-		  if (!get_field('card_button_show', 'option')) {
-          echo '<a href="'.get_the_permalink().'" class="v4-card bg-color__'.$card_bg_color.' '.$border_radius . ' v4-card__shadow--' . $card_shadow .'">';
-		  } else {
-		  echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius . ' v4-card__shadow--' . $card_shadow . '">';
-		  }
+				//   if (!get_field('card_button_show', 'option')) {
+				//   echo '<a href="'.get_the_permalink().'" class="v4-card bg-color__'.$card_bg_color.' '.$border_radius . ' v4-card__shadow--' . $card_shadow .'">';
+				//   } else {
+				//   echo '<div class="v4-card bg-color__'.$card_bg_color.' '.$border_radius . ' v4-card__shadow--' . $card_shadow . '">';
+				//   }
+				echo '<div class="v4-card bg-color__' . $card_bg_color . ' ' . $border_radius . ' v4-card__shadow--' . $card_shadow . '">';
+
+				if (get_field('card_image_link', 'option')) {
+				  echo '<a href="'.get_the_permalink().'">';
+				  } else {
+				 
+				  }
             echo v4_card_image_generator($image, get_the_ID());
+							if (get_field('card_image_link', 'option')) {
+					echo '</a>';
+				} else {
+
+				}
             echo '<div class="v4-card__content '. $padding_options_top_bottom .' ' . $padding_options_left_right . '">';
               echo $card_title;
 			  if ($card_meta_author || $card_meta_date || $card_meta_category) {
@@ -602,11 +619,12 @@ function v4_dynamic_cards($cards)
               echo $card_excerpt;
               echo $card_button;
             echo '</div>';
-				if (!get_field('card_button_show', 'option')) {
-					echo '</a>';
-				} else {
-					echo '</div>';
-				}
+				// if (!get_field('card_button_show', 'option')) {
+				// 	echo '</a>';
+				// } else {
+				// 	echo '</div>';
+				// }
+				echo '</div>';
 		  }
 
 	        // do something

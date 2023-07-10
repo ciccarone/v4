@@ -12411,7 +12411,6 @@ textarea {
 .v4-card__image {
 	background-position: center;
 	background-size: cover;
-	min-height: 200px;
 }
 
 .v4-card__content {

@@ -2242,6 +2242,48 @@
             "prefix_name": 1
         },
         {
+            "key": "field_64ac2c7f55f64",
+            "label": "Card Image Padding",
+            "name": "card_image_padding",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 50,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "%"
+        },
+        {
+            "key": "field_64ac323213c02",
+            "label": "Card Image Link",
+            "name": "card_image_link",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6345848449ea7",
             "label": "Card Background Color",
             "name": "card_background_color",
@@ -2964,5 +3006,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1689004431
+    "modified": 1689006664
 }
